@@ -156,25 +156,20 @@ body {
   font-size: 24px;
 }
 
-/* ============================================
-   SHOP PAGES - BROWN PASTEL THEME
-   ============================================ */
-
-/* CSS Variables for Brown Pastels */
 :root {
-  --brown-dark: #5D4037;
-  --brown-medium: #8D6E63;
-  --brown-light: #A1887F;
-  --pastel-cream: #F5F0EB;
-  --pastel-beige: #E8DDD4;
-  --pastel-tan: #D7CCC8;
-  --pastel-mocha: #BCAAA4;
-  --pastel-latte: #EFEBE9;
-  --accent-warm: #C8A98A;
-  --accent-rose: #D4A89A;
-  --text-dark: #3E2723;
-  --text-medium: #5D4037;
-  --text-light: #8D6E63;
+  --brown-dark: #4A4A4A;
+  --brown-medium: #6B5B4F;
+  --brown-light: #8B7D6B;
+  --pastel-cream: #FAF8F5;
+  --pastel-beige: #E4D5C3;
+  --pastel-tan: #DDD5CA;
+  --pastel-mocha: #C9BEB3;
+  --pastel-latte: #F5F2EE;
+  --accent-warm: #6B5B4F;
+  --accent-rose: #A89080;
+  --text-dark: #333333;
+  --text-medium: #4A4A4A;
+  --text-light: #777777;
 }
 
 /* Navigation Links */

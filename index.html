@@ -10,83 +10,113 @@
 
 <body>
 
-<div class="popup-overlay">
-  <div class="popup-content">
-    <h2>Beauty Savings!</h2>
-    <p>Tell us what you love, and we'll handle the rest.</p>
-    
-    <div class="interests">
-      <label><input type="checkbox" name="interest" value="skincare"> Skincare</label>
-      <label><input type="checkbox" name="interest" value="makeup"> Makeup</label>
-      <label><input type="checkbox" name="interest" value="nails"> Press-ons</label>
-      <label><input type="checkbox" name="interest" value="tools"> Beauty Tools</label>
+  <div class="popup-overlay">
+    <div class="popup-content">
+      <h2>Beauty Savings!</h2>
+      <p>Tell us what you love, and we'll handle the rest.</p>
+      
+      <div class="interests">
+        <label><input type="checkbox" name="interest" value="skincare"> Skincare</label>
+        <label><input type="checkbox" name="interest" value="makeup"> Makeup</label>
+        <label><input type="checkbox" name="interest" value="nails"> Press-ons</label>
+        <label><input type="checkbox" name="interest" value="tools"> Beauty Tools</label>
+      </div>
+
+      <input type="email" placeholder="Enter your email" class="email-input">
+      <button class="cta-button">I'm Ready to Glow</button>
+      <button class="close-btn" id="maybeLater">I'll Explore on My Own</button>
     </div>
-
-    <input type="email" placeholder="Enter your email" class="email-input">
-    <button class="cta-button">I'm Ready to Glow</button>
-    <button class="close-btn" id="maybeLater">I'll Explore on My Own</button>
-  </div>
-</div>
-
-<header class="navbar">
-  <a href="index.html" class="logo-link">
-    <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
-  </a>
-  
-  <div class="search-engine">
-    <input type="text" placeholder="Search for products" class="search-input">
-    <button type="submit" class="search-submit">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
   </div>
 
-  <nav class="nav-links">
-    <a href="shop-skincare.html">Skincare</a>
-    <a href="shop-makeup.html">Makeup</a>
-    <a href="shop-tools.html">Tools & Brushes</a>
-    <a href="shop-nails.html">Nails</a>
-    <a href="cart.html" class="cart-link">
-      <i class="fa-solid fa-shopping-bag"></i>
-      <span class="cart-count">0</span>
+  <header class="navbar">
+    <a href="index.html" class="logo-link">
+      <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
     </a>
-  </nav>
-</header> 
-
-<section class="hero">
-  <h2>Bare, Beauty, & Honest</h2>
-  <p>Your Skin, Only Better.</p>
-  <button>Shop Now</button>
-</section>
-
-<section class="featured">
-  <h3>Featured Products</h3>
-  <div class="product-grid">
-    <div class="product-card">
-      <p>Product Name</p>
+    
+    <div class="search-engine">
+      <input type="text" placeholder="Search for products" class="search-input">
+      <button type="submit" class="search-submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
     </div>
-    <div class="product-card">
-      <p>Product Name</p>
+
+    <nav class="nav-links">
+      <a href="shop-skincare.html">Skincare</a>
+      <a href="shop-makeup.html">Makeup</a>
+      <a href="shop-tools.html">Tools & Brushes</a>
+      <a href="shop-nails.html">Nails</a>
+      <a href="cart.html" class="cart-link">
+        <i class="fa-solid fa-shopping-bag"></i>
+        <span class="cart-count">0</span>
+      </a>
+    </nav>
+  </header> 
+
+  <section class="hero">
+    <h2>Bare, Beauty, & Honest</h2>
+    <p>Your Skin, Only Better.</p>
+    <button>Shop Now</button>
+  </section>
+
+  <section class="featured">
+    <h3>Featured Products</h3>
+    <div class="product-grid">
+      <div class="product-card">
+        <p>Product Name</p>
+      </div>
+      <div class="product-card">
+        <p>Product Name</p>
+      </div>
+      <div class="product-card">
+        <p>Product Name</p>
+      </div>
     </div>
-    <div class="product-card">
-      <p>Product Name</p>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Shop</h4>
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </div>
+      <div class="footer-section">
+        <h4>Help</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="footer-section">
+        <h4>About</h4>
+        <a href="#">Our Story</a>
+        <a href="#">Ingredients</a>
+        <a href="#">Sustainability</a>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bare Beauty. All rights reserved.</p>
+    </div>
+  </footer>
 
-<footer>
-  <p>© 2026 Bare Beauty</p>
-</footer>
+  <script>
+    const maybeLaterBtn = document.getElementById('maybeLater');
+    const popup = document.querySelector('.popup-overlay');
 
-<script>
-  // Find the button and the popup overlay
-  const maybeLaterBtn = document.getElementById('maybeLater');
-  const popup = document.querySelector('.popup-overlay');
-
-  // When the button is clicked, change the display to 'none'
-  maybeLaterBtn.onclick = function() {
-    popup.style.display = 'none';
-  };
-</script>
+    maybeLaterBtn.onclick = function() {
+      popup.style.display = 'none';
+    };
+  </script>
 
 </body>
 </html>
