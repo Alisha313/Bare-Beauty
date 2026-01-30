@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nails & Press-ons | Bare Beauty</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar Component -->
+  <header class="navbar">
+    <a href="index.html" class="logo-link">
+      <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
+    </a>
+    
+    <div class="search-engine">
+      <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
+      <button type="submit" class="search-submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+
+    <nav class="nav-links">
+      <a href="shop-skincare.html">Skincare</a>
+      <a href="shop-makeup.html">Makeup</a>
+      <a href="shop-tools.html">Tools & Brushes</a>
+      <a href="shop-nails.html" class="active">Nails</a>
+      <a href="cart.html" class="cart-link">
+        <i class="fa-solid fa-shopping-bag"></i>
+        <span class="cart-count">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header nails-header">
+    <h1>Nails & Press-ons</h1>
+    <p>Salon-quality nails at home</p>
+  </section>
+
+  <!-- Shop Layout -->
+  <div class="shop-container">
+    
+    <!-- Filters Sidebar -->
+    <aside class="filters-sidebar">
+      <div class="filter-header">
+        <h3>Filters</h3>
+        <button class="clear-filters">Clear All</button>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="filter-group">
+        <h4>Category</h4>
+        <label class="filter-option">
+          <input type="checkbox" name="category" value="press-ons"> Press-on Nails
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="category" value="nail-care"> Nail Care
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="category" value="nail-art"> Nail Art
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="category" value="tools"> Nail Tools
+        </label>
+      </div>
+
+      <!-- Style Filter -->
+      <div class="filter-group">
+        <h4>Style</h4>
+        <label class="filter-option">
+          <input type="checkbox" name="style" value="french"> French Tips
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="style" value="solid"> Solid Colors
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="style" value="glitter"> Glitter & Shimmer
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="style" value="artistic"> Artistic Designs
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="style" value="minimalist"> Minimalist
+        </label>
+      </div>
+
+      <!-- Shape Filter -->
+      <div class="filter-group">
+        <h4>Nail Shape</h4>
+        <label class="filter-option">
+          <input type="checkbox" name="shape" value="almond"> Almond
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="shape" value="coffin"> Coffin/Ballerina
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="shape" value="square"> Square
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="shape" value="oval"> Oval
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="shape" value="stiletto"> Stiletto
+        </label>
+      </div>
+
+      <!-- Length Filter -->
+      <div class="filter-group">
+        <h4>Length</h4>
+        <label class="filter-option">
+          <input type="checkbox" name="length" value="short"> Short
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="length" value="medium"> Medium
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="length" value="long"> Long
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="length" value="extra-long"> Extra Long
+        </label>
+      </div>
+
+      <!-- Price Range Filter -->
+      <div class="filter-group">
+        <h4>Price Range</h4>
+        <label class="filter-option">
+          <input type="checkbox" name="price" value="under-15"> Under $15
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="price" value="15-25"> $15 - $25
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="price" value="25-40"> $25 - $40
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="price" value="over-40"> $40+
+        </label>
+      </div>
+    </aside>
+
+    <!-- Products Grid -->
+    <main class="products-section">
+      <!-- Sort & Results Bar -->
+      <div class="results-bar">
+        <span class="results-count">32 Products</span>
+        <div class="sort-dropdown">
+          <label for="sort">Sort by:</label>
+          <select id="sort" name="sort">
+            <option value="featured">Featured</option>
+            <option value="newest">Newest</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div class="loading-state" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading products...</p>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="product-grid-shop">
+        <!-- Product Card 1 - Featured -->
+        <div class="product-card-shop" data-category="press-ons" data-price="24">
+          <a href="product-detail.html">
+            <div class="product-image">
+              <img src="img/nails-french-1.jpg" alt="Classic French Press-ons">
+              <span class="badge badge-featured">Bestseller</span>
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </a>
+          <div class="product-info">
+            <span class="product-category">Press-on Nails</span>
+            <h4 class="product-name">Classic French Tips</h4>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="rating-count">(428)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$24.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product Card 2 - New -->
+        <div class="product-card-shop" data-category="press-ons" data-price="28">
+          <a href="product-detail.html">
+            <div class="product-image">
+              <img src="img/nails-glitter-1.jpg" alt="Champagne Glitter Press-ons">
+              <span class="badge badge-new">New</span>
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </a>
+          <div class="product-info">
+            <span class="product-category">Press-on Nails</span>
+            <h4 class="product-name">Champagne Glitter Set</h4>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+              <span class="rating-count">(67)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$28.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="product-card-shop" data-category="nail-care" data-price="18">
+          <a href="product-detail.html">
+            <div class="product-image">
+              <img src="img/cuticle-oil-1.jpg" alt="Nourishing Cuticle Oil">
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </a>
+          <div class="product-info">
+            <span class="product-category">Nail Care</span>
+            <h4 class="product-name">Nourishing Cuticle Oil</h4>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="rating-count">(234)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$18.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product Card 4 -->
+        <div class="product-card-shop" data-category="press-ons" data-price="32">
+          <a href="product-detail.html">
+            <div class="product-image">
+              <img src="img/nails-artistic-1.jpg" alt="Abstract Art Press-ons">
+              <span class="badge badge-featured">Featured</span>
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </a>
+          <div class="product-info">
+            <span class="product-category">Press-on Nails</span>
+            <h4 class="product-name">Abstract Art Collection</h4>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+              </div>
+              <span class="rating-count">(156)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$32.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product Card 5 - Sale -->
+        <div class="product-card-shop" data-category="nail-care" data-price="22">
+          <a href="product-detail.html">
+            <div class="product-image">
+              <img src="img/nail-strengthener-1.jpg" alt="Nail Strengthener">
+              <span class="badge badge-sale">Sale</span>
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </a>
+          <div class="product-info">
+            <span class="product-category">Nail Care</span>
+            <h4 class="product-name">Keratin Nail Strengthener</h4>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+              <span class="rating-count">(189)</span>
+            </div>
+            <div class="product-price">
+              <span class="original-price">$28.00</span>
+              <span class="current-price sale">$22.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product Card 6 -->
+        <div class="product-card-shop" data-category="press-ons" data-price="26">
+          <a href="product-detail.html">
+            <div class="product-image">
+              <img src="img/nails-nude-1.jpg" alt="Nude Collection">
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </a>
+          <div class="product-info">
+            <span class="product-category">Press-on Nails</span>
+            <h4 class="product-name">Everyday Nude Set</h4>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="rating-count">(312)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$26.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button class="page-btn" disabled>&laquo; Previous</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">4</button>
+        <button class="page-btn">5</button>
+        <button class="page-btn">Next &raquo;</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Shop</h4>
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </div>
+      <div class="footer-section">
+        <h4>Help</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="footer-section">
+        <h4>About</h4>
+        <a href="#">Our Story</a>
+        <a href="#">Ingredients</a>
+        <a href="#">Sustainability</a>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bare Beauty. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

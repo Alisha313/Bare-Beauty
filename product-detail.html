@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitamin C Brightening Serum | Bare Beauty</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar Component -->
+  <header class="navbar">
+    <a href="index.html" class="logo-link">
+      <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
+    </a>
+    
+    <div class="search-engine">
+      <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
+      <button type="submit" class="search-submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+
+    <nav class="nav-links">
+      <a href="shop-skincare.html">Skincare</a>
+      <a href="shop-makeup.html">Makeup</a>
+      <a href="shop-tools.html">Tools & Brushes</a>
+      <a href="shop-nails.html">Nails</a>
+      <a href="cart.html" class="cart-link">
+        <i class="fa-solid fa-shopping-bag"></i>
+        <span class="cart-count">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <a href="shop-skincare.html">Skincare</a>
+    <span>/</span>
+    <span>Vitamin C Brightening Serum</span>
+  </nav>
+
+  <!-- Product Detail Section -->
+  <section class="product-detail">
+    <div class="product-detail-container">
+      
+      <!-- Product Images -->
+      <div class="product-images">
+        <div class="main-image">
+          <img src="img/serum-main.jpg" alt="Vitamin C Brightening Serum" id="mainProductImage">
+          <span class="badge badge-new">New</span>
+        </div>
+        <div class="thumbnail-gallery">
+          <button class="thumbnail active" onclick="changeImage('img/serum-main.jpg', this)">
+            <img src="img/serum-main.jpg" alt="Product front view">
+          </button>
+          <button class="thumbnail" onclick="changeImage('img/serum-back.jpg', this)">
+            <img src="img/serum-back.jpg" alt="Product back view">
+          </button>
+          <button class="thumbnail" onclick="changeImage('img/serum-texture.jpg', this)">
+            <img src="img/serum-texture.jpg" alt="Product texture">
+          </button>
+          <button class="thumbnail" onclick="changeImage('img/serum-use.jpg', this)">
+            <img src="img/serum-use.jpg" alt="Product in use">
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-info-detail">
+        <span class="product-category-tag">Serum</span>
+        <h1 class="product-title">Vitamin C Brightening Serum</h1>
+        
+        <!-- Rating -->
+        <div class="product-rating-detail">
+          <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="rating-text">5.0</span>
+          <a href="#reviews" class="review-count">(89 Reviews)</a>
+        </div>
+
+        <!-- Price -->
+        <div class="product-price-detail">
+          <span class="current-price">$58.00</span>
+          <span class="price-per-unit">($1.93/ml)</span>
+        </div>
+
+        <!-- Short Description -->
+        <p class="product-short-desc">
+          A potent 20% Vitamin C serum that brightens, firms, and protects your skin from environmental damage. Lightweight, fast-absorbing formula suitable for all skin types.
+        </p>
+
+        <!-- Skin Type Badge -->
+        <div class="skin-type-badge">
+          <i class="fa-solid fa-check-circle"></i>
+          <span>Best for: All Skin Types</span>
+        </div>
+
+        <!-- Size Selection -->
+        <div class="product-options">
+          <label>Size:</label>
+          <div class="size-options">
+            <button class="size-btn active">30ml</button>
+            <button class="size-btn">50ml (+$22)</button>
+          </div>
+        </div>
+
+        <!-- Quantity & Add to Cart -->
+        <div class="product-actions">
+          <div class="quantity-selector">
+            <button class="qty-btn" onclick="decreaseQty()">-</button>
+            <input type="number" value="1" min="1" max="10" id="quantity">
+            <button class="qty-btn" onclick="increaseQty()">+</button>
+          </div>
+          <button class="add-to-cart-btn-large">
+            <i class="fa-solid fa-shopping-bag"></i>
+            Add to Cart
+          </button>
+        </div>
+
+        <!-- Shipping Info -->
+        <div class="shipping-info">
+          <div class="shipping-item">
+            <i class="fa-solid fa-truck"></i>
+            <span>Free shipping on orders $50+</span>
+          </div>
+          <div class="shipping-item">
+            <i class="fa-solid fa-rotate-left"></i>
+            <span>30-day returns</span>
+          </div>
+          <div class="shipping-item">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Clean, cruelty-free formula</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Details Tabs -->
+  <section class="product-tabs">
+    <div class="tabs-container">
+      <div class="tab-buttons">
+        <button class="tab-btn active" onclick="openTab('ingredients')">Ingredients</button>
+        <button class="tab-btn" onclick="openTab('benefits')">Benefits</button>
+        <button class="tab-btn" onclick="openTab('how-to-use')">How to Use</button>
+      </div>
+
+      <!-- Ingredients Tab -->
+      <div id="ingredients" class="tab-content active">
+        <h3>Key Ingredients</h3>
+        <div class="ingredients-grid">
+          <div class="ingredient-card">
+            <div class="ingredient-icon">🍊</div>
+            <h4>20% Vitamin C</h4>
+            <p>L-Ascorbic Acid - the most potent form of Vitamin C for brightening and antioxidant protection.</p>
+          </div>
+          <div class="ingredient-card">
+            <div class="ingredient-icon">💧</div>
+            <h4>Hyaluronic Acid</h4>
+            <p>Attracts and retains moisture for plump, hydrated skin without feeling heavy.</p>
+          </div>
+          <div class="ingredient-card">
+            <div class="ingredient-icon">🌿</div>
+            <h4>Vitamin E</h4>
+            <p>Enhances Vitamin C stability and provides additional antioxidant benefits.</p>
+          </div>
+          <div class="ingredient-card">
+            <div class="ingredient-icon">✨</div>
+            <h4>Ferulic Acid</h4>
+            <p>Boosts antioxidant power and helps protect against UV damage.</p>
+          </div>
+        </div>
+        <div class="full-ingredients">
+          <h4>Full Ingredient List</h4>
+          <p>Water, Ascorbic Acid (20%), Propanediol, Ethoxydiglycol, Glycerin, Sodium Hyaluronate, Tocopherol, Ferulic Acid, Panthenol, Sodium Hydroxide, Phenoxyethanol, Ethylhexylglycerin.</p>
+        </div>
+      </div>
+
+      <!-- Benefits Tab -->
+      <div id="benefits" class="tab-content">
+        <h3>Why You'll Love It</h3>
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <i class="fa-solid fa-sun"></i>
+            <div>
+              <h4>Brightens Skin</h4>
+              <p>Fades dark spots and evens out skin tone for a radiant, glowing complexion.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+              <h4>Protects from Damage</h4>
+              <p>Powerful antioxidants neutralize free radicals caused by UV exposure and pollution.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <i class="fa-solid fa-face-smile"></i>
+            <div>
+              <h4>Boosts Collagen</h4>
+              <p>Stimulates collagen production to reduce fine lines and improve skin firmness.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <i class="fa-solid fa-droplet"></i>
+            <div>
+              <h4>Hydrates Deeply</h4>
+              <p>Hyaluronic Acid delivers intense hydration without clogging pores.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How to Use Tab -->
+      <div id="how-to-use" class="tab-content">
+        <h3>Application Steps</h3>
+        <div class="how-to-steps">
+          <div class="step">
+            <span class="step-number">1</span>
+            <div class="step-content">
+              <h4>Cleanse</h4>
+              <p>Start with a clean, dry face. Use your favorite cleanser to remove makeup and impurities.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <div class="step-content">
+              <h4>Apply Serum</h4>
+              <p>Dispense 4-5 drops onto fingertips. Gently pat and press into skin, avoiding the eye area.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <div class="step-content">
+              <h4>Wait</h4>
+              <p>Allow 1-2 minutes for the serum to fully absorb before applying other products.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">4</span>
+            <div class="step-content">
+              <h4>Moisturize & Protect</h4>
+              <p>Follow with your moisturizer. In the morning, always apply SPF as Vitamin C can increase sun sensitivity.</p>
+            </div>
+          </div>
+        </div>
+        <div class="usage-tips">
+          <h4>💡 Pro Tips</h4>
+          <ul>
+            <li>Use in the morning for best antioxidant protection</li>
+            <li>Store in a cool, dark place to maintain potency</li>
+            <li>If new to Vitamin C, start every other day</li>
+            <li>Pair with SPF for maximum results</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Video -->
+  <section class="product-video">
+    <div class="video-container">
+      <h2>See It In Action</h2>
+      <div class="video-wrapper">
+        <div class="video-placeholder">
+          <img src="img/video-thumbnail.jpg" alt="Product video thumbnail">
+          <button class="play-btn">
+            <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before/After Gallery -->
+  <section class="before-after-section">
+    <h2>Real Results</h2>
+    <p class="section-subtitle">See the transformation from our community</p>
+    <div class="before-after-gallery">
+      <div class="before-after-card">
+        <div class="before-after-images">
+          <div class="ba-image">
+            <img src="img/before-1.jpg" alt="Before using serum">
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-image">
+            <img src="img/after-1.jpg" alt="After 4 weeks">
+            <span class="ba-label">After 4 weeks</span>
+          </div>
+        </div>
+        <p class="ba-caption">"My dark spots have visibly faded!" - Sarah M.</p>
+      </div>
+      <div class="before-after-card">
+        <div class="before-after-images">
+          <div class="ba-image">
+            <img src="img/before-2.jpg" alt="Before using serum">
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-image">
+            <img src="img/after-2.jpg" alt="After 6 weeks">
+            <span class="ba-label">After 6 weeks</span>
+          </div>
+        </div>
+        <p class="ba-caption">"My skin glows like never before!" - Jessica T.</p>
+      </div>
+      <div class="before-after-card">
+        <div class="before-after-images">
+          <div class="ba-image">
+            <img src="img/before-3.jpg" alt="Before using serum">
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-image">
+            <img src="img/after-3.jpg" alt="After 8 weeks">
+            <span class="ba-label">After 8 weeks</span>
+          </div>
+        </div>
+        <p class="ba-caption">"Even skin tone finally achieved!" - Michelle K.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews-section" id="reviews">
+    <div class="reviews-container">
+      <h2>Customer Reviews</h2>
+      
+      <!-- Reviews Summary -->
+      <div class="reviews-summary">
+        <div class="rating-overview">
+          <span class="big-rating">5.0</span>
+          <div class="stars-large">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="total-reviews">Based on 89 reviews</span>
+        </div>
+        <div class="rating-bars">
+          <div class="rating-bar-row">
+            <span>5 stars</span>
+            <div class="bar"><div class="bar-fill" style="width: 85%;"></div></div>
+            <span>76</span>
+          </div>
+          <div class="rating-bar-row">
+            <span>4 stars</span>
+            <div class="bar"><div class="bar-fill" style="width: 10%;"></div></div>
+            <span>9</span>
+          </div>
+          <div class="rating-bar-row">
+            <span>3 stars</span>
+            <div class="bar"><div class="bar-fill" style="width: 3%;"></div></div>
+            <span>3</span>
+          </div>
+          <div class="rating-bar-row">
+            <span>2 stars</span>
+            <div class="bar"><div class="bar-fill" style="width: 1%;"></div></div>
+            <span>1</span>
+          </div>
+          <div class="rating-bar-row">
+            <span>1 star</span>
+            <div class="bar"><div class="bar-fill" style="width: 0%;"></div></div>
+            <span>0</span>
+          </div>
+        </div>
+        <button class="write-review-btn">Write a Review</button>
+      </div>
+
+      <!-- Review Filters -->
+      <div class="review-filters">
+        <select class="review-sort">
+          <option value="newest">Most Recent</option>
+          <option value="highest">Highest Rated</option>
+          <option value="lowest">Lowest Rated</option>
+          <option value="helpful">Most Helpful</option>
+        </select>
+        <div class="filter-tags">
+          <button class="filter-tag active">All</button>
+          <button class="filter-tag">With Photos</button>
+          <button class="filter-tag">Verified Purchase</button>
+        </div>
+      </div>
+
+      <!-- Individual Reviews -->
+      <div class="reviews-list">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <span class="reviewer-name">Sarah M.</span>
+              <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Purchase</span>
+            </div>
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <h4 class="review-title">Holy grail product!</h4>
+          <p class="review-text">I've tried so many Vitamin C serums, and this is by far the best. It absorbs quickly, doesn't leave any sticky residue, and my skin has never looked brighter. After just two weeks, I noticed my dark spots were fading. Absolutely worth every penny!</p>
+          <div class="review-meta">
+            <span class="review-date">January 15, 2026</span>
+            <span class="skin-type-tag">Skin Type: Combination</span>
+          </div>
+          <div class="review-helpful">
+            <span>Was this helpful?</span>
+            <button class="helpful-btn"><i class="fa-regular fa-thumbs-up"></i> Yes (24)</button>
+            <button class="helpful-btn"><i class="fa-regular fa-thumbs-down"></i> No (1)</button>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <span class="reviewer-name">Jennifer L.</span>
+              <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Purchase</span>
+            </div>
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <h4 class="review-title">Finally found THE ONE</h4>
+          <p class="review-text">As someone with sensitive skin, I was nervous about trying a Vitamin C serum. But this formula is so gentle! No irritation at all, and my skin looks more even-toned than ever. The dropper makes it easy to apply the perfect amount.</p>
+          <div class="review-photos">
+            <img src="img/review-photo-1.jpg" alt="Review photo">
+            <img src="img/review-photo-2.jpg" alt="Review photo">
+          </div>
+          <div class="review-meta">
+            <span class="review-date">January 10, 2026</span>
+            <span class="skin-type-tag">Skin Type: Sensitive</span>
+          </div>
+          <div class="review-helpful">
+            <span>Was this helpful?</span>
+            <button class="helpful-btn"><i class="fa-regular fa-thumbs-up"></i> Yes (18)</button>
+            <button class="helpful-btn"><i class="fa-regular fa-thumbs-down"></i> No (0)</button>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <span class="reviewer-name">Amanda K.</span>
+              <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Purchase</span>
+            </div>
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+          </div>
+          <h4 class="review-title">Great product, wish it was bigger</h4>
+          <p class="review-text">Love how this makes my skin feel and look! The only reason I'm giving 4.5 stars is because I wish they had a bigger size option. I go through it quickly because I use it every morning. Otherwise, it's perfect!</p>
+          <div class="review-meta">
+            <span class="review-date">January 5, 2026</span>
+            <span class="skin-type-tag">Skin Type: Dry</span>
+          </div>
+          <div class="review-helpful">
+            <span>Was this helpful?</span>
+            <button class="helpful-btn"><i class="fa-regular fa-thumbs-up"></i> Yes (12)</button>
+            <button class="helpful-btn"><i class="fa-regular fa-thumbs-down"></i> No (2)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Load More -->
+      <button class="load-more-btn">Load More Reviews</button>
+    </div>
+  </section>
+
+  <!-- Recommended Products -->
+  <section class="recommended-section">
+    <h2>Complete Your Routine</h2>
+    <div class="product-grid-shop recommended-grid">
+      <!-- Recommended Product 1 -->
+      <div class="product-card-shop">
+        <a href="product-detail.html">
+          <div class="product-image">
+            <img src="img/cleanser-1.jpg" alt="Gentle Foam Cleanser">
+          </div>
+        </a>
+        <div class="product-info">
+          <span class="product-category">Cleanser</span>
+          <h4 class="product-name">Gentle Foam Cleanser</h4>
+          <div class="product-rating">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <span class="rating-count">(128)</span>
+          </div>
+          <div class="product-price">
+            <span class="current-price">$32.00</span>
+          </div>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Recommended Product 2 -->
+      <div class="product-card-shop">
+        <a href="product-detail.html">
+          <div class="product-image">
+            <img src="img/moisturizer-1.jpg" alt="SPF 30 Day Cream">
+          </div>
+        </a>
+        <div class="product-info">
+          <span class="product-category">SPF Moisturizer</span>
+          <h4 class="product-name">SPF 30 Day Cream</h4>
+          <div class="product-rating">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <span class="rating-count">(203)</span>
+          </div>
+          <div class="product-price">
+            <span class="current-price">$45.00</span>
+          </div>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Recommended Product 3 -->
+      <div class="product-card-shop">
+        <a href="product-detail.html">
+          <div class="product-image">
+            <img src="img/eye-cream-1.jpg" alt="Revitalizing Eye Cream">
+          </div>
+        </a>
+        <div class="product-info">
+          <span class="product-category">Under-Eye Cream</span>
+          <h4 class="product-name">Revitalizing Eye Cream</h4>
+          <div class="product-rating">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <span class="rating-count">(74)</span>
+          </div>
+          <div class="product-price">
+            <span class="current-price">$42.00</span>
+          </div>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Recommended Product 4 -->
+      <div class="product-card-shop">
+        <a href="product-detail.html">
+          <div class="product-image">
+            <img src="img/toner-1.jpg" alt="Balancing Rose Toner">
+          </div>
+        </a>
+        <div class="product-info">
+          <span class="product-category">Toner</span>
+          <h4 class="product-name">Balancing Rose Toner</h4>
+          <div class="product-rating">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+            </div>
+            <span class="rating-count">(56)</span>
+          </div>
+          <div class="product-price">
+            <span class="current-price">$28.00</span>
+          </div>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Shop</h4>
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </div>
+      <div class="footer-section">
+        <h4>Help</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="footer-section">
+        <h4>About</h4>
+        <a href="#">Our Story</a>
+        <a href="#">Ingredients</a>
+        <a href="#">Sustainability</a>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bare Beauty. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

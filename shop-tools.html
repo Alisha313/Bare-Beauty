@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools & Brushes | Bare Beauty</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar Component -->
+  <header class="navbar">
+    <a href="index.html" class="logo-link">
+      <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
+    </a>
+    
+    <div class="search-engine">
+      <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
+      <button type="submit" class="search-submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+
+    <nav class="nav-links">
+      <a href="shop-skincare.html">Skincare</a>
+      <a href="shop-makeup.html">Makeup</a>
+      <a href="shop-tools.html" class="active">Tools & Brushes</a>
+      <a href="shop-nails.html">Nails</a>
+      <a href="cart.html" class="cart-link">
+        <i class="fa-solid fa-shopping-bag"></i>
+        <span class="cart-count">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header tools-header">
+    <h1>Tools & Brushes</h1>
+    <p>Professional-quality tools for flawless application</p>
+  </section>
+
+  <!-- Shop Layout -->
+  <div class="shop-container">
+    
+    <!-- Filters Sidebar -->
+    <aside class="filters-sidebar">
+      <div class="filter-header">
+        <h3>Filters</h3>
+        <button class="clear-filters">Clear All</button>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="filter-group">
+        <h4>Category</h4>
+        <label class="filter-option">
+          <input type="checkbox" name="category" value="makeup-brushes"> Makeup Brushes
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="category" value="brush-sets"> Brush Sets
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="category" value="gua-sha"> Gua Sha
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="category" value="red-light"> Red Light Therapy
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="category" value="sponges"> Beauty Sponges
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="category" value="accessories"> Accessories
+        </label>
+      </div>
+
+      <!-- Brush Type Filter -->
+      <div class="filter-group">
+        <h4>Brush Type</h4>
+        <label class="filter-option">
+          <input type="checkbox" name="brush-type" value="face"> Face Brushes
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="brush-type" value="eye"> Eye Brushes
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="brush-type" value="lip"> Lip Brushes
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="brush-type" value="contour"> Contour Brushes
+        </label>
+      </div>
+
+      <!-- Price Range Filter -->
+      <div class="filter-group">
+        <h4>Price Range</h4>
+        <label class="filter-option">
+          <input type="checkbox" name="price" value="under-20"> Under $20
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="price" value="20-50"> $20 - $50
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="price" value="50-100"> $50 - $100
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="price" value="over-100"> $100+
+        </label>
+      </div>
+
+      <!-- Material Filter -->
+      <div class="filter-group">
+        <h4>Material</h4>
+        <label class="filter-option">
+          <input type="checkbox" name="material" value="synthetic"> Synthetic
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="material" value="natural"> Natural
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="material" value="rose-quartz"> Rose Quartz
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" name="material" value="jade"> Jade
+        </label>
+      </div>
+    </aside>
+
+    <!-- Products Grid -->
+    <main class="products-section">
+      <!-- Sort & Results Bar -->
+      <div class="results-bar">
+        <span class="results-count">18 Products</span>
+        <div class="sort-dropdown">
+          <label for="sort">Sort by:</label>
+          <select id="sort" name="sort">
+            <option value="featured">Featured</option>
+            <option value="newest">Newest</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div class="loading-state" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading products...</p>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="product-grid-shop">
+        <!-- Product Card 1 - Featured -->
+        <div class="product-card-shop" data-category="brush-sets" data-price="68">
+          <a href="product-detail.html">
+            <div class="product-image">
+              <img src="img/brush-set-1.jpg" alt="Complete Brush Set">
+              <span class="badge badge-featured">Featured</span>
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </a>
+          <div class="product-info">
+            <span class="product-category">Brush Set</span>
+            <h4 class="product-name">Complete 12-Piece Brush Set</h4>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="rating-count">(245)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$68.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product Card 2 - New -->
+        <div class="product-card-shop" data-category="gua-sha" data-price="32">
+          <a href="product-detail.html">
+            <div class="product-image">
+              <img src="img/gua-sha-1.jpg" alt="Rose Quartz Gua Sha">
+              <span class="badge badge-new">New</span>
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </a>
+          <div class="product-info">
+            <span class="product-category">Gua Sha</span>
+            <h4 class="product-name">Rose Quartz Gua Sha Stone</h4>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+              <span class="rating-count">(89)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$32.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="product-card-shop" data-category="red-light" data-price="189">
+          <a href="product-detail.html">
+            <div class="product-image">
+              <img src="img/red-light-1.jpg" alt="Red Light Therapy Wand">
+              <span class="badge badge-featured">Bestseller</span>
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </a>
+          <div class="product-info">
+            <span class="product-category">Red Light Therapy</span>
+            <h4 class="product-name">LED Red Light Therapy Wand</h4>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="rating-count">(312)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$189.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product Card 4 -->
+        <div class="product-card-shop" data-category="makeup-brushes" data-price="24">
+          <a href="product-detail.html">
+            <div class="product-image">
+              <img src="img/foundation-brush-1.jpg" alt="Foundation Brush">
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </a>
+          <div class="product-info">
+            <span class="product-category">Makeup Brush</span>
+            <h4 class="product-name">Seamless Foundation Brush</h4>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+              </div>
+              <span class="rating-count">(156)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$24.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product Card 5 -->
+        <div class="product-card-shop" data-category="gua-sha" data-price="28">
+          <a href="product-detail.html">
+            <div class="product-image">
+              <img src="img/jade-roller-1.jpg" alt="Jade Facial Roller">
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </a>
+          <div class="product-info">
+            <span class="product-category">Gua Sha</span>
+            <h4 class="product-name">Jade Facial Roller</h4>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+              <span class="rating-count">(203)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">$28.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Product Card 6 - Sale -->
+        <div class="product-card-shop" data-category="brush-sets" data-price="42">
+          <a href="product-detail.html">
+            <div class="product-image">
+              <img src="img/eye-brush-set-1.jpg" alt="Eye Brush Set">
+              <span class="badge badge-sale">Sale</span>
+              <button class="quick-view-btn">Quick View</button>
+            </div>
+          </a>
+          <div class="product-info">
+            <span class="product-category">Brush Set</span>
+            <h4 class="product-name">Essential Eye Brush Set</h4>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="rating-count">(178)</span>
+            </div>
+            <div class="product-price">
+              <span class="original-price">$55.00</span>
+              <span class="current-price sale">$42.00</span>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button class="page-btn" disabled>&laquo; Previous</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">Next &raquo;</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Shop</h4>
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </div>
+      <div class="footer-section">
+        <h4>Help</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="footer-section">
+        <h4>About</h4>
+        <a href="#">Our Story</a>
+        <a href="#">Ingredients</a>
+        <a href="#">Sustainability</a>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bare Beauty. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
