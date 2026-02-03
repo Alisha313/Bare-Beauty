@@ -10,23 +10,40 @@
 
 <body>
 
-  <div class="popup-overlay">
+  <!-- ===== POPUP OVERLAY ===== -->
+  <div class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-describedby="popup-desc">
     <div class="popup-content">
-      <h2>Beauty Savings!</h2>
-      <p>Tell us what you love, and we'll handle the rest.</p>
+      <!-- Close X Button -->
+      <button class="close-x" id="closePopupX" aria-label="Close popup">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       
-      <div class="interests">
+      <!-- Popup Icon -->
+      <div class="popup-icon" aria-hidden="true">
+        <i class="fa-solid fa-envelope-open-text"></i>
+      </div>
+      
+      <h2 id="popup-title">Beauty Savings!</h2>
+      <p id="popup-desc">Tell us what you love, and we'll handle the rest.</p>
+      
+      <div class="interests" role="group" aria-label="Select your interests">
         <label><input type="checkbox" name="interest" value="skincare"> Skincare</label>
         <label><input type="checkbox" name="interest" value="makeup"> Makeup</label>
         <label><input type="checkbox" name="interest" value="nails"> Press-ons</label>
         <label><input type="checkbox" name="interest" value="tools"> Beauty Tools</label>
       </div>
 
-      <input type="email" placeholder="Enter your email" class="email-input">
+      <input type="email" placeholder="Enter your email" class="email-input" aria-label="Email address">
       <button class="cta-button">I'm Ready to Glow</button>
       <button class="close-btn" id="maybeLater">I'll Explore on My Own</button>
     </div>
   </div>
+
+  <!-- ===== PERSISTENT MINI POPUP TRIGGER ===== -->
+  <button class="popup-mini-trigger" id="popupMiniTrigger" aria-label="Open signup form" title="Sign up for exclusive offers">
+    <i class="fa-solid fa-gift"></i>
+    <span class="trigger-badge">New!</span>
+  </button>
 
   <header class="navbar">
     <a href="index.html" class="logo-link">
@@ -114,12 +131,241 @@
   </footer>
 
   <script>
-    const maybeLaterBtn = document.getElementById('maybeLater');
-    const popup = document.querySelector('.popup-overlay');
+    /**
+     * ===== ONE-TIME POPUP MANAGEMENT SYSTEM =====
+     * 
+     * This script manages a newsletter/signup popup with the following features:
+     * - Shows popup automatically after 5 seconds for first-time visitors
+     * - Uses localStorage to persist user interaction state across sessions
+     * - Provides a persistent mini trigger icon for users to access signup anytime
+     * - Includes analytics tracking for engagement metrics
+     * 
+     * localStorage Keys Used:
+     * - 'popupDisplayed': Tracks if the popup has been shown to this user (true/false)
+     * - 'userSignedUp': Tracks if the user has completed the signup process (true/false)
+     */
 
-    maybeLaterBtn.onclick = function() {
-      popup.style.display = 'none';
-    };
+    // ===== DOM ELEMENT REFERENCES =====
+    const popup = document.querySelector('.popup-overlay');
+    const maybeLaterBtn = document.getElementById('maybeLater');
+    const closeXBtn = document.getElementById('closePopupX');
+    const ctaButton = document.querySelector('.cta-button');
+    const emailInput = document.querySelector('.email-input');
+    const miniTrigger = document.getElementById('popupMiniTrigger');
+
+    // ===== ANALYTICS TRACKING =====
+    /**
+     * Tracks user interactions with the popup for analytics purposes.
+     * Replace console.log with your analytics service (Google Analytics, etc.)
+     * @param {string} action - The action performed (view, close, signup, trigger_click)
+     * @param {object} data - Additional data to track
+     */
+    function trackPopupInteraction(action, data = {}) {
+      const eventData = {
+        action: action,
+        timestamp: new Date().toISOString(),
+        ...data
+      };
+      // Replace with your analytics implementation
+      console.log('Popup Analytics:', eventData);
+      // Example: gtag('event', 'popup_interaction', eventData);
+    }
+
+    /**
+     * Checks localStorage to determine if the popup should be displayed.
+     * The popup should show on EVERY visit until the user signs up.
+     * Once signed up, popup will never auto-show again.
+     * 
+     * @returns {boolean} - true if popup should be shown, false otherwise
+     */
+    function shouldShowPopup() {
+      const hasSignedUp = localStorage.getItem('userSignedUp') === 'true';
+      
+      // Show popup on every visit until user signs up
+      return !hasSignedUp;
+    }
+
+    /**
+     * Checks if the user has already signed up.
+     * @returns {boolean} - true if user has signed up
+     */
+    function hasUserSignedUp() {
+      return localStorage.getItem('userSignedUp') === 'true';
+    }
+
+    /**
+     * Shows the popup with animation.
+     * @param {boolean} isAutomatic - Whether popup was triggered automatically or by user
+     */
+    function showPopup(isAutomatic = false) {
+      popup.style.display = 'flex';
+      popup.classList.add('popup-visible');
+      trackPopupInteraction('view', { trigger: isAutomatic ? 'automatic' : 'manual' });
+    }
+
+    /**
+     * Hides the popup from the page with animation.
+     * Does NOT prevent future auto-displays - popup will show again on next visit.
+     * @param {string} reason - Reason for closing (close_x, maybe_later, signup, outside_click)
+     */
+    function hidePopup(reason = 'unknown') {
+      popup.classList.remove('popup-visible');
+      popup.classList.add('popup-hiding');
+      
+      setTimeout(() => {
+        popup.style.display = 'none';
+        popup.classList.remove('popup-hiding');
+      }, 300);
+      
+      // Don't set popupDisplayed - we want popup to show again on next visit
+      trackPopupInteraction('close', { reason: reason });
+    }
+
+    /**
+     * Handles the signup process when user clicks "I'm Ready to Glow".
+     * Validates email input, stores signup status, and hides the popup.
+     */
+    function handleSignup() {
+      const email = emailInput.value.trim();
+      const interests = Array.from(document.querySelectorAll('input[name="interest"]:checked'))
+        .map(cb => cb.value);
+      
+      // Email validation with regex for better accuracy
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (email && emailRegex.test(email)) {
+        // Mark user as signed up in localStorage - this stops the popup forever
+        localStorage.setItem('userSignedUp', 'true');
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userInterests', JSON.stringify(interests));
+        
+        // Hide the popup and mini trigger
+        popup.style.display = 'none';
+        miniTrigger.style.display = 'none';
+        
+        // Track successful signup
+        trackPopupInteraction('signup', { email: email, interests: interests });
+        
+        // TODO: Add your email submission logic here (e.g., send to server/API)
+        console.log('User signed up with email:', email, 'Interests:', interests);
+        
+        // Optional: Show success message
+        showSignupSuccess();
+      } else {
+        // Highlight the email input to show error
+        emailInput.classList.add('input-error');
+        emailInput.placeholder = 'Please enter a valid email';
+        setTimeout(() => {
+          emailInput.classList.remove('input-error');
+          emailInput.placeholder = 'Enter your email';
+        }, 2000);
+      }
+    }
+
+    /**
+     * Shows a brief success message after signup.
+     */
+    function showSignupSuccess() {
+      const successMsg = document.createElement('div');
+      successMsg.className = 'signup-success-toast';
+      successMsg.innerHTML = '<i class="fa-solid fa-check-circle"></i> Welcome to Bare Beauty!';
+      document.body.appendChild(successMsg);
+      
+      setTimeout(() => {
+        successMsg.classList.add('toast-visible');
+      }, 100);
+      
+      setTimeout(() => {
+        successMsg.classList.remove('toast-visible');
+        setTimeout(() => successMsg.remove(), 300);
+      }, 3000);
+    }
+
+    /**
+     * Handles the "I'll Explore on My Own" button click.
+     * Closes the popup but does NOT prevent it from showing on next visit.
+     * User can still sign up via the mini trigger button.
+     */
+    function handleMaybeLater() {
+      hidePopup('maybe_later');
+    }
+
+    /**
+     * Handles the close X button click.
+     */
+    function handleCloseX() {
+      hidePopup('close_x');
+    }
+
+    /**
+     * Handles clicking outside the popup to close it.
+     */
+    function handleOutsideClick(event) {
+      if (event.target === popup) {
+        hidePopup('outside_click');
+      }
+    }
+
+    /**
+     * Handles the mini trigger button click to reopen the popup.
+     */
+    function handleMiniTriggerClick() {
+      trackPopupInteraction('trigger_click');
+      showPopup(false);
+    }
+
+    // ===== INITIALIZATION =====
+    // Initially hide popup (will show after delay if conditions are met)
+    popup.style.display = 'none';
+
+    // Determine mini trigger visibility based on signup status
+    if (hasUserSignedUp()) {
+      // User already signed up: hide mini trigger
+      miniTrigger.style.display = 'none';
+    } else {
+      // User hasn't signed up: show mini trigger after a brief delay
+      setTimeout(() => {
+        miniTrigger.classList.add('trigger-visible');
+      }, 1000);
+    }
+
+    // Check if popup should auto-display (5 second delay)
+    // Shows on EVERY visit until user signs up
+    if (shouldShowPopup()) {
+      setTimeout(() => {
+        showPopup(true);
+      }, 5000); // 5 second delay to allow initial content engagement
+    }
+
+    // ===== EVENT LISTENERS =====
+    // Handle "I'll Explore on My Own" button click
+    maybeLaterBtn.addEventListener('click', handleMaybeLater);
+
+    // Handle close X button click
+    closeXBtn.addEventListener('click', handleCloseX);
+
+    // Handle "I'm Ready to Glow" (signup) button click
+    ctaButton.addEventListener('click', handleSignup);
+
+    // Handle clicking outside popup to close
+    popup.addEventListener('click', handleOutsideClick);
+
+    // Handle mini trigger click to open popup
+    miniTrigger.addEventListener('click', handleMiniTriggerClick);
+
+    // Allow pressing Enter in email field to submit
+    emailInput.addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        handleSignup();
+      }
+    });
+
+    // Keyboard accessibility: close popup on Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && popup.style.display === 'flex') {
+        hidePopup('escape_key');
+      }
+    });
   </script>
 
 </body>
