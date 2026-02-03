@@ -855,3 +855,48 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ...existing code...
+document.addEventListener('DOMContentLoaded', () => {
+  const popup = document.querySelector('.popup-overlay');
+  if (!popup) return;
+
+  const KEY = 'bb_popup_shown_v1'; // change key if you want to reset for testing
+  const hasShown = () => localStorage.getItem(KEY) === '1';
+  const markShown = () => localStorage.setItem(KEY, '1');
+
+  // show only on first visit
+  function showPopupOnce() {
+    if (hasShown()) return;
+    popup.style.display = 'flex'; // override CSS inline so it appears
+    markShown(); // mark immediately so it won't reappear later
+  }
+
+  function hidePopup() {
+    popup.style.display = 'none';
+  }
+
+  // initial page load
+  showPopupOnce();
+
+  // close handlers
+  popup.querySelectorAll('.close-x, .close-btn').forEach(btn => {
+    btn.addEventListener('click', hidePopup);
+  });
+  // click outside content to close
+  popup.addEventListener('click', e => { if (e.target === popup) hidePopup(); });
+
+  // If you have a signup completion button/form, mark as shown on completion too
+  const signupBtn = document.querySelector('#signup-complete, .signup-complete, form.signup-form button[type="submit"]');
+  if (signupBtn) {
+    signupBtn.addEventListener('click', () => {
+      markShown();
+      hidePopup();
+    });
+  }
+
+  // Prevent logo clicks from reopening the popup:
+  // - If the logo has an inline onclick that opens the popup, remove/replace it in HTML.
+  // - As a defensive measure, override any global showPopup() if present:
+  window.showPopup = function () { /* disabled to avoid reopening */ };
+});
