@@ -26,6 +26,128 @@ function prev() {
     slides[index].classList.add('active');
 }
 
+// ===== COLLAPSIBLE FILTER DROPDOWNS =====
+function initFilterDropdowns() {
+    const filterGroups = document.querySelectorAll('.filter-group');
+    
+    filterGroups.forEach((group, index) => {
+        const heading = group.querySelector('h4');
+        const options = group.querySelectorAll('.filter-option');
+        
+        // Wrap filter options in a container div if not already wrapped
+        if (options.length > 0 && !group.querySelector('.filter-options')) {
+            const optionsWrapper = document.createElement('div');
+            optionsWrapper.className = 'filter-options';
+            options.forEach(option => {
+                optionsWrapper.appendChild(option);
+            });
+            group.appendChild(optionsWrapper);
+        }
+        
+        // Open first filter by default
+        if (index === 0) {
+            group.classList.add('active');
+        }
+        
+        // Add click handler to heading
+        heading?.addEventListener('click', () => {
+            // Toggle current group
+            group.classList.toggle('active');
+        });
+    });
+    
+    // Clear filters button functionality
+    const clearBtn = document.querySelector('.clear-filters');
+    clearBtn?.addEventListener('click', () => {
+        const checkboxes = document.querySelectorAll('.filter-option input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        });
+    });
+}
+
+// Initialize filter dropdowns when DOM is loaded
+document.addEventListener('DOMContentLoaded', initFilterDropdowns);
+
+// ===== PAGINATION SYSTEM =====
+const PRODUCTS_PER_PAGE = 9;
+
+function initPagination() {
+    const productGrid = document.querySelector('.product-grid-shop');
+    const paginationContainer = document.querySelector('.pagination');
+    
+    if (!productGrid || !paginationContainer) return;
+    
+    const allProducts = Array.from(productGrid.querySelectorAll('.product-card-shop'));
+    const totalProducts = allProducts.length;
+    const totalPages = Math.ceil(totalProducts / PRODUCTS_PER_PAGE);
+    let currentPage = 1;
+    
+    // Update results count
+    const resultsCount = document.querySelector('.results-count');
+    if (resultsCount) {
+        resultsCount.textContent = `${totalProducts} Products`;
+    }
+    
+    function showPage(page) {
+        currentPage = page;
+        const startIndex = (page - 1) * PRODUCTS_PER_PAGE;
+        const endIndex = startIndex + PRODUCTS_PER_PAGE;
+        
+        allProducts.forEach((product, index) => {
+            if (index >= startIndex && index < endIndex) {
+                product.style.display = '';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+        
+        updatePaginationButtons();
+        
+        // Scroll to top of products
+        productGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    
+    function updatePaginationButtons() {
+        paginationContainer.innerHTML = '';
+        
+        // Previous button
+        const prevBtn = document.createElement('button');
+        prevBtn.className = `page-btn prev-btn${currentPage === 1 ? ' disabled' : ''}`;
+        prevBtn.innerHTML = '<i class="fa-solid fa-chevron-left"></i> Previous';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) showPage(currentPage - 1);
+        });
+        paginationContainer.appendChild(prevBtn);
+        
+        // Page number buttons
+        for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `page-btn${i === currentPage ? ' active' : ''}`;
+            pageBtn.textContent = i;
+            pageBtn.addEventListener('click', () => showPage(i));
+            paginationContainer.appendChild(pageBtn);
+        }
+        
+        // Next button
+        const nextBtn = document.createElement('button');
+        nextBtn.className = `page-btn next-btn${currentPage === totalPages ? ' disabled' : ''}`;
+        nextBtn.innerHTML = 'Next <i class="fa-solid fa-chevron-right"></i>';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages) showPage(currentPage + 1);
+        });
+        paginationContainer.appendChild(nextBtn);
+    }
+    
+    // Initialize - show first page
+    showPage(1);
+}
+
+// Initialize pagination when DOM is loaded
+document.addEventListener('DOMContentLoaded', initPagination);
+
 // ===== PRODUCT DATABASE =====
 const products = {
     // SKINCARE

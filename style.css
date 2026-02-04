@@ -1,6 +1,17 @@
+/* ===== GOOGLE FONTS IMPORT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
 body {
   margin: 0;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+/* Elegant headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .navbar {
@@ -14,6 +25,11 @@ body {
   margin-left: 15px;
   text-decoration: none;
   color: #412803;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 13px;
 }
 
 .hero {
@@ -22,8 +38,27 @@ body {
   background-color: #e4d5c3;
 }
 
+.hero h1, .hero h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.hero p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
 .featured {
   padding: 40px 20px;
+}
+
+.featured h2 {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .product-grid {
@@ -558,12 +593,13 @@ body {
 }
 
 .page-header h1 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 42px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 48px;
   color: var(--text-dark);
   margin: 0 0 10px 0;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 .page-header p {
@@ -571,6 +607,8 @@ body {
   font-size: 16px;
   margin: 0;
   font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 1px;
 }
 
 /* Shop Container Layout */
@@ -586,72 +624,146 @@ body {
 
 /* Filters Sidebar */
 .filters-sidebar {
-  width: 260px;
+  width: 280px;
   flex-shrink: 0;
-  background-color: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 2px 15px rgba(93, 64, 55, 0.08);
+  background: linear-gradient(180deg, white 0%, var(--pastel-cream) 100%);
+  padding: 0;
+  border-radius: 16px;
+  box-shadow: 0 4px 25px rgba(93, 64, 55, 0.1);
   height: fit-content;
   position: sticky;
   top: 20px;
+  overflow: hidden;
 }
 
 .filter-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid var(--pastel-beige);
+  padding: 20px 25px;
+  background: linear-gradient(135deg, var(--brown-medium) 0%, var(--brown-dark) 100%);
+  margin: 0;
+  border-bottom: none;
 }
 
 .filter-header h3 {
   margin: 0;
-  font-size: 18px;
-  color: var(--text-dark);
+  font-size: 14px;
+  color: white;
   font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .clear-filters {
-  background: none;
-  border: none;
-  color: var(--brown-light);
-  font-size: 12px;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  font-size: 10px;
   cursor: pointer;
-  text-decoration: underline;
-  transition: color 0.3s ease;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .clear-filters:hover {
+  background: white;
   color: var(--brown-dark);
 }
 
 .filter-group {
-  margin-bottom: 25px;
+  margin: 0;
+  border-bottom: 1px solid var(--pastel-beige);
+}
+
+.filter-group:last-child {
+  border-bottom: none;
 }
 
 .filter-group h4 {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--text-dark);
-  margin: 0 0 15px 0;
+  margin: 0;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 18px 25px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.filter-group h4::after {
+  content: '+';
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--brown-medium);
+  transition: transform 0.3s ease;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--pastel-beige);
+}
+
+.filter-group h4:hover {
+  background: var(--pastel-cream);
+}
+
+.filter-group.active h4 {
+  background: var(--pastel-beige);
+  color: var(--brown-dark);
+}
+
+.filter-group.active h4::after {
+  content: '−';
+  background: var(--brown-medium);
+  color: white;
+}
+
+.filter-options {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  background: var(--pastel-cream);
+  padding: 0 25px;
+}
+
+.filter-group.active .filter-options {
+  max-height: 300px;
+  padding: 15px 25px 20px;
 }
 
 .filter-option {
   display: flex;
   align-items: center;
-  padding: 8px 0;
+  padding: 10px 15px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-medium);
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  margin: 4px 0;
+  background: white;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .filter-option:hover {
   color: var(--text-dark);
+  background: var(--pastel-pink);
+  transform: translateX(5px);
 }
 
 .filter-option input[type="checkbox"] {
@@ -660,6 +772,37 @@ body {
   margin-right: 12px;
   accent-color: var(--brown-medium);
   cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Custom scrollbar for filter options */
+.filter-options::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-options::-webkit-scrollbar-track {
+  background: var(--pastel-beige);
+  border-radius: 3px;
+}
+
+.filter-options::-webkit-scrollbar-thumb {
+  background: var(--brown-light);
+  border-radius: 3px;
+}
+
+.filter-options::-webkit-scrollbar-thumb:hover {
+  background: var(--brown-medium);
+}
+
+/* Filter count badge */
+.filter-group h4 .filter-count {
+  background: var(--brown-medium);
+  color: white;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+  font-weight: 500;
 }
 
 /* Products Section */
@@ -818,14 +961,18 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 500;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
 }
 
 .product-name {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--text-dark);
   margin: 8px 0;
   font-weight: 500;
   line-height: 1.4;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .product-rating {
@@ -874,12 +1021,13 @@ body {
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .add-to-cart-btn:hover {
@@ -1047,6 +1195,21 @@ body {
   .nav-links a {
     font-size: 12px;
   }
+  
+  .filters-sidebar {
+    width: 100%;
+    position: relative;
+    top: 0;
+  }
+  
+  .filter-group h4 {
+    padding: 15px 20px;
+    font-size: 11px;
+  }
+  
+  .filter-group.active .filter-options {
+    padding: 10px 20px 15px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1055,7 +1218,15 @@ body {
   }
   
   .filters-sidebar {
-    padding: 15px;
+    border-radius: 12px;
+  }
+  
+  .filter-header {
+    padding: 15px 20px;
+  }
+  
+  .filter-header h3 {
+    font-size: 12px;
   }
 }
 
@@ -1084,20 +1255,23 @@ body {
 }
 
 .footer-section h4 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text-dark);
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   margin: 0 0 20px 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .footer-section a {
   color: var(--text-medium);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   padding: 6px 0;
   transition: color 0.3s ease, padding-left 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .footer-section a:hover {
@@ -1529,14 +1703,16 @@ body {
   border: 2px solid var(--pastel-tan);
   background-color: white;
   color: var(--text-medium);
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: inherit;
+  font-family: 'Montserrat', sans-serif;
   white-space: nowrap;
   gap: 6px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .page-btn:hover:not(:disabled):not(.active) {
