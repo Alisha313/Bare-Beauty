@@ -335,16 +335,17 @@
 
     /**
      * Checks localStorage to determine if the popup should be displayed.
-     * The popup should show on EVERY visit until the user signs up.
-     * Once signed up, popup will never auto-show again.
+     * The popup should only show on the FIRST visit to the website.
+     * Once shown (or user signs up), popup will never auto-show again.
      * 
      * @returns {boolean} - true if popup should be shown, false otherwise
      */
     function shouldShowPopup() {
       const hasSignedUp = localStorage.getItem('userSignedUp') === 'true';
+      const hasSeenPopup = localStorage.getItem('popupDisplayed') === 'true';
       
-      // Show popup on every visit until user signs up
-      return !hasSignedUp;
+      // Only show popup on first visit (never seen before) and not signed up
+      return !hasSignedUp && !hasSeenPopup;
     }
 
     /**
@@ -362,6 +363,12 @@
     function showPopup(isAutomatic = false) {
       popup.style.display = 'flex';
       popup.classList.add('popup-visible');
+      
+      // Mark popup as displayed so it won't auto-show again on future visits
+      if (isAutomatic) {
+        localStorage.setItem('popupDisplayed', 'true');
+      }
+      
       trackPopupInteraction('view', { trigger: isAutomatic ? 'automatic' : 'manual' });
     }
 
