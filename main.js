@@ -70,7 +70,7 @@ function initFilterDropdowns() {
 document.addEventListener('DOMContentLoaded', initFilterDropdowns);
 
 // ===== PAGINATION SYSTEM =====
-const PRODUCTS_PER_PAGE = 9;
+const PRODUCTS_PER_PAGE = 10;
 
 function initPagination() {
     const productGrid = document.querySelector('.product-grid-shop');
