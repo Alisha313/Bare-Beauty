@@ -492,7 +492,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Target the logo specifically */
 .site-logo {
-  height: 140px;    /* This is the standard height for beauty site logos */
+  height: 80px;    /* This is the standard height for beauty site logos */
   width: auto;     /* This keeps the logo from looking stretched */
   display: block;  /* Helps with spacing */
 }
@@ -502,16 +502,17 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: space-between;
   align-items: center; 
-  padding: 15px 30px;
-  background-color: #dddbdb52; 
+  padding: 10px 40px;
+  background-color: #ffffff; 
 }
 
 .search-engine {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #ffffff; 
   border-radius: 30px; /* Creates those smooth, rounded ends */
-  padding: 5px 15px;
+  padding: 5px 20px;
   flex: 1; /* Makes the search bar stretch to fill the middle space */
   max-width: 400px; /* Keeps it from getting TOO long */
   margin: 0 20px;
@@ -523,7 +524,7 @@ h1, h2, h3, h4, h5, h6 {
   background: none;
   outline: none;
   padding: 10px;
-  width: 130%;
+  width: 100%;
   font-family: inherit;
 }
 
@@ -536,10 +537,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 :root {
-  --brown-dark: #4A4A4A;
-  --brown-medium: #6B5B4F;
-  --brown-light: #8B7D6B;
-  --pastel-cream: #FAF8F5;
+  --primary-gold: #b39b7d;    /* The muted gold from the reference title */
+  --pure-white: #ffffff;
+  --bg-cream: #fcfaf8;       /* Very soft off-white for the background */
+  --text-main: #4a4a4a;      /* Soft charcoal for luxury readability */
+  --border-light: #e8e0d9;
+  --brown-dark: #eee1d3;
+  --brown-medium: #eee1d3;
+  --brown-light: #eee1d3;
+  --pastel-cream: #fefcf9;
   --pastel-beige: #E4D5C3;
   --pastel-tan: #DDD5CA;
   --pastel-mocha: #C9BEB3;
@@ -591,13 +597,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .cart-count {
   position: absolute;
-  top: -8px;
+  top: -30px;
   right: -10px;
   background-color: var(--brown-medium);
   color: white;
-  font-size: 10px;
-  width: 18px;
-  height: 18px;
+  font-size: 12px;
+  width: 20px;
+  height: 30px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -606,47 +612,51 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Page Header */
 .page-header {
-  background: linear-gradient(135deg, var(--pastel-beige) 0%, var(--pastel-tan) 100%);
+  background: linear-gradient(135deg, #f5efe9 0%, #ffffff 100%);
   text-align: center;
-  padding: 60px 20px;
-  border-bottom: 1px solid var(--pastel-mocha);
+  padding: 80px 20px;
+  border-bottom: 1px solid var(--border-light, #e8e0d9);
 }
 
 .page-header h1 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 48px;
-  color: var(--text-dark);
-  margin: 0 0 10px 0;
-  font-weight: 600;
-  letter-spacing: 3px;
+  /* This is the gold color from your luxury reference */
+  color: #b39b7d; 
+  /* Elegant serif font with wide luxury spacing */
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px; 
+  font-weight: 500;
+  letter-spacing: 6px; 
   text-transform: uppercase;
+  margin: 0 0 10px 0;
 }
 
 .page-header p {
-  color: var(--text-medium);
-  font-size: 16px;
-  margin: 0;
+  /* Making the sub-text soft grey and italic */
+  color: #674908;
+  font-size: 20px;
   font-style: italic;
   font-family: 'Cormorant Garamond', serif;
   letter-spacing: 1px;
+  margin: 0;
 }
 
 /* Shop Container Layout */
 .shop-container {
   display: flex;
+  align-items: flex-start;
   max-width: 1800px;
   margin: 0 auto;
-  padding: 40px 40px;
+  padding: 40px;
   gap: 40px;
   background-color: var(--pastel-cream);
   min-height: 80vh;
 }
 
-/* Filters Sidebar */
+/* Filters Sidebar - Updated for Bare Beauty Aesthetic */
 .filters-sidebar {
   width: 280px;
   flex-shrink: 0;
-  background: linear-gradient(180deg, white 0%, var(--pastel-cream) 100%);
+  background: #b39b7d; /* AI Advisor Gold */
   padding: 0;
   border-radius: 16px;
   box-shadow: 0 4px 25px rgba(93, 64, 55, 0.1);
@@ -661,15 +671,15 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   align-items: center;
   padding: 20px 25px;
-  background: linear-gradient(135deg, var(--brown-medium) 0%, var(--brown-dark) 100%);
+  background: #b39b7d;
   margin: 0;
-  border-bottom: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .filter-header h3 {
   margin: 0;
   font-size: 14px;
-  color: white;
+  color: white; /* Changed from gold to white for contrast */
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
@@ -693,12 +703,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .clear-filters:hover {
   background: white;
-  color: var(--brown-dark);
+  color: #b39b7d;
 }
 
 .filter-group {
   margin: 0;
-  border-bottom: 1px solid var(--pastel-beige);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .filter-group:last-child {
@@ -707,7 +717,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .filter-group h4 {
   font-size: 12px;
-  color: var(--text-dark);
+  color: white; /* Changed from var(--text-dark) to white */
   margin: 0;
   font-weight: 600;
   text-transform: uppercase;
@@ -718,11 +728,25 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
+  background: transparent; /* Removed the white background */
   transition: all 0.3s ease;
   position: relative;
 }
 
+.filter-group h4::after {
+  content: '+';
+  font-size: 18px;
+  font-weight: 300;
+  color: white;
+  transition: transform 0.3s ease;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1); /* Subtle light circle */
+}
 .filter-group h4::after {
   content: '+';
   font-size: 18px;
@@ -739,31 +763,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .filter-group h4:hover {
-  background: var(--pastel-cream);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .filter-group.active h4 {
-  background: var(--pastel-beige);
-  color: var(--brown-dark);
+  background: rgba(0, 0, 0, 0.05); /* Slight darken when open */
+  color: white;
 }
 
 .filter-group.active h4::after {
   content: '−';
-  background: var(--brown-medium);
-  color: white;
-}
-
-.filter-options {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease;
-  background: var(--pastel-cream);
-  padding: 0 25px;
-}
-
-.filter-group.active .filter-options {
-  max-height: 300px;
-  padding: 15px 25px 20px;
+  background: white;
+  color: #b39b7d;
 }
 
 .filter-option {
@@ -772,17 +783,17 @@ h1, h2, h3, h4, h5, h6 {
   padding: 10px 15px;
   cursor: pointer;
   font-size: 13px;
-  color: var(--text-medium);
+  color: rgba(255, 255, 255, 0.9); /* Soft white text */
   transition: all 0.3s ease;
   border-radius: 8px;
   margin: 4px 0;
-  background: white;
+  background: rgba(255, 255, 255, 0.1); /* Glass effect instead of white */
   font-family: 'Montserrat', sans-serif;
 }
 
 .filter-option:hover {
-  color: var(--text-dark);
-  background: var(--pastel-pink);
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
   transform: translateX(5px);
 }
 
@@ -790,7 +801,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 18px;
   height: 18px;
   margin-right: 12px;
-  accent-color: var(--brown-medium);
+  accent-color: white; /* White checkmark on gold looks super clean */
   cursor: pointer;
   border-radius: 4px;
 }
@@ -1016,7 +1027,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Products Section */
 .products-section {
-  flex: 1;
+  flex-grow: 1;
 }
 
 .results-bar {
@@ -1974,12 +1985,13 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
-  background: linear-gradient(135deg, #F5E6E0 0%, #E4D5C3 100%);
-  box-shadow: 0 2px 20px rgba(93, 64, 55, 0.1);
+  padding: 10px 40px;
+  background: #f5f3f3;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .logo-link {
@@ -1988,24 +2000,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .site-logo {
-  height: 50px;
+  height: 100px;
   transition: transform 0.3s ease;
 }
 
 .site-logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* ===== ENHANCED SEARCH BAR ===== */
 .search-engine {
   display: flex;
   align-items: center;
-  background-color: white;
+  background-color: var(--bg-cream);
   border-radius: 30px;
   padding: 8px 20px;
   box-shadow: 0 2px 15px rgba(93, 64, 55, 0.08);
   transition: all 0.3s ease;
-  border: 2px solid transparent;
+  border: 1px solid var(--border-light);
 }
 
 .search-engine:focus-within {
@@ -2285,15 +2297,54 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== ENHANCED PAGE HEADER ===== */
 .page-header {
-  background: linear-gradient(135deg, var(--pastel-pink) 0%, var(--pastel-beige) 50%, var(--pastel-cream) 100%);
+/* This ensures the image covers the whole area without stretching */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;           
   text-align: center;
-  padding: 70px 20px;
+  padding: 180px 50px 190px;
   border-bottom: none;
   position: relative;
   overflow: hidden;
 }
 
+/* skincare header*/
+.header-skincare {
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2)), 
+              url('img/skincare.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* makeup header */
+.header-makeup {
+  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)), 
+              url('img/makeup.jpeg');
+  background-size: cover;
+  background-position: center;
+   background-repeat: no-repeat;
+}
+
+/* tools and brushes header */
+.header-tools {
+  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)), 
+              url('img/tools.jpeg');
+  background-size: 100% auto;
+  background-position: center; 
+  background-repeat: no-repeat;
+}
+
+/* nails header */
+.header-nails {
+  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)), 
+              url('img/nails.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .page-header::before {
+  display: none;
   content: '';
   position: absolute;
   top: 0;
@@ -2306,18 +2357,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .page-header h1 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 48px;
-  color: var(--text-dark);
+  color: #8c7959;
   margin: 0 0 12px 0;
   font-weight: 600;
   letter-spacing: 3px;
   position: relative;
   z-index: 1;
 }
-
+/*skin care subsection message*/
 .page-header p {
-  color: var(--text-medium);
+  color: #6d5a45;
   font-size: 17px;
   margin: 0;
   font-style: italic;
@@ -2345,22 +2396,21 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
-  padding-bottom: 18px;
-  border-bottom: 2px solid var(--pastel-beige);
+  padding-bottom: 18px; 
 }
 
 .filter-header h3 {
   margin: 0;
   font-size: 20px;
-  color: var(--text-dark);
+  color: var(--pure-white);
   font-weight: 600;
   font-family: 'Playfair Display', Georgia, serif;
 }
 
 .clear-filters {
-  background: var(--pastel-pink);
+  background: #8b7355;
   border: none;
-  color: var(--brown-medium);
+  color: var(--pure-white);
   font-size: 12px;
   cursor: pointer;
   padding: 6px 12px;
@@ -2381,7 +2431,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .filter-group h4 {
   font-size: 13px;
-  color: var(--text-dark);
+  background: #b39b7d;
+  color: white;
   margin: 0 0 15px 0;
   font-weight: 600;
   text-transform: uppercase;
@@ -3617,14 +3668,16 @@ a {
 
 /* Advisor Navbar Link */
 .advisor-link {
-  background: linear-gradient(135deg, #8b7355, #6d5a45);
+  background: #b39b7d;
   color: white !important;
   padding: 8px 16px;
+  text-decoration: none;
   border-radius: 6px;
 }
 
 .advisor-link:hover {
   opacity: 0.9;
+  background-color: #a38b6d
 }
 
 /* Responsive Styles for Advisor */
