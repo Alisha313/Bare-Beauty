@@ -978,3 +978,180 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// ============================================
+// VISUAL EFFECTS ENGINE - Makes BareBeauty Unique
+// ============================================
+
+// ===== FLOATING BEAUTY PARTICLES =====
+(function initParticles() {
+  // Only show floating makeup icons on the home page
+  const isHomePage = window.location.pathname.endsWith('index.html') || 
+                     window.location.pathname.endsWith('/') ||
+                     window.location.pathname === '';
+
+  const container = document.createElement('div');
+  container.className = 'particles-container';
+  container.setAttribute('aria-hidden', 'true');
+  document.body.prepend(container);
+
+  if (isHomePage) {
+    // Makeup-themed icons for the home page
+    const icons = [
+      'fa-solid fa-pump-soap',       // skincare bottle
+      'fa-solid fa-spray-can-sparkles', // spray
+      'fa-solid fa-droplet',         // serum drop
+      'fa-solid fa-heart',           // love/beauty
+      'fa-solid fa-star',            // star
+      'fa-solid fa-spa',             // spa/face mask
+      'fa-solid fa-gem',             // gem/luxury
+      'fa-solid fa-wand-magic-sparkles', // magic wand
+      'fa-solid fa-hand-sparkles',   // sparkle hands
+      'fa-solid fa-paintbrush',      // brush
+      'fa-solid fa-eye',             // eye makeup
+      'fa-solid fa-leaf',            // natural/clean
+      'fa-solid fa-flask',           // serum flask
+      'fa-solid fa-sun',             // SPF
+    ];
+
+    const colors = [
+      'rgba(179, 155, 125, 0.18)',  // gold
+      'rgba(228, 213, 195, 0.22)',  // beige
+      'rgba(245, 230, 224, 0.25)',  // pink
+      'rgba(168, 144, 128, 0.15)', // rose
+      'rgba(201, 190, 179, 0.20)', // mocha
+    ];
+
+    for (let i = 0; i < 22; i++) {
+      const particle = document.createElement('i');
+      const iconClass = icons[Math.floor(Math.random() * icons.length)];
+      particle.className = `makeup-icon-particle ${iconClass}`;
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.color = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.fontSize = (Math.random() * 18 + 14) + 'px';
+      particle.style.animationDuration = (Math.random() * 18 + 14) + 's';
+      particle.style.animationDelay = (Math.random() * 12) + 's';
+      // Randomize horizontal drift direction
+      particle.style.setProperty('--drift', (Math.random() * 120 - 60) + 'px');
+      container.appendChild(particle);
+    }
+  } else {
+    // Subtle dot particles for other pages
+    const colors = [
+      'rgba(228, 213, 195, 0.4)',
+      'rgba(179, 155, 125, 0.25)',
+      'rgba(245, 230, 224, 0.5)',
+      'rgba(201, 190, 179, 0.3)',
+      'rgba(221, 213, 202, 0.35)',
+    ];
+
+    for (let i = 0; i < 18; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      const size = Math.random() * 10 + 4;
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.animationDuration = (Math.random() * 15 + 12) + 's';
+      particle.style.animationDelay = (Math.random() * 10) + 's';
+      container.appendChild(particle);
+    }
+  }
+})();
+
+// ===== SCROLL REVEAL ANIMATIONS =====
+(function initScrollReveal() {
+  // Auto-tag elements for reveal animations
+  const selectors = [
+    { sel: '.category-row', cls: 'reveal' },
+    { sel: '.featured h2, .featured h3', cls: 'reveal' },
+    { sel: '.product-grid', cls: 'reveal-stagger' },
+    { sel: '.product-grid-shop', cls: 'reveal-stagger' },
+    { sel: '.category-showcase', cls: 'reveal-stagger' },
+    { sel: '.shop-by-category > h3', cls: 'reveal' },
+    { sel: '.filters-sidebar', cls: 'reveal-left' },
+    { sel: '.results-bar', cls: 'reveal' },
+    { sel: '.footer-section', cls: 'reveal' },
+    { sel: '.advisor-step', cls: 'reveal' },
+    { sel: '.feedback-card', cls: 'reveal-scale' },
+  ];
+
+  selectors.forEach(({ sel, cls }) => {
+    document.querySelectorAll(sel).forEach(el => {
+      if (!el.classList.contains('reveal') && 
+          !el.classList.contains('reveal-left') && 
+          !el.classList.contains('reveal-right') && 
+          !el.classList.contains('reveal-scale') && 
+          !el.classList.contains('reveal-stagger')) {
+        el.classList.add(cls);
+      }
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        // Add staggered delays to children of reveal-stagger containers
+        if (entry.target.classList.contains('reveal-stagger')) {
+          Array.from(entry.target.children).forEach((child, i) => {
+            child.style.transitionDelay = (i * 0.06) + 's';
+          });
+        }
+        observer.unobserve(entry.target); // Only animate once
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-stagger')
+    .forEach(el => observer.observe(el));
+})();
+
+// ===== BACK-TO-TOP BUTTON =====
+(function initBackToTop() {
+  const btn = document.createElement('button');
+  btn.className = 'back-to-top';
+  btn.setAttribute('aria-label', 'Back to top');
+  btn.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
+  document.body.appendChild(btn);
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
+// ===== NAVBAR SHRINK ON SCROLL =====
+(function initNavbarShrink() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }, { passive: true });
+})();
+
+// ===== SMOOTH SCROLL FOR ALL ANCHOR LINKS =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
