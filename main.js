@@ -44,10 +44,7 @@ function initFilterDropdowns() {
             group.appendChild(optionsWrapper);
         }
         
-        // Open first filter by default
-        if (index === 0) {
-            group.classList.add('active');
-        }
+        // All filters start collapsed by default
         
         // Add click handler to heading
         heading?.addEventListener('click', () => {
@@ -157,7 +154,7 @@ const products = {
         category: 'Cleanser',
         categoryPage: 'shop-skincare.html',
         price: 32.00,
-        image: 'img/pexels-cottonbro-studio-4612139.jpg',
+        image: 'img/Skincare/GentleFoanCleanser.png',
         rating: 4.5,
         reviews: 128,
         description: 'A gentle, pH-balanced foam cleanser that removes impurities without stripping your skin. Perfect for daily use on all skin types.',
@@ -170,7 +167,7 @@ const products = {
         category: 'Serum',
         categoryPage: 'shop-skincare.html',
         price: 58.00,
-        image: 'img/pexels-cottonbro-studio-4612123.jpg',
+        image: 'img/Skincare/VitaminCBrighteningSerum.png',
         rating: 5.0,
         reviews: 89,
         description: 'A potent 20% Vitamin C serum that brightens, firms, and protects your skin from environmental damage. Lightweight, fast-absorbing formula suitable for all skin types.',
@@ -183,7 +180,7 @@ const products = {
         category: 'Toner',
         categoryPage: 'shop-skincare.html',
         price: 28.00,
-        image: 'img/pexels-cottonbro-studio-4612154.jpg',
+        image: 'img/Skincare/BalancingRoseToner.png',
         rating: 4.0,
         reviews: 56,
         description: 'A gentle, alcohol-free toner with rose water that balances skin pH and prepares your skin for the next steps in your routine.',
@@ -197,7 +194,7 @@ const products = {
         categoryPage: 'shop-skincare.html',
         price: 45.00,
         originalPrice: 55.00,
-        image: 'img/pexels-engin-akyurt-3331486.jpg',
+        image: 'img/Skincare/SPF30DayCream.png',
         rating: 5.0,
         reviews: 203,
         description: 'A lightweight daily moisturizer with SPF 30 protection. Hydrates while protecting your skin from harmful UV rays.',
@@ -210,7 +207,7 @@ const products = {
         category: 'Under-Eye Cream',
         categoryPage: 'shop-skincare.html',
         price: 42.00,
-        image: 'img/product-4.jpg',
+        image: 'img/Skincare/RevitalizingEyeCream.png',
         rating: 4.5,
         reviews: 74,
         description: 'A rich eye cream that targets dark circles, puffiness, and fine lines for a refreshed, youthful look.',
@@ -223,12 +220,91 @@ const products = {
         category: 'Face Mask',
         categoryPage: 'shop-skincare.html',
         price: 38.00,
-        image: 'img/pexels-antoni-shkraba-5178008.jpg',
+        image: 'img/Skincare/HyfratingSheetMaskSet.png',
         rating: 5.0,
         reviews: 167,
         description: 'A set of 5 hydrating sheet masks infused with hyaluronic acid and botanical extracts for an instant moisture boost.',
         skinType: 'Dry Skin',
         ingredients: ['Hyaluronic Acid', 'Aloe Vera', 'Centella Asiatica', 'Green Tea']
+    },
+    'serum-2': {
+        id: 'serum-2',
+        name: 'Hyaluronic Acid Serum',
+        category: 'Serum',
+        categoryPage: 'shop-skincare.html',
+        price: 64.00,
+        image: 'img/Skincare/HyaluronicAcidSerum.png',
+        rating: 5.0,
+        reviews: 215,
+        description: 'A deeply hydrating serum with multiple weights of hyaluronic acid to plump and smooth skin at every level.',
+        skinType: 'All Skin Types',
+        ingredients: ['Hyaluronic Acid', 'Vitamin B5', 'Aloe Vera', 'Glycerin']
+    },
+    'cleanser-2': {
+        id: 'cleanser-2',
+        name: 'Oil Control Gel Cleanser',
+        category: 'Cleanser',
+        categoryPage: 'shop-skincare.html',
+        price: 26.00,
+        image: 'img/Skincare/OilControlGelCleanser.png',
+        rating: 4.0,
+        reviews: 94,
+        description: 'A lightweight gel cleanser that controls excess oil and deeply cleanses pores without over-drying.',
+        skinType: 'Oily Skin',
+        ingredients: ['Salicylic Acid', 'Tea Tree Oil', 'Niacinamide', 'Zinc']
+    },
+    'moisturizer-2': {
+        id: 'moisturizer-2',
+        name: 'Rich Night Cream',
+        category: 'Moisturizer',
+        categoryPage: 'shop-skincare.html',
+        price: 38.00,
+        originalPrice: 48.00,
+        image: 'img/Skincare/RichNightCream.png',
+        rating: 4.5,
+        reviews: 142,
+        description: 'A rich, nourishing night cream that repairs and hydrates skin while you sleep. Wake up to soft, glowing skin.',
+        skinType: 'Dry Skin',
+        ingredients: ['Shea Butter', 'Ceramides', 'Peptides', 'Squalane']
+    },
+    'serum-3': {
+        id: 'serum-3',
+        name: 'Retinol Night Serum',
+        category: 'Serum',
+        categoryPage: 'shop-skincare.html',
+        price: 72.00,
+        image: 'img/Skincare/RetinolNighSerum.png',
+        rating: 5.0,
+        reviews: 287,
+        description: 'A powerful retinol serum that reduces fine lines, evens skin tone, and boosts cell turnover overnight.',
+        skinType: 'Sensitive Skin',
+        ingredients: ['Retinol', 'Vitamin E', 'Squalane', 'Bakuchiol']
+    },
+    'toner-2': {
+        id: 'toner-2',
+        name: 'Niacinamide Pore Toner',
+        category: 'Toner',
+        categoryPage: 'shop-skincare.html',
+        price: 34.00,
+        image: 'img/Skincare/NiacinamidePoreToner.png',
+        rating: 4.5,
+        reviews: 118,
+        description: 'A pore-refining toner with niacinamide that minimizes pores, controls oil, and brightens skin.',
+        skinType: 'Combination Skin',
+        ingredients: ['Niacinamide', 'Zinc PCA', 'Hyaluronic Acid', 'Green Tea']
+    },
+    'mask-2': {
+        id: 'mask-2',
+        name: 'Clay Detox Mask',
+        category: 'Face Mask',
+        categoryPage: 'shop-skincare.html',
+        price: 22.00,
+        image: 'img/Skincare/ClayDetoxMask.png',
+        rating: 4.0,
+        reviews: 76,
+        description: 'A deep-cleansing clay mask that draws out impurities and excess oil for a clearer, smoother complexion.',
+        skinType: 'All Skin Types',
+        ingredients: ['Kaolin Clay', 'Bentonite', 'Charcoal', 'Tea Tree Oil']
     },
     
     // NAILS
@@ -238,7 +314,7 @@ const products = {
         category: 'Press-on Nails',
         categoryPage: 'shop-nails.html',
         price: 24.00,
-        image: 'https://img.kwcdn.com/product/aisc_image/algo/opt/bac3b038-2e57-4bf2-83a8-72fcb012e2ec.jpg?imageView2/2/w/1300/q/90/format/avif',
+        image: 'img/Nails/ClassicFrenchTip.png',
         rating: 5.0,
         reviews: 428,
         description: 'Timeless French tip press-on nails for an elegant, salon-quality manicure at home. Includes 24 nails in various sizes.',
@@ -250,7 +326,7 @@ const products = {
         category: 'Press-on Nails',
         categoryPage: 'shop-nails.html',
         price: 28.00,
-        image: 'https://img.kwcdn.com/product/fancy/ff8ca917-6e08-4e66-bc4d-a126576f7f17.jpg?imageView2/2/w/1300/q/90/format/avif',
+        image: 'img/Nails/ChampageGlitterSet.png',
         rating: 4.5,
         reviews: 67,
         description: 'Sparkling champagne glitter press-on nails perfect for special occasions. Long-lasting and easy to apply.',
@@ -262,7 +338,7 @@ const products = {
         category: 'Press-on Nails',
         categoryPage: 'shop-nails.html',
         price: 28.00,
-        image: 'https://img.kwcdn.com/product/fancy/1538af57-fd20-4fa2-91bb-c8dd0226b9fa.jpg?imageView2/2/w/1300/q/90/format/avif',
+        image: 'img/Nails/GlossyPinkSet.png',
         rating: 4.5,
         reviews: 67,
         description: 'Beautiful glossy pink press-on nails for a classic, feminine look. Easy to apply and long-lasting.',
@@ -274,7 +350,7 @@ const products = {
         category: 'Nail Care',
         categoryPage: 'shop-nails.html',
         price: 28.00,
-        image: 'https://img.kwcdn.com/product/fancy/7db3a2e5-8565-4aa0-b195-97d16f5a0bd8.jpg?imageView2/2/w/1300/q/90/format/avif',
+        image: 'img/Nails/Medicure:PedicureSet.png',
         rating: 4.5,
         reviews: 67,
         description: 'Complete professional manicure and pedicure set with all the tools you need for salon-quality nails at home.',
@@ -286,7 +362,7 @@ const products = {
         category: 'Nail Care',
         categoryPage: 'shop-nails.html',
         price: 18.00,
-        image: 'https://shopnailboo.com/cdn/shop/files/cross_cuticleoil_5.jpg?v=1709223131&width=1445',
+        image: 'img/Nails/CuticleOil.png',
         rating: 5.0,
         reviews: 234,
         description: 'A nourishing cuticle oil with jojoba and vitamin E to hydrate and strengthen your nails and cuticles.',
@@ -298,7 +374,7 @@ const products = {
         category: 'Press-on Nails',
         categoryPage: 'shop-nails.html',
         price: 32.00,
-        image: 'img/pexels-laura-garcia-4006699 (1).jpg',
+        image: 'img/Nails/FloralNailArtSticker.png',
         rating: 4.0,
         reviews: 156,
         description: 'Unique hand-painted abstract art press-on nails. Each set is a wearable masterpiece.',
@@ -311,7 +387,7 @@ const products = {
         categoryPage: 'shop-nails.html',
         price: 22.00,
         originalPrice: 28.00,
-        image: 'img/product-3.jpg',
+        image: 'img/Nails/MiniUVNailLamp.png',
         rating: 4.5,
         reviews: 189,
         description: 'A powerful keratin treatment that strengthens weak, brittle nails and promotes healthy growth.',
@@ -323,7 +399,7 @@ const products = {
         category: 'Press-on Nails',
         categoryPage: 'shop-nails.html',
         price: 26.00,
-        image: 'img/pexels-nripen-kumar-roy-725462.jpg',
+        image: 'img/Nails/NudeOmbreSet.png',
         rating: 5.0,
         reviews: 312,
         description: 'Versatile nude press-on nails perfect for everyday wear. Natural-looking and comfortable.',
@@ -337,7 +413,7 @@ const products = {
         category: 'Brush Set',
         categoryPage: 'shop-tools.html',
         price: 68.00,
-        image: 'img/pexels-freestocksorg-457701.jpg',
+        image: 'img/Tools%20%26%20Brushes/16PieceBrushSet.png',
         rating: 5.0,
         reviews: 245,
         description: 'A complete set of 12 professional-quality makeup brushes for face, eyes, and lips. Vegan and cruelty-free.',
@@ -349,7 +425,7 @@ const products = {
         category: 'Gua Sha',
         categoryPage: 'shop-tools.html',
         price: 32.00,
-        image: 'img/pexels-arina-krasnikova-6663393.jpg',
+        image: 'img/Tools%20%26%20Brushes/JadeFacialRoller.png',
         rating: 4.5,
         reviews: 89,
         description: 'A genuine rose quartz gua sha stone for facial massage. Helps reduce puffiness and promote lymphatic drainage.',
@@ -361,7 +437,7 @@ const products = {
         category: 'Red Light Therapy',
         categoryPage: 'shop-tools.html',
         price: 189.00,
-        image: 'img/pexels-anna-shvets-5217926.jpg',
+        image: 'img/Tools%20%26%20Brushes/Redlightwand.png',
         rating: 5.0,
         reviews: 312,
         description: 'Professional-grade LED red light therapy wand for at-home anti-aging treatments. Stimulates collagen production.',
@@ -373,7 +449,7 @@ const products = {
         category: 'Makeup Brush',
         categoryPage: 'shop-tools.html',
         price: 24.00,
-        image: 'img/pexels-pixabay-458766.jpg',
+        image: 'img/Tools%20%26%20Brushes/FoundationBrush.png',
         rating: 4.0,
         reviews: 156,
         description: 'A densely packed foundation brush for seamless, airbrushed application. Works with liquid and cream formulas.',
@@ -385,7 +461,7 @@ const products = {
         category: 'Gua Sha',
         categoryPage: 'shop-tools.html',
         price: 28.00,
-        image: 'img/product-5.jpeg',
+        image: 'img/Tools%20%26%20Brushes/JadeFacialRoller.png',
         rating: 4.5,
         reviews: 203,
         description: 'A dual-ended jade facial roller for depuffing and relaxing facial massage. Store in fridge for extra cooling effect.',
@@ -398,7 +474,7 @@ const products = {
         categoryPage: 'shop-tools.html',
         price: 42.00,
         originalPrice: 55.00,
-        image: 'img/product-6.jpg',
+        image: 'img/Tools%20%26%20Brushes/EssentialTravelSet.png',
         rating: 5.0,
         reviews: 178,
         description: 'A 6-piece eye brush set with everything you need for stunning eye looks. Includes blending, detail, and liner brushes.',
@@ -947,14 +1023,120 @@ document.querySelectorAll('.filter-tag').forEach(tag => {
 });
 
 // ===== QUICK VIEW MODAL =====
-document.querySelectorAll('.quick-view-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        // Quick view modal functionality would go here
-        showNotification('Quick view coming soon!');
+function initQuickView() {
+    // Create modal HTML and append to body
+    const modalHTML = `
+    <div class="quick-view-overlay" id="quickViewOverlay">
+        <div class="quick-view-modal">
+            <button class="quick-view-close" id="quickViewClose">&times;</button>
+            <div class="quick-view-content">
+                <div class="quick-view-image">
+                    <img src="" alt="" id="quickViewImage">
+                </div>
+                <div class="quick-view-info">
+                    <span class="product-category-tag" id="quickViewCategory"></span>
+                    <h2 id="quickViewName"></h2>
+                    <div class="product-rating-detail">
+                        <div class="stars" id="quickViewStars"></div>
+                        <span class="rating-text" id="quickViewRating"></span>
+                        <span class="review-count" id="quickViewReviews"></span>
+                    </div>
+                    <div class="product-price-detail">
+                        <span class="original-price" id="quickViewOriginalPrice" style="display:none;"></span>
+                        <span class="current-price" id="quickViewPrice"></span>
+                    </div>
+                    <p class="product-short-desc" id="quickViewDesc"></p>
+                    <a href="#" class="quick-view-detail-link" id="quickViewDetailLink">View Full Details →</a>
+                    <button class="add-to-cart-btn-large quick-view-add-cart" id="quickViewAddCart">
+                        <i class="fa-solid fa-shopping-bag"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>`;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    const overlay = document.getElementById('quickViewOverlay');
+    const closeBtn = document.getElementById('quickViewClose');
+
+    // Close modal handlers
+    closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) overlay.classList.remove('active');
     });
-});
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') overlay.classList.remove('active');
+    });
+
+    // Quick View - click on product card (not Add to Cart button)
+    document.querySelectorAll('.product-card-shop').forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Don't open quick view if clicking Add to Cart button
+            if (e.target.closest('.add-to-cart-btn')) return;
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Get product info from the card
+            const link = card.querySelector('a[href*="product-detail"]');
+            const productId = link ? new URLSearchParams(link.href.split('?')[1]).get('id') : null;
+            const imgEl = card.querySelector('.product-image img');
+            const imageSrc = imgEl ? imgEl.src : '';
+            const imageAlt = imgEl ? imgEl.alt : '';
+            const name = card.querySelector('.product-name')?.textContent || '';
+            const category = card.querySelector('.product-category')?.textContent || '';
+            const currentPrice = card.querySelector('.current-price')?.textContent || '';
+            const originalPrice = card.querySelector('.original-price')?.textContent || '';
+            const ratingCount = card.querySelector('.rating-count')?.textContent || '';
+            const starsHTML = card.querySelector('.stars')?.innerHTML || '';
+
+            // Look up from products database for description, or use a fallback
+            const productData = productId && products[productId] ? products[productId] : null;
+            const description = productData ? productData.description : 'Click "View Full Details" to learn more about this product.';
+            const rating = productData ? productData.rating.toFixed(1) : '';
+
+            // Populate modal
+            document.getElementById('quickViewImage').src = imageSrc;
+            document.getElementById('quickViewImage').alt = imageAlt;
+            document.getElementById('quickViewName').textContent = name;
+            document.getElementById('quickViewCategory').textContent = category;
+            document.getElementById('quickViewPrice').textContent = currentPrice;
+            document.getElementById('quickViewStars').innerHTML = starsHTML;
+            document.getElementById('quickViewRating').textContent = rating;
+            document.getElementById('quickViewReviews').textContent = ratingCount;
+            document.getElementById('quickViewDesc').textContent = description;
+
+            const origPriceEl = document.getElementById('quickViewOriginalPrice');
+            if (originalPrice) {
+                origPriceEl.textContent = originalPrice;
+                origPriceEl.style.display = 'inline';
+            } else {
+                origPriceEl.style.display = 'none';
+            }
+
+            const detailLink = document.getElementById('quickViewDetailLink');
+            detailLink.href = link ? link.getAttribute('href') : '#';
+
+            // Add to cart from modal
+            const addCartBtn = document.getElementById('quickViewAddCart');
+            addCartBtn.onclick = () => {
+                addToCart({
+                    id: productId || Date.now(),
+                    name: name,
+                    price: parseFloat(currentPrice.replace('$', '')) || 0,
+                    image: imageSrc,
+                    quantity: 1
+                });
+                overlay.classList.remove('active');
+            };
+
+            // Show modal
+            overlay.classList.add('active');
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initQuickView);
 
 // ===== SMOOTH SCROLL FOR REVIEW LINK =====
 document.querySelector('.review-count')?.addEventListener('click', (e) => {
@@ -1154,4 +1336,263 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
+});
+
+// ===== SCROLL TO TOP ON PAGE LOAD =====
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+});
+// Also handle back/forward navigation
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+// ===== SPIN THE WHEEL POPUP SYSTEM (global — all pages) =====
+document.addEventListener('DOMContentLoaded', function() {
+  // Skip on login page
+  if (window.location.pathname.includes('login.html')) return;
+
+  // Inject popup HTML into the page
+  const popupHTML = `
+    <div class="popup-overlay" id="spinPopupOverlay" role="dialog" aria-modal="true" style="display:none;">
+      <div class="spin-popup-content">
+        <button class="close-x" id="closePopupX" aria-label="Close popup">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="spin-step" id="spinStepWheel">
+          <h2>Spin & Win!</h2>
+          <p class="spin-subtitle">Try your luck for exclusive rewards</p>
+          <div class="wheel-container">
+            <div class="wheel-pointer"><i class="fa-solid fa-caret-down"></i></div>
+            <canvas id="spinCanvas" width="420" height="420"></canvas>
+          </div>
+          <button class="cta-button spin-btn" id="spinBtn">
+            <i class="fa-solid fa-rotate"></i> SPIN NOW
+          </button>
+          <button class="close-btn" id="maybeLater">No thanks, I'll pass</button>
+        </div>
+        <div class="spin-step" id="spinStepResult" style="display:none;">
+          <div class="result-confetti" aria-hidden="true">\u{1F389}</div>
+          <h2>Congratulations!</h2>
+          <p class="result-prize" id="resultPrize"></p>
+          <p class="result-claim-label">Enter your email to claim your reward:</p>
+          <input type="email" placeholder="Enter your email" class="email-input" id="spinEmail" aria-label="Email address">
+          <button class="cta-button" id="claimRewardBtn">
+            <i class="fa-solid fa-gift"></i> Claim My Reward
+          </button>
+        </div>
+        <div class="spin-step" id="spinStepCode" style="display:none;">
+          <div class="result-confetti" aria-hidden="true">\u2728</div>
+          <h2>Your Reward</h2>
+          <p class="result-prize" id="finalPrize"></p>
+          <p class="result-code-label">Use code at checkout:</p>
+          <div class="result-code" id="resultCode"></div>
+          <button class="cta-button" id="resultShopBtn">Start Shopping <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+    <button class="popup-mini-trigger" id="popupMiniTrigger" aria-label="Spin to win!" title="Spin the wheel for exclusive offers">
+      <i class="fa-solid fa-gift"></i>
+      <span class="trigger-badge">Spin!</span>
+    </button>
+  `;
+  document.body.insertAdjacentHTML('afterbegin', popupHTML);
+
+  // References
+  const popup = document.getElementById('spinPopupOverlay');
+  const closeXBtn = document.getElementById('closePopupX');
+  const maybeLaterBtn = document.getElementById('maybeLater');
+  const miniTrigger = document.getElementById('popupMiniTrigger');
+  const spinEmail = document.getElementById('spinEmail');
+  const spinBtn = document.getElementById('spinBtn');
+  const claimRewardBtn = document.getElementById('claimRewardBtn');
+  const resultShopBtn = document.getElementById('resultShopBtn');
+
+  let wonSegment = null;
+
+  // Segments & weights
+  const segments = [
+    { label: '10% OFF',   color: '#b39b7d', code: 'GLOW10' },
+    { label: 'Free Ship', color: '#d4c4a8', code: 'FREESHIP' },
+    { label: '15% OFF',   color: '#8b7355', code: 'BARE15' },
+    { label: '$5 OFF',    color: '#e8ddd4', code: 'SAVE5' },
+    { label: '20% OFF',   color: '#a08060', code: 'BEAUTY20' },
+    { label: 'Gift Set',  color: '#c9b99e', code: 'GIFTSET' },
+    { label: '25% OFF',   color: '#6d5a45', code: 'VIP25' },
+    { label: 'Try Again', color: '#f0e6da', code: null }
+  ];
+  const weights = [25, 20, 18, 15, 8, 5, 2, 7];
+
+  let currentAngle = 0;
+  let isSpinning = false;
+
+  function drawWheel() {
+    const canvas = document.getElementById('spinCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+    const r = cx - 4;
+    const segAngle = (2 * Math.PI) / segments.length;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    segments.forEach((seg, i) => {
+      const startAngle = currentAngle + i * segAngle;
+      const endAngle = startAngle + segAngle;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, r, startAngle, endAngle);
+      ctx.closePath();
+      ctx.fillStyle = seg.color;
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(startAngle + segAngle / 2);
+      ctx.fillStyle = (seg.color === '#e8ddd4' || seg.color === '#f0e6da' || seg.color === '#d4c4a8' || seg.color === '#c9b99e') ? '#5a4a3a' : '#fff';
+      ctx.font = 'bold 17px Montserrat, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(seg.label, r - 18, 0);
+      ctx.restore();
+    });
+    ctx.beginPath();
+    ctx.arc(cx, cy, 28, 0, 2 * Math.PI);
+    ctx.fillStyle = '#fff';
+    ctx.fill();
+    ctx.strokeStyle = '#b39b7d';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(cx, cy, 10, 0, 2 * Math.PI);
+    ctx.fillStyle = '#b39b7d';
+    ctx.fill();
+  }
+
+  function pickSegment() {
+    const total = weights.reduce((s, w) => s + w, 0);
+    let rand = Math.random() * total;
+    for (let i = 0; i < weights.length; i++) {
+      rand -= weights[i];
+      if (rand <= 0) return i;
+    }
+    return 0;
+  }
+
+  function spinWheel() {
+    if (isSpinning) return;
+    isSpinning = true;
+    spinBtn.disabled = true;
+    const winIndex = pickSegment();
+    const segAngle = 360 / segments.length;
+    const segCenter = winIndex * segAngle + segAngle / 2;
+    // Pointer is at top (270°). Rotate so the winning segment's center lands at 270°.
+    const totalSpin = 360 * 6 + ((270 - segCenter + 360) % 360);
+    const startAngle = currentAngle;
+    const startTime = performance.now();
+    const duration = 4500;
+    function animate(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const angleDeg = startAngle * (180 / Math.PI) + totalSpin * ease;
+      currentAngle = (angleDeg % 360) * (Math.PI / 180);
+      drawWheel();
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        isSpinning = false;
+        showResult(segments[winIndex]);
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+
+  function showResult(seg) {
+    wonSegment = seg;
+    document.getElementById('spinStepWheel').style.display = 'none';
+    document.getElementById('spinStepResult').style.display = 'block';
+    if (seg.code) {
+      document.getElementById('resultPrize').textContent = 'You won ' + seg.label + '!';
+      document.querySelector('.result-claim-label').style.display = '';
+      spinEmail.style.display = '';
+      claimRewardBtn.style.display = '';
+      claimRewardBtn.innerHTML = '<i class="fa-solid fa-gift"></i> Claim My Reward';
+      claimRewardBtn.onclick = null;
+    } else {
+      document.getElementById('resultPrize').textContent = 'So close! Try again next time.';
+      document.querySelector('.result-claim-label').style.display = 'none';
+      spinEmail.style.display = 'none';
+      claimRewardBtn.innerHTML = '<i class="fa-solid fa-xmark"></i> Close';
+      claimRewardBtn.style.display = '';
+      claimRewardBtn.onclick = function() { hidePopup(); };
+    }
+  }
+
+  function showPopup() {
+    document.getElementById('spinStepWheel').style.display = 'block';
+    document.getElementById('spinStepResult').style.display = 'none';
+    document.getElementById('spinStepCode').style.display = 'none';
+    spinBtn.disabled = false;
+    isSpinning = false;
+    popup.style.display = 'flex';
+    popup.classList.add('popup-visible');
+    popup.classList.remove('popup-hiding');
+    drawWheel();
+  }
+
+  function hidePopup() {
+    popup.classList.remove('popup-visible');
+    popup.classList.add('popup-hiding');
+    setTimeout(() => {
+      popup.style.display = 'none';
+      popup.classList.remove('popup-hiding');
+    }, 300);
+  }
+
+  // Claim reward (email)
+  claimRewardBtn.addEventListener('click', () => {
+    if (claimRewardBtn.onclick) return; // "Close" handler takes priority
+    const email = spinEmail.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      spinEmail.classList.add('input-error');
+      spinEmail.placeholder = 'Please enter a valid email';
+      setTimeout(() => {
+        spinEmail.classList.remove('input-error');
+        spinEmail.placeholder = 'Enter your email';
+      }, 2000);
+      return;
+    }
+    localStorage.setItem('userEmail', email);
+    localStorage.setItem('userSignedUp', 'true');
+    localStorage.setItem('spinCompleted', 'true');
+    if (wonSegment && wonSegment.code) localStorage.setItem('spinReward', wonSegment.code);
+    document.getElementById('spinStepResult').style.display = 'none';
+    document.getElementById('spinStepCode').style.display = 'block';
+    document.getElementById('finalPrize').textContent = 'You won ' + wonSegment.label + '!';
+    document.getElementById('resultCode').textContent = wonSegment.code;
+  });
+
+  spinBtn.addEventListener('click', spinWheel);
+  resultShopBtn.addEventListener('click', () => { hidePopup(); miniTrigger.style.display = 'none'; });
+  closeXBtn.addEventListener('click', hidePopup);
+  maybeLaterBtn.addEventListener('click', hidePopup);
+  popup.addEventListener('click', (e) => { if (e.target === popup) hidePopup(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && popup.style.display === 'flex') hidePopup(); });
+  spinEmail.addEventListener('keypress', (e) => { if (e.key === 'Enter') claimRewardBtn.click(); });
+  miniTrigger.addEventListener('click', () => showPopup());
+
+  // Init visibility — always show mini trigger
+  miniTrigger.style.display = '';
+  setTimeout(() => miniTrigger.classList.add('trigger-visible'), 1000);
+
+  // Auto-show popup on first visit per session (sessionStorage resets when browser closes)
+  if (!sessionStorage.getItem('spinPopupShown')) {
+    setTimeout(() => {
+      sessionStorage.setItem('spinPopupShown', 'true');
+      showPopup();
+    }, 4000);
+  }
 });
