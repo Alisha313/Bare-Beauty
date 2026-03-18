@@ -10,30 +10,40 @@
 <body>
 
   <!-- Navbar Component -->
-  <header class="navbar">
-    <a href="index.html" class="logo-link">
-      <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
-    </a>
-    
-    <div class="search-engine">
-      <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
-      <button type="submit" class="search-submit">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="top-bar-left"></div>
+      <div class="top-bar-right">
+        <a href="login.html"><i class="fa-solid fa-user"></i> Account</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fa-solid fa-shopping-bag"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
     </div>
-
-    <nav class="nav-links">
-      <a href="shop-skincare.html">Skincare</a>
-      <a href="shop-makeup.html">Makeup</a>
-      <a href="shop-tools.html" class="active">Tools & Brushes</a>
-      <a href="shop-nails.html">Nails</a>
-      <a href="advisor.html" class="advisor-link"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
-      <a href="login.html" class="login-link"><i class="fa-solid fa-user"></i></a>
-      <a href="cart.html" class="cart-link">
-        <i class="fa-solid fa-shopping-bag"></i>
-        <span class="cart-count">0</span>
+    <div class="navbar">
+      <a href="index.html" class="logo-link">
+        <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
       </a>
-    </nav>
+      <nav class="nav-links">
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
+        <a href="shop-tools.html" class="active">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </nav>
+      <div class="nav-utilities">
+        <a href="tracker-skincare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Skincare</a>
+        <a href="tracker-haircare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Hair</a>
+        <a href="advisor.html" class="nav-pill nav-pill-glow"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
+      </div>
+      <div class="search-engine">
+        <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
+        <button type="submit" class="search-submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
   </header>
 
   <!-- Page Header -->
@@ -47,90 +57,72 @@
     
     <!-- Filters Sidebar -->
     <aside class="filters-sidebar">
+
       <div class="filter-header">
-        <h3>Filters</h3>
-        <button class="clear-filters">Clear All</button>
+        <div class="filter-header-left">
+          <div class="filter-header-icon"><i class="fa-solid fa-sliders"></i></div>
+          <div>
+            <h3>Refine</h3>
+            <span class="filter-subtitle">Find your perfect match</span>
+          </div>
+        </div>
+        <button class="clear-filters" id="clearFilters">Clear All</button>
       </div>
 
       <!-- Category Filter -->
       <div class="filter-group">
-        <h4>Category</h4>
-        <label class="filter-option">
-          <input type="checkbox" name="category" value="makeup-brushes"> Makeup Brushes
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="category" value="brush-sets"> Brush Sets
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="category" value="brows-lashes"> Brows & Lashes
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="category" value="gua-sha"> Gua Sha
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="category" value="red-light"> Red Light Therapy
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="category" value="sponges"> Beauty Sponges
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="category" value="accessories"> Accessories
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="category" value="cleaning-care"> Cleaning & Care
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-tag"></i> Category</div>
+        <div class="filter-chip-grid">
+          <label class="filter-chip"><input type="checkbox" name="category" value="makeup-brushes"><span><i class="fa-solid fa-paintbrush"></i> Brushes</span></label>
+          <label class="filter-chip"><input type="checkbox" name="category" value="brush-sets"><span><i class="fa-solid fa-layer-group"></i> Brush Sets</span></label>
+          <label class="filter-chip"><input type="checkbox" name="category" value="brows-lashes"><span><i class="fa-solid fa-eye"></i> Brows &amp; Lashes</span></label>
+          <label class="filter-chip"><input type="checkbox" name="category" value="gua-sha"><span><i class="fa-solid fa-gem"></i> Gua Sha</span></label>
+          <label class="filter-chip"><input type="checkbox" name="category" value="red-light"><span><i class="fa-solid fa-bolt"></i> Red Light</span></label>
+          <label class="filter-chip"><input type="checkbox" name="category" value="sponges"><span><i class="fa-solid fa-circle"></i> Sponges</span></label>
+          <label class="filter-chip"><input type="checkbox" name="category" value="accessories"><span><i class="fa-solid fa-star"></i> Accessories</span></label>
+          <label class="filter-chip"><input type="checkbox" name="category" value="cleaning-care"><span><i class="fa-solid fa-soap"></i> Cleaning</span></label>
+        </div>
       </div>
+
+      <div class="filter-divider"></div>
 
       <!-- Brush Type Filter -->
       <div class="filter-group">
-        <h4>Brush Type</h4>
-        <label class="filter-option">
-          <input type="checkbox" name="brush-type" value="face"> Face Brushes
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="brush-type" value="eye"> Eye Brushes
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="brush-type" value="lip"> Lip Brushes
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="brush-type" value="contour"> Contour Brushes
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-paintbrush"></i> Brush Type</div>
+        <div class="filter-chip-grid">
+          <label class="filter-chip"><input type="checkbox" name="brush-type" value="face"><span>Face</span></label>
+          <label class="filter-chip"><input type="checkbox" name="brush-type" value="eye"><span>Eye</span></label>
+          <label class="filter-chip"><input type="checkbox" name="brush-type" value="lip"><span>Lip</span></label>
+          <label class="filter-chip"><input type="checkbox" name="brush-type" value="contour"><span>Contour</span></label>
+        </div>
       </div>
+
+      <div class="filter-divider"></div>
 
       <!-- Price Range Filter -->
       <div class="filter-group">
-        <h4>Price Range</h4>
-        <label class="filter-option">
-          <input type="checkbox" name="price" value="under-20"> Under $20
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="price" value="20-50"> $20 - $50
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="price" value="50-100"> $50 - $100
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="price" value="over-100"> $100+
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-dollar-sign"></i> Price Range</div>
+        <div class="filter-price-pills">
+          <label class="filter-price-pill"><input type="checkbox" name="price" value="under-20"><span>Under $20</span></label>
+          <label class="filter-price-pill"><input type="checkbox" name="price" value="20-50"><span>$20 – $50</span></label>
+          <label class="filter-price-pill"><input type="checkbox" name="price" value="50-100"><span>$50 – $100</span></label>
+          <label class="filter-price-pill"><input type="checkbox" name="price" value="over-100"><span>$100+</span></label>
+        </div>
       </div>
+
+      <div class="filter-divider"></div>
 
       <!-- Material Filter -->
       <div class="filter-group">
-        <h4>Material</h4>
-        <label class="filter-option">
-          <input type="checkbox" name="material" value="synthetic"> Synthetic
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="material" value="natural"> Natural
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="material" value="rose-quartz"> Rose Quartz
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="material" value="jade"> Jade
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-leaf"></i> Material</div>
+        <div class="filter-concern-list">
+          <label class="filter-concern-item"><input type="checkbox" name="material" value="synthetic"><div class="concern-dot" style="background:#c9a77c;"></div><span>Synthetic</span><i class="fa-solid fa-check concern-check"></i></label>
+          <label class="filter-concern-item"><input type="checkbox" name="material" value="natural"><div class="concern-dot" style="background:#a07850;"></div><span>Natural</span><i class="fa-solid fa-check concern-check"></i></label>
+          <label class="filter-concern-item"><input type="checkbox" name="material" value="rose-quartz"><div class="concern-dot" style="background:#e8a0a0;"></div><span>Rose Quartz</span><i class="fa-solid fa-check concern-check"></i></label>
+          <label class="filter-concern-item"><input type="checkbox" name="material" value="jade"><div class="concern-dot" style="background:#7aab8a;"></div><span>Jade</span><i class="fa-solid fa-check concern-check"></i></label>
+        </div>
       </div>
+
     </aside>
 
     <!-- Products Grid -->
@@ -1285,6 +1277,7 @@
         <h4>Shop</h4>
         <a href="shop-skincare.html">Skincare</a>
         <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
         <a href="shop-tools.html">Tools & Brushes</a>
         <a href="shop-nails.html">Nails</a>
       </div>

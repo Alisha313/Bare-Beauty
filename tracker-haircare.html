@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haircare Tracker | Bare Beauty</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="top-bar-left"></div>
+      <div class="top-bar-right">
+        <a href="login.html"><i class="fa-solid fa-user"></i> Account</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fa-solid fa-shopping-bag"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+    <div class="navbar">
+      <a href="index.html" class="logo-link">
+        <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
+      </a>
+      <nav class="nav-links">
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </nav>
+      <div class="nav-utilities">
+        <a href="tracker-skincare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Skincare</a>
+        <a href="tracker-haircare.html" class="nav-pill active"><i class="fa-solid fa-clipboard-list"></i> Track Hair</a>
+        <a href="advisor.html" class="nav-pill nav-pill-glow"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
+      </div>
+      <div class="search-engine">
+        <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
+        <button type="submit" class="search-submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tracker Hero -->
+  <section class="tracker-hero hair-tracker-hero">
+    <div class="tracker-hero-inner">
+      <span class="tracker-hero-badge"><i class="fa-solid fa-spa"></i> Hair Ritual</span>
+      <h1>Haircare Tracker</h1>
+      <p>Treat your hair. Watch it flourish.</p>
+    </div>
+    <div class="tracker-streak-bar">
+      <div class="streak-item">
+        <i class="fa-solid fa-droplet"></i>
+        <div class="streak-text">
+          <strong>Wash &amp; Treat</strong>
+          <span>Routines Logged</span>
+        </div>
+      </div>
+      <div class="streak-divider"></div>
+      <div class="streak-item">
+        <i class="fa-solid fa-camera"></i>
+        <div class="streak-text">
+          <strong>Before &amp; After</strong>
+          <span>Photo Comparisons</span>
+        </div>
+      </div>
+      <div class="streak-divider"></div>
+      <div class="streak-item">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <div class="streak-text">
+          <strong>13 Products</strong>
+          <span>Available to Track</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tracker Container -->
+  <div class="tracker-container">
+
+    <!-- Tracker Tabs -->
+    <div class="tracker-tabs">
+      <button class="tab-btn active" data-tab="treatment">
+        <i class="fa-solid fa-spa"></i> <span>Treatment Log</span>
+      </button>
+      <button class="tab-btn" data-tab="history">
+        <i class="fa-solid fa-clock-rotate-left"></i> <span>History</span>
+      </button>
+    </div>
+
+    <!-- Treatment Log Tab -->
+    <div class="tracker-tab-content active" id="treatment-tab">
+      <div class="tracker-form-card">
+        <div class="form-card-header">
+          <div class="form-card-icon hair-icon"><i class="fa-solid fa-spa"></i></div>
+          <div>
+            <h2>Hair Treatment Log</h2>
+            <p class="form-card-subtitle">Document your haircare ritual</p>
+          </div>
+        </div>
+        <form id="treatment-form" class="tracker-form">
+          <div class="form-group">
+            <label for="treatment-date">Date</label>
+            <input type="date" id="treatment-date" name="date" required>
+          </div>
+
+          <div class="form-group">
+            <label>Treatment Type</label>
+            <div class="product-select-grid">
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Hydrating Honey Shampoo">
+                <span class="checkbox-label">
+                  <img src="img/Hair/Deep%20Moisture%20Shampoo.png" alt="Shampoo">
+                  <span>Hydrating Honey Shampoo</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Clarifying Tea Tree Shampoo">
+                <span class="checkbox-label">
+                  <img src="img/Hair/Clarifying%20%20%26%20Hydrating%20Scalp%20Shampoo.png" alt="Shampoo">
+                  <span>Clarifying Tea Tree Shampoo</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Deep Moisture Conditioner">
+                <span class="checkbox-label">
+                  <img src="img/Hair/Deep%20Moisture%20Conditioner.png" alt="Conditioner">
+                  <span>Deep Moisture Conditioner</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Color Protect Conditioner">
+                <span class="checkbox-label">
+                  <img src="img/Hair/Color%20Protect%20Conditioner.png" alt="Conditioner">
+                  <span>Color Protect Conditioner</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="10-in-1 Leave-In Treatment">
+                <span class="checkbox-label">
+                  <img src="img/Hair/10-in-1%20Leave-In%20Treatment.png" alt="Leave-In">
+                  <span>10-in-1 Leave-In Treatment</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Curl Defining Cream">
+                <span class="checkbox-label">
+                  <img src="img/Hair/Curl%20Defining%20Cream.png" alt="Leave-In">
+                  <span>Curl Defining Cream</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Overnight Repair Hair Mask">
+                <span class="checkbox-label">
+                  <img src="img/Hair/Overnight%20Repair%20Hair%20Mask.png" alt="Hair Mask">
+                  <span>Overnight Repair Hair Mask</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Protein Bond Repair Mask">
+                <span class="checkbox-label">
+                  <img src="img/Hair/Protein%20Bond%20Repair%20Mask.png" alt="Hair Mask">
+                  <span>Protein Bond Repair Mask</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Moroccan Argan Hair Oil">
+                <span class="checkbox-label">
+                  <img src="img/Hair/Moroccan%20Argon%20Hair%20Oil.png" alt="Hair Oil">
+                  <span>Moroccan Argan Hair Oil</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Biotin Growth Serum">
+                <span class="checkbox-label">
+                  <img src="img/Hair/Biotin%20Growth%20Serum.png" alt="Hair Serum">
+                  <span>Biotin Growth Serum</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Frizz Control Silk Serum">
+                <span class="checkbox-label">
+                  <img src="img/Hair/Frizz%20Control%20Silk%20Serum.png" alt="Hair Serum">
+                  <span>Frizz Control Silk Serum</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Invisible Dry Shampoo">
+                <span class="checkbox-label">
+                  <img src="img/Hair/Freshen%20Up%20Invisible%20Dry%20Shampoo.png" alt="Dry Shampoo">
+                  <span>Invisible Dry Shampoo</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Volumizing Dry Shampoo Foam">
+                <span class="checkbox-label">
+                  <img src="img/Hair/Style%20%2B%20Treat%20Dry%20Shampoo%20Puff.png" alt="Dry Shampoo">
+                  <span>Volumizing Dry Shampoo Foam</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="treatment-comparison">
+            <div class="treatment-section before">
+              <h4><i class="fa-solid fa-camera"></i> Before Treatment</h4>
+              <div class="image-upload-area" id="before-upload-area">
+                <input type="file" id="before-photo" name="beforePhoto" accept="image/*" class="file-input">
+                <div class="upload-placeholder">
+                  <i class="fa-solid fa-upload"></i>
+                  <p>Upload before photo</p>
+                </div>
+                <img id="before-preview" class="image-preview" style="display: none;">
+              </div>
+            </div>
+            <div class="treatment-section after">
+              <h4><i class="fa-solid fa-wand-magic-sparkles"></i> After Treatment</h4>
+              <div class="image-upload-area" id="after-upload-area">
+                <input type="file" id="after-photo" name="afterPhoto" accept="image/*" class="file-input">
+                <div class="upload-placeholder">
+                  <i class="fa-solid fa-upload"></i>
+                  <p>Upload after photo</p>
+                </div>
+                <img id="after-preview" class="image-preview" style="display: none;">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="treatment-notes">Notes</label>
+            <textarea id="treatment-notes" name="notes" rows="3" placeholder="How does your hair feel after the treatment?"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Save Treatment Log</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- History Tab -->
+    <div class="tracker-tab-content" id="history-tab">
+      <div class="tracker-form-card">
+        <div class="form-card-header">
+          <div class="form-card-icon history-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <div>
+            <h2>Haircare History</h2>
+            <p class="form-card-subtitle">Your haircare journey so far</p>
+          </div>
+        </div>
+        <div class="history-filters">
+          <button class="btn-secondary" id="clear-history">Clear All History</button>
+        </div>
+        <div id="history-entries" class="history-entries">
+          <div class="empty-state">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <p>No entries yet. Start tracking your haircare treatments!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Success Message -->
+  <div class="toast-message" id="toast">
+    <i class="fa-solid fa-check-circle"></i>
+    <span>Entry saved successfully!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Shop</h4>
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </div>
+      <div class="footer-section">
+        <h4>Trackers</h4>
+        <a href="tracker-skincare.html">Skincare Tracker</a>
+        <a href="tracker-haircare.html">Haircare Tracker</a>
+      </div>
+      <div class="footer-section">
+        <h4>Help</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bare Beauty. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

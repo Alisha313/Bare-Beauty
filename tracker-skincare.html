@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skincare Tracker | Bare Beauty</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="top-bar-left"></div>
+      <div class="top-bar-right">
+        <a href="login.html"><i class="fa-solid fa-user"></i> Account</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fa-solid fa-shopping-bag"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+    <div class="navbar">
+      <a href="index.html" class="logo-link">
+        <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
+      </a>
+      <nav class="nav-links">
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </nav>
+      <div class="nav-utilities">
+        <a href="tracker-skincare.html" class="nav-pill active"><i class="fa-solid fa-clipboard-list"></i> Track Skincare</a>
+        <a href="tracker-haircare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Hair</a>
+        <a href="advisor.html" class="nav-pill nav-pill-glow"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
+      </div>
+      <div class="search-engine">
+        <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
+        <button type="submit" class="search-submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tracker Hero -->
+  <section class="tracker-hero skincare-tracker-hero">
+    <div class="tracker-hero-inner">
+      <span class="tracker-hero-badge"><i class="fa-solid fa-leaf"></i> Daily Ritual</span>
+      <h1>Skincare Tracker</h1>
+      <p>Log your routine. Reveal your glow.</p>
+    </div>
+    <div class="tracker-streak-bar">
+      <div class="streak-item">
+        <i class="fa-solid fa-fire-flame-curved"></i>
+        <div class="streak-text">
+          <strong>AM + PM</strong>
+          <span>Sessions Tracked</span>
+        </div>
+      </div>
+      <div class="streak-divider"></div>
+      <div class="streak-item">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <div class="streak-text">
+          <strong>Morning &amp; Evening</strong>
+          <span>Routines Logged</span>
+        </div>
+      </div>
+      <div class="streak-divider"></div>
+      <div class="streak-item">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <div class="streak-text">
+          <strong>Symptoms</strong>
+          <span>Monitored</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tracker Container -->
+  <div class="tracker-container">
+
+    <!-- Tracker Tabs -->
+    <div class="tracker-tabs">
+      <button class="tab-btn active" data-tab="morning">
+        <i class="fa-solid fa-sun"></i> <span>Morning</span>
+      </button>
+      <button class="tab-btn" data-tab="evening">
+        <i class="fa-solid fa-moon"></i> <span>Evening</span>
+      </button>
+      <button class="tab-btn" data-tab="symptoms">
+        <i class="fa-solid fa-heart-pulse"></i> <span>Symptoms</span>
+      </button>
+      <button class="tab-btn" data-tab="history">
+        <i class="fa-solid fa-clock-rotate-left"></i> <span>History</span>
+      </button>
+    </div>
+
+    <!-- Morning Routine Tab -->
+    <div class="tracker-tab-content active" id="morning-tab">
+      <div class="tracker-form-card">
+        <div class="form-card-header">
+          <div class="form-card-icon morning-icon"><i class="fa-solid fa-sun"></i></div>
+          <div>
+            <h2>Morning Skincare Log</h2>
+            <p class="form-card-subtitle">Start your day with intention</p>
+          </div>
+        </div>
+        <form id="morning-form" class="tracker-form">
+          <div class="form-group">
+            <label for="morning-date">Date</label>
+            <input type="date" id="morning-date" name="date" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Products Used (Select multiple)</label>
+            <div class="product-select-grid">
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Gentle Foam Cleanser">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/GentleFoanCleanser.png" alt="Cleanser">
+                  <span>Gentle Foam Cleanser</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Balancing Rose Toner">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/BalancingRoseToner.png" alt="Toner">
+                  <span>Balancing Rose Toner</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Vitamin C Brightening Serum">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/VitaminCBrighteningSerum.png" alt="Serum">
+                  <span>Vitamin C Serum</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Hyaluronic Acid Serum">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/HyaluronicAcidSerum.png" alt="Serum">
+                  <span>Hyaluronic Acid Serum</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="SPF 30 Day Cream">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/SPF30DayCream.png" alt="Moisturizer">
+                  <span>SPF 30 Day Cream</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Revitalizing Eye Cream">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/RevitalizingEyeCream.png" alt="Eye Cream">
+                  <span>Revitalizing Eye Cream</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Upload Morning Skin Photo</label>
+            <div class="image-upload-area" id="morning-upload-area">
+              <input type="file" id="morning-photo" name="photo" accept="image/*" class="file-input">
+              <div class="upload-placeholder">
+                <i class="fa-solid fa-camera"></i>
+                <p>Click or drag to upload photo</p>
+              </div>
+              <img id="morning-preview" class="image-preview" style="display: none;">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="morning-notes">Notes</label>
+            <textarea id="morning-notes" name="notes" rows="3" placeholder="How does your skin feel this morning?"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Save Morning Log</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Evening Routine Tab -->
+    <div class="tracker-tab-content" id="evening-tab">
+      <div class="tracker-form-card">
+        <div class="form-card-header">
+          <div class="form-card-icon evening-icon"><i class="fa-solid fa-moon"></i></div>
+          <div>
+            <h2>Evening Skincare Log</h2>
+            <p class="form-card-subtitle">Wind down and nourish</p>
+          </div>
+        </div>
+        <form id="evening-form" class="tracker-form">
+          <div class="form-group">
+            <label for="evening-date">Date</label>
+            <input type="date" id="evening-date" name="date" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Products Used (Select multiple)</label>
+            <div class="product-select-grid">
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Gentle Foam Cleanser">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/GentleFoanCleanser.png" alt="Cleanser">
+                  <span>Gentle Foam Cleanser</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Oil Control Gel Cleanser">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/OilControlGelCleanser.png" alt="Cleanser">
+                  <span>Oil Control Cleanser</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Balancing Rose Toner">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/BalancingRoseToner.png" alt="Toner">
+                  <span>Balancing Rose Toner</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Niacinamide Pore Toner">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/NiacinamidePoreToner.png" alt="Toner">
+                  <span>Niacinamide Toner</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Retinol Night Serum">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/RetinolNighSerum.png" alt="Serum">
+                  <span>Retinol Night Serum</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Rich Night Cream">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/RichNightCream.png" alt="Night Cream">
+                  <span>Rich Night Cream</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Hydrating Sheet Mask">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/HyfratingSheetMaskSet.png" alt="Mask">
+                  <span>Hydrating Sheet Mask</span>
+                </span>
+              </label>
+              <label class="product-checkbox">
+                <input type="checkbox" name="products" value="Clay Detox Mask">
+                <span class="checkbox-label">
+                  <img src="img/Skincare/ClayDetoxMask.png" alt="Mask">
+                  <span>Clay Detox Mask</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Upload Evening Skin Photo</label>
+            <div class="image-upload-area" id="evening-upload-area">
+              <input type="file" id="evening-photo" name="photo" accept="image/*" class="file-input">
+              <div class="upload-placeholder">
+                <i class="fa-solid fa-camera"></i>
+                <p>Click or drag to upload photo</p>
+              </div>
+              <img id="evening-preview" class="image-preview" style="display: none;">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="evening-notes">Notes</label>
+            <textarea id="evening-notes" name="notes" rows="3" placeholder="How does your skin feel this evening?"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Save Evening Log</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Symptoms Tab -->
+    <div class="tracker-tab-content" id="symptoms-tab">
+      <div class="tracker-form-card">
+        <div class="form-card-header">
+          <div class="form-card-icon symptoms-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div>
+            <h2>Skin Symptoms</h2>
+            <p class="form-card-subtitle">How is your skin feeling today?</p>
+          </div>
+        </div>
+        <form id="symptoms-form" class="tracker-form">
+          <div class="form-group">
+            <label for="symptoms-date">Date</label>
+            <input type="date" id="symptoms-date" name="date" required>
+          </div>
+
+          <div class="form-group">
+            <label>Symptoms Experienced</label>
+            <div class="symptoms-grid">
+              <label class="symptom-checkbox">
+                <input type="checkbox" name="symptoms" value="dryness">
+                <span class="symptom-label">
+                  <i class="fa-solid fa-droplet"></i>
+                  <span>Dryness</span>
+                </span>
+              </label>
+              <label class="symptom-checkbox">
+                <input type="checkbox" name="symptoms" value="oiliness">
+                <span class="symptom-label">
+                  <i class="fa-solid fa-droplet-slash"></i>
+                  <span>Oiliness</span>
+                </span>
+              </label>
+              <label class="symptom-checkbox">
+                <input type="checkbox" name="symptoms" value="redness">
+                <span class="symptom-label">
+                  <i class="fa-solid fa-fire"></i>
+                  <span>Redness</span>
+                </span>
+              </label>
+              <label class="symptom-checkbox">
+                <input type="checkbox" name="symptoms" value="breakouts">
+                <span class="symptom-label">
+                  <i class="fa-solid fa-circle-exclamation"></i>
+                  <span>Breakouts</span>
+                </span>
+              </label>
+              <label class="symptom-checkbox">
+                <input type="checkbox" name="symptoms" value="sensitivity">
+                <span class="symptom-label">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <span>Sensitivity</span>
+                </span>
+              </label>
+              <label class="symptom-checkbox">
+                <input type="checkbox" name="symptoms" value="itching">
+                <span class="symptom-label">
+                  <i class="fa-solid fa-hand-sparkles"></i>
+                  <span>Itching</span>
+                </span>
+              </label>
+              <label class="symptom-checkbox">
+                <input type="checkbox" name="symptoms" value="dark-circles">
+                <span class="symptom-label">
+                  <i class="fa-solid fa-eye-slash"></i>
+                  <span>Dark Circles</span>
+                </span>
+              </label>
+              <label class="symptom-checkbox">
+                <input type="checkbox" name="symptoms" value="puffiness">
+                <span class="symptom-label">
+                  <i class="fa-solid fa-bell"></i>
+                  <span>Puffiness</span>
+                </span>
+              </label>
+              <label class="symptom-checkbox">
+                <input type="checkbox" name="symptoms" value="fine-lines">
+                <span class="symptom-label">
+                  <i class="fa-solid fa-minus"></i>
+                  <span>Fine Lines</span>
+                </span>
+              </label>
+              <label class="symptom-checkbox">
+                <input type="checkbox" name="symptoms" value="none">
+                <span class="symptom-label">
+                  <i class="fa-solid fa-check"></i>
+                  <span>No Symptoms</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Severity Level (1 = Mild, 5 = Severe)</label>
+            <div class="severity-slider">
+              <input type="range" id="severity" name="severity" min="1" max="5" value="1">
+              <div class="severity-labels">
+                <span>Mild</span>
+                <span>Moderate</span>
+                <span>Severe</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="symptoms-notes">Additional Notes</label>
+            <textarea id="symptoms-notes" name="notes" rows="3" placeholder="Describe your skin condition today..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Save Symptoms</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- History Tab -->
+    <div class="tracker-tab-content" id="history-tab">
+      <div class="tracker-form-card">
+        <div class="form-card-header">
+          <div class="form-card-icon history-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <div>
+            <h2>Skincare History</h2>
+            <p class="form-card-subtitle">Your skincare journey so far</p>
+          </div>
+        </div>
+        <div class="history-filters">
+          <select id="history-filter" class="history-select">
+            <option value="all">All Entries</option>
+            <option value="morning">Morning Routines</option>
+            <option value="evening">Evening Routines</option>
+            <option value="symptoms">Symptoms</option>
+          </select>
+          <button class="btn-secondary" id="clear-history">Clear All History</button>
+        </div>
+        <div id="history-entries" class="history-entries">
+          <div class="empty-state">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <p>No entries yet. Start tracking your skincare routine!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Success Message -->
+  <div class="toast-message" id="toast">
+    <i class="fa-solid fa-check-circle"></i>
+    <span>Entry saved successfully!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Shop</h4>
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </div>
+      <div class="footer-section">
+        <h4>Trackers</h4>
+        <a href="tracker-skincare.html">Skincare Tracker</a>
+        <a href="tracker-haircare.html">Haircare Tracker</a>
+      </div>
+      <div class="footer-section">
+        <h4>Help</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bare Beauty. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
