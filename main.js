@@ -488,7 +488,7 @@ const products = {
         category: 'Tinted Moisturizer',
         categoryPage: 'shop-makeup.html',
         price: 34.00,
-        image: 'img/pexels-cottonbro-studio-3997354.jpg',
+        image: 'img/skintint.jpg',
         rating: 5.0,
         reviews: 312,
         description: 'A lightweight tinted moisturizer with SPF 30 and a natural, dewy finish. Buildable coverage for everyday wear.',
@@ -1136,9 +1136,98 @@ function initQuickView() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', initQuickView);
+// Quick View Modal Functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const quickViewBtns = document.querySelectorAll('.quick-view-btn');
 
-// ===== SMOOTH SCROLL FOR REVIEW LINK =====
+  quickViewBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const productCard = btn.closest('.product-card-shop');
+      
+      // Get the image element inside the card
+      const imgElement = productCard.querySelector('.product-image img');
+      
+      if (!imgElement) {
+        console.error("No image found in this product card");
+        return;
+      }
+
+      // getAttribute('src') gets the exact string in the HTML (e.g., "img/file.jpg")
+      // img.src gets the full URL (e.g., "http://localhost.../img/file.jpg")
+      // We generally want the src property for the modal image.
+      const productImageSrc = imgElement.src; 
+      
+      const productName = productCard.querySelector('.product-name').innerText; // use innerText to avoid hidden spacing
+      
+      // Check if price exists, handle sales prices
+      let productPrice = '';
+      const salePrice = productCard.querySelector('.current-price.sale');
+      const regularPrice = productCard.querySelector('.current-price');
+      
+      if (salePrice) {
+        productPrice = salePrice.innerText;
+      } else if (regularPrice) {
+        productPrice = regularPrice.innerText;
+      }
+
+      const productCategory = productCard.querySelector('.product-category').innerText;
+
+      console.log("Opening Quick View:", productName, productImageSrc); // Debug log
+
+      showQuickViewModal(productImageSrc, productName, productCategory, productPrice);
+    });
+  });
+
+  function showQuickViewModal(image, name, category, price) {
+    let modal = document.getElementById('quickViewModal');
+    
+    // Create modal if it doesn't exist
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'quickViewModal';
+      modal.className = 'quick-view-modal';
+      modal.innerHTML = `
+        <div class="quick-view-overlay"></div>
+        <div class="quick-view-content">
+          <button class="quick-view-close">&times;</button>
+          <div class="quick-view-image">
+            <img src="" alt="Product" id="quickViewImage">
+          </div>
+          <div class="quick-view-details">
+            <span class="qv-category"></span>
+            <h2 class="qv-name"></h2>
+            <p class="qv-price"></p>
+            <button class="qv-add-to-cart">Add to Cart</button>
+            <button class="qv-view-details">View Full Details</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      modal.querySelector('.quick-view-close').addEventListener('click', () => {
+        modal.classList.remove('active');
+      });
+      modal.querySelector('.quick-view-overlay').addEventListener('click', () => {
+        modal.classList.remove('active');
+      });
+    }
+
+    // Update content
+    const modalImg = modal.querySelector('#quickViewImage');
+    modalImg.src = image;
+    modalImg.alt = name;
+    
+    modal.querySelector('.qv-name').innerText = name;
+    modal.querySelector('.qv-category').innerText = category;
+    modal.querySelector('.qv-price').innerText = price;
+
+    // Show modal
+    modal.classList.add('active');
+  }
+});
+
+// Smooth scroll for quick view link in reviews
 document.querySelector('.review-count')?.addEventListener('click', (e) => {
     e.preventDefault();
     document.getElementById('reviews')?.scrollIntoView({ behavior: 'smooth' });
