@@ -686,6 +686,165 @@ const products = {
         reviews: 234,
         description: 'A tinted brow gel that adds color and holds brows in place all day. Natural-looking finish.',
         ingredients: ['Castor Oil', 'Vitamin E', 'Panthenol']
+    },
+    
+    // HAIR
+    'shampoo-1': {
+        id: 'shampoo-1',
+        name: 'Hydrating Honey Shampoo',
+        category: 'Shampoo',
+        categoryPage: 'shop-hair.html',
+        price: 28.00,
+        image: 'img/Hair/Deep%20Moisture%20Shampoo.png',
+        rating: 5.0,
+        reviews: 342,
+        description: 'A sulfate-free hydrating shampoo enriched with raw honey and argan oil. Gently cleanses while restoring moisture and shine.',
+        ingredients: ['Raw Honey', 'Argan Oil', 'Aloe Vera', 'Vitamin B5']
+    },
+    'shampoo-2': {
+        id: 'shampoo-2',
+        name: 'Clarifying Tea Tree Shampoo',
+        category: 'Shampoo',
+        categoryPage: 'shop-hair.html',
+        price: 24.00,
+        image: 'img/Hair/Clarifying%20%20%26%20Hydrating%20Scalp%20Shampoo.png',
+        rating: 4.5,
+        reviews: 198,
+        description: 'A deep-cleansing shampoo with tea tree oil that removes buildup and soothes the scalp. Perfect for oily hair.',
+        ingredients: ['Tea Tree Oil', 'Peppermint', 'Salicylic Acid', 'Biotin']
+    },
+    'conditioner-1': {
+        id: 'conditioner-1',
+        name: 'Deep Moisture Conditioner',
+        category: 'Conditioner',
+        categoryPage: 'shop-hair.html',
+        price: 30.00,
+        image: 'img/Hair/Deep%20Moisture%20Conditioner.png',
+        rating: 5.0,
+        reviews: 287,
+        description: 'An ultra-hydrating conditioner that detangles and softens hair. Leaves locks silky smooth without weighing them down.',
+        ingredients: ['Shea Butter', 'Coconut Oil', 'Keratin', 'Vitamin E']
+    },
+    'conditioner-2': {
+        id: 'conditioner-2',
+        name: 'Color Protect Conditioner',
+        category: 'Conditioner',
+        categoryPage: 'shop-hair.html',
+        price: 32.00,
+        originalPrice: 38.00,
+        image: 'img/Hair/Color%20Protect%20Conditioner.png',
+        rating: 4.5,
+        reviews: 156,
+        description: 'A color-safe conditioner that locks in vibrancy while deeply nourishing color-treated hair.',
+        ingredients: ['Quinoa Protein', 'Sunflower Seed Oil', 'Vitamin C', 'UV Filters']
+    },
+    'leave-in-1': {
+        id: 'leave-in-1',
+        name: '10-in-1 Leave-In Treatment',
+        category: 'Leave-In Treatment',
+        categoryPage: 'shop-hair.html',
+        price: 26.00,
+        image: 'img/Hair/10-in-1%20Leave-In%20Treatment.png',
+        rating: 5.0,
+        reviews: 423,
+        description: 'A lightweight leave-in spray that detangles, smooths frizz, adds shine, and protects against heat up to 450°F.',
+        ingredients: ['Argan Oil', 'Silk Amino Acids', 'Heat Protectant Complex', 'Vitamin E']
+    },
+    'leave-in-2': {
+        id: 'leave-in-2',
+        name: 'Curl Defining Cream',
+        category: 'Leave-In Treatment',
+        categoryPage: 'shop-hair.html',
+        price: 24.00,
+        image: 'img/Hair/Curl%20Defining%20Cream.png',
+        rating: 4.5,
+        reviews: 267,
+        description: 'A rich curl-defining cream that enhances natural texture, reduces frizz, and provides all-day hold without crunch.',
+        ingredients: ['Shea Butter', 'Coconut Milk', 'Flaxseed Gel', 'Jojoba Oil']
+    },
+    'hair-mask-1': {
+        id: 'hair-mask-1',
+        name: 'Overnight Repair Hair Mask',
+        category: 'Hair Mask',
+        categoryPage: 'shop-hair.html',
+        price: 36.00,
+        image: 'img/Hair/Overnight%20Repair%20Hair%20Mask.png',
+        rating: 5.0,
+        reviews: 389,
+        description: 'An intensive overnight hair mask that repairs damage, restores elasticity, and transforms dry, brittle hair while you sleep.',
+        ingredients: ['Keratin Complex', 'Avocado Oil', 'Biotin', 'Silk Proteins']
+    },
+    'hair-mask-2': {
+        id: 'hair-mask-2',
+        name: 'Protein Bond Repair Mask',
+        category: 'Hair Mask',
+        categoryPage: 'shop-hair.html',
+        price: 42.00,
+        image: 'img/Hair/Protein%20Bond%20Repair%20Mask.png',
+        rating: 4.5,
+        reviews: 201,
+        description: 'A bond-building treatment mask that reconstructs damaged hair from the inside out. Salon-level results at home.',
+        ingredients: ['Bond Repair Complex', 'Hydrolyzed Protein', 'Ceramides', 'Panthenol']
+    },
+    'hair-oil-1': {
+        id: 'hair-oil-1',
+        name: 'Moroccan Argan Hair Oil',
+        category: 'Hair Oil',
+        categoryPage: 'shop-hair.html',
+        price: 34.00,
+        image: 'img/Hair/Moroccan%20Argon%20Hair%20Oil.png',
+        rating: 5.0,
+        reviews: 512,
+        description: 'A luxurious argan oil that instantly tames frizz, adds brilliant shine, and nourishes without greasy residue.',
+        ingredients: ['100% Pure Argan Oil', 'Vitamin E', 'Essential Fatty Acids']
+    },
+    'hair-serum-1': {
+        id: 'hair-serum-1',
+        name: 'Biotin Growth Serum',
+        category: 'Hair Serum',
+        categoryPage: 'shop-hair.html',
+        price: 38.00,
+        image: 'img/Hair/Biotin%20Growth%20Serum.png',
+        rating: 4.5,
+        reviews: 234,
+        description: 'A targeted scalp serum with biotin and caffeine that stimulates hair growth and reduces thinning.',
+        ingredients: ['Biotin', 'Caffeine', 'Saw Palmetto', 'Niacinamide']
+    },
+    'hair-serum-2': {
+        id: 'hair-serum-2',
+        name: 'Frizz Control Silk Serum',
+        category: 'Hair Serum',
+        categoryPage: 'shop-hair.html',
+        price: 28.00,
+        image: 'img/Hair/Frizz%20Control%20Silk%20Serum.png',
+        rating: 5.0,
+        reviews: 178,
+        description: 'A silicone-free serum that smooths flyaways and adds a glass-like shine. Lightweight enough for daily use.',
+        ingredients: ['Silk Amino Acids', 'Jojoba Oil', 'Vitamin E', 'Rice Bran Extract']
+    },
+    'dry-shampoo-1': {
+        id: 'dry-shampoo-1',
+        name: 'Invisible Dry Shampoo',
+        category: 'Dry Shampoo',
+        categoryPage: 'shop-hair.html',
+        price: 18.00,
+        image: 'img/Hair/Freshen%20Up%20Invisible%20Dry%20Shampoo.png',
+        rating: 5.0,
+        reviews: 567,
+        description: 'A translucent dry shampoo that absorbs excess oil and adds volume without leaving white residue. Works on all hair colors.',
+        ingredients: ['Rice Starch', 'Tapioca Starch', 'Charcoal', 'Essential Oils']
+    },
+    'dry-shampoo-2': {
+        id: 'dry-shampoo-2',
+        name: 'Volumizing Dry Shampoo Foam',
+        category: 'Dry Shampoo',
+        categoryPage: 'shop-hair.html',
+        price: 22.00,
+        image: 'img/Hair/Dry%20Shampoo%20Powder%20for%20Oil%20Control%20%2B%20Volume.png',
+        rating: 4.0,
+        reviews: 145,
+        description: 'A lightweight foam dry shampoo that refreshes roots and adds incredible volume between washes.',
+        ingredients: ['Rice Protein', 'Bamboo Extract', 'Vitamin B5', 'Witch Hazel']
     }
 };
 
@@ -1404,14 +1563,14 @@ document.head.appendChild(style);
 
 // ===== NAVBAR SHRINK ON SCROLL =====
 (function initNavbarShrink() {
-  const navbar = document.querySelector('.navbar');
-  if (!navbar) return;
+  const siteHeader = document.querySelector('.site-header');
+  if (!siteHeader) return;
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 80) {
-      navbar.classList.add('scrolled');
+      siteHeader.classList.add('scrolled');
     } else {
-      navbar.classList.remove('scrolled');
+      siteHeader.classList.remove('scrolled');
     }
   }, { passive: true });
 })();
@@ -1684,4 +1843,362 @@ document.addEventListener('DOMContentLoaded', function() {
       showPopup();
     }, 4000);
   }
+});
+
+// ===== TRACKER FUNCTIONALITY =====
+
+// Image upload preview handler
+function initImageUpload(inputId, previewId, uploadAreaId) {
+  const input = document.getElementById(inputId);
+  const preview = document.getElementById(previewId);
+  const uploadArea = document.getElementById(uploadAreaId);
+  
+  if (!input || !preview) return;
+  
+  input.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        preview.src = e.target.result;
+        preview.style.display = 'block';
+        if (uploadArea) {
+          const placeholder = uploadArea.querySelector('.upload-placeholder');
+          if (placeholder) placeholder.style.display = 'none';
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+}
+
+// Tab switching for trackers
+function initTrackerTabs() {
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tracker-tab-content');
+  
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.dataset.tab;
+      
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+      
+      btn.classList.add('active');
+      document.getElementById(tabId + '-tab').classList.add('active');
+    });
+  });
+}
+
+// Skincare Tracker
+function initSkincareTracker() {
+  if (!document.getElementById('morning-form')) return;
+  
+  // Set today's date as default
+  const today = new Date().toISOString().split('T')[0];
+  const morningDateInput = document.getElementById('morning-date');
+  const eveningDateInput = document.getElementById('evening-date');
+  const symptomsDateInput = document.getElementById('symptoms-date');
+  
+  if (morningDateInput) morningDateInput.value = today;
+  if (eveningDateInput) eveningDateInput.value = today;
+  if (symptomsDateInput) symptomsDateInput.value = today;
+  
+  // Initialize image uploads
+  initImageUpload('morning-photo', 'morning-preview', 'morning-upload-area');
+  initImageUpload('evening-photo', 'evening-preview', 'evening-upload-area');
+  
+  // Tab switching
+  initTrackerTabs();
+  
+  // Morning form submission
+  const morningForm = document.getElementById('morning-form');
+  morningForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(morningForm);
+    const products = formData.getAll('products');
+    const photoFile = document.getElementById('morning-photo').files[0];
+    
+    const entry = {
+      id: Date.now(),
+      type: 'morning',
+      date: formData.get('date'),
+      products: products,
+      notes: formData.get('notes'),
+      photo: photoFile ? awaitFileReader(photoFile) : null,
+      timestamp: new Date().toISOString()
+    };
+    
+    saveSkincareEntry(entry);
+    morningForm.reset();
+    document.getElementById('morning-preview').style.display = 'none';
+    if (morningDateInput) morningDateInput.value = today;
+    showToast();
+  });
+  
+  // Evening form submission
+  const eveningForm = document.getElementById('evening-form');
+  eveningForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(eveningForm);
+    const products = formData.getAll('products');
+    const photoFile = document.getElementById('evening-photo').files[0];
+    
+    const entry = {
+      id: Date.now(),
+      type: 'evening',
+      date: formData.get('date'),
+      products: products,
+      notes: formData.get('notes'),
+      photo: photoFile ? awaitFileReader(photoFile) : null,
+      timestamp: new Date().toISOString()
+    };
+    
+    saveSkincareEntry(entry);
+    eveningForm.reset();
+    document.getElementById('evening-preview').style.display = 'none';
+    if (eveningDateInput) eveningDateInput.value = today;
+    showToast();
+  });
+  
+  // Symptoms form submission
+  const symptomsForm = document.getElementById('symptoms-form');
+  symptomsForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(symptomsForm);
+    const symptoms = formData.getAll('symptoms');
+    
+    const entry = {
+      id: Date.now(),
+      type: 'symptoms',
+      date: formData.get('date'),
+      symptoms: symptoms,
+      severity: formData.get('severity'),
+      notes: formData.get('notes'),
+      timestamp: new Date().toISOString()
+    };
+    
+    saveSkincareEntry(entry);
+    symptomsForm.reset();
+    if (symptomsDateInput) symptomsDateInput.value = today;
+    showToast();
+  });
+  
+  // History filter
+  const historyFilter = document.getElementById('history-filter');
+  historyFilter?.addEventListener('change', () => {
+    loadSkincareHistory(historyFilter.value);
+  });
+  
+  // Clear history
+  const clearHistoryBtn = document.getElementById('clear-history');
+  clearHistoryBtn?.addEventListener('click', () => {
+    if (confirm('Are you sure you want to clear all skincare history?')) {
+      localStorage.removeItem('skincareTracker');
+      loadSkincareHistory('all');
+    }
+  });
+  
+  // Load initial history
+  loadSkincareHistory('all');
+}
+
+// Helper: Read file as data URL
+function awaitFileReader(file) {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = (e) => resolve(e.target.result);
+    reader.readAsDataURL(file);
+  });
+}
+
+// Save skincare entry
+function saveSkincareEntry(entry) {
+  const entries = JSON.parse(localStorage.getItem('skincareTracker') || '[]');
+  entries.push(entry);
+  localStorage.setItem('skincareTracker', JSON.stringify(entries));
+}
+
+// Load and display skincare history
+function loadSkincareHistory(filter = 'all') {
+  const entries = JSON.parse(localStorage.getItem('skincareTracker') || '[]');
+  const container = document.getElementById('history-entries');
+  
+  if (!container) return;
+  
+  let filteredEntries = entries;
+  if (filter !== 'all') {
+    filteredEntries = entries.filter(e => e.type === filter);
+  }
+  
+  filteredEntries.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  
+  if (filteredEntries.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <i class="fa-solid fa-clipboard-list"></i>
+        <p>No entries yet. Start tracking your skincare routine!</p>
+      </div>
+    `;
+    return;
+  }
+  
+  container.innerHTML = filteredEntries.map(entry => {
+    let content = '';
+    
+    if (entry.type === 'symptoms') {
+      const symptomLabels = {
+        'dryness': 'Dryness', 'oiliness': 'Oiliness', 'redness': 'Redness',
+        'breakouts': 'Breakouts', 'sensitivity': 'Sensitivity', 'itching': 'Itching',
+        'dark-circles': 'Dark Circles', 'puffiness': 'Puffiness', 'fine-lines': 'Fine Lines',
+        'none': 'No Symptoms'
+      };
+      content = `
+        <div class="history-entry-products">
+          ${entry.symptoms?.map(s => `<span class="history-product-tag">${symptomLabels[s] || s}</span>`).join('') || ''}
+        </div>
+        <p><strong>Severity:</strong> ${entry.severity || 'N/A'}/5</p>
+      `;
+    } else {
+      content = `
+        <div class="history-entry-products">
+          ${entry.products?.map(p => `<span class="history-product-tag">${p}</span>`).join('') || ''}
+        </div>
+        ${entry.photo ? `<img src="${entry.photo}" class="history-entry-image" alt="Skin photo">` : ''}
+      `;
+    }
+    
+    return `
+      <div class="history-entry ${entry.type}">
+        <div class="history-entry-header">
+          <span class="history-entry-date">${formatDate(entry.date)}</span>
+          <span class="history-entry-type ${entry.type}">${entry.type}</span>
+        </div>
+        ${content}
+        ${entry.notes ? `<p class="history-entry-notes">${entry.notes}</p>` : ''}
+      </div>
+    `;
+  }).join('');
+}
+
+function formatDate(dateStr) {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+// Haircare Tracker
+function initHaircareTracker() {
+  if (!document.getElementById('treatment-form')) return;
+  
+  // Set today's date
+  const today = new Date().toISOString().split('T')[0];
+  const treatmentDateInput = document.getElementById('treatment-date');
+  if (treatmentDateInput) treatmentDateInput.value = today;
+  
+  // Initialize image uploads
+  initImageUpload('before-photo', 'before-preview', 'before-upload-area');
+  initImageUpload('after-photo', 'after-preview', 'after-upload-area');
+  
+  // Tab switching
+  initTrackerTabs();
+  
+  // Treatment form submission
+  const treatmentForm = document.getElementById('treatment-form');
+  treatmentForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(treatmentForm);
+    const products = formData.getAll('products');
+    
+    const beforeFile = document.getElementById('before-photo').files[0];
+    const afterFile = document.getElementById('after-photo').files[0];
+    
+    const entry = {
+      id: Date.now(),
+      type: 'treatment',
+      date: formData.get('date'),
+      products: products,
+      notes: formData.get('notes'),
+      beforePhoto: beforeFile ? awaitFileReader(beforeFile) : null,
+      afterPhoto: afterFile ? awaitFileReader(afterFile) : null,
+      timestamp: new Date().toISOString()
+    };
+    
+    saveHaircareEntry(entry);
+    treatmentForm.reset();
+    document.getElementById('before-preview').style.display = 'none';
+    document.getElementById('after-preview').style.display = 'none';
+    if (treatmentDateInput) treatmentDateInput.value = today;
+    showToast();
+  });
+  
+  // Clear history
+  const clearHistoryBtn = document.getElementById('clear-history');
+  clearHistoryBtn?.addEventListener('click', () => {
+    if (confirm('Are you sure you want to clear all haircare history?')) {
+      localStorage.removeItem('haircareTracker');
+      loadHaircareHistory();
+    }
+  });
+  
+  // Load initial history
+  loadHaircareHistory();
+}
+
+// Save haircare entry
+function saveHaircareEntry(entry) {
+  const entries = JSON.parse(localStorage.getItem('haircareTracker') || '[]');
+  entries.push(entry);
+  localStorage.setItem('haircareTracker', JSON.stringify(entries));
+}
+
+// Load and display haircare history
+function loadHaircareHistory() {
+  const entries = JSON.parse(localStorage.getItem('haircareTracker') || '[]');
+  const container = document.getElementById('history-entries');
+  
+  if (!container) return;
+  
+  entries.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  
+  if (entries.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <i class="fa-solid fa-clipboard-list"></i>
+        <p>No entries yet. Start tracking your haircare treatments!</p>
+      </div>
+    `;
+    return;
+  }
+  
+  container.innerHTML = entries.map(entry => `
+    <div class="history-entry">
+      <div class="history-entry-header">
+        <span class="history-entry-date">${formatDate(entry.date)}</span>
+        <span class="history-entry-type" style="background: #e8f5e9; color: #2e7d32;">Treatment</span>
+      </div>
+      <div class="history-entry-products">
+        ${entry.products?.map(p => `<span class="history-product-tag">${p}</span>`).join('') || ''}
+      </div>
+      <div class="treatment-comparison" style="margin-top: 12px;">
+        ${entry.beforePhoto ? `<div class="treatment-section before"><h4>Before</h4><img src="${entry.beforePhoto}" class="history-entry-image" style="width:100%;height:150px;object-fit:cover;"></div>` : ''}
+        ${entry.afterPhoto ? `<div class="treatment-section after"><h4>After</h4><img src="${entry.afterPhoto}" class="history-entry-image" style="width:100%;height:150px;object-fit:cover;"></div>` : ''}
+      </div>
+      ${entry.notes ? `<p class="history-entry-notes">${entry.notes}</p>` : ''}
+    </div>
+  `).join('');
+}
+
+// Show toast message
+function showToast() {
+  const toast = document.getElementById('toast');
+  if (toast) {
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+}
+
+// Initialize trackers on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+  initSkincareTracker();
+  initHaircareTracker();
 });

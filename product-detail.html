@@ -10,30 +10,40 @@
 <body>
 
   <!-- Navbar Component -->
-  <header class="navbar">
-    <a href="index.html" class="logo-link">
-      <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
-    </a>
-    
-    <div class="search-engine">
-      <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
-      <button type="submit" class="search-submit">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="top-bar-left"></div>
+      <div class="top-bar-right">
+        <a href="login.html"><i class="fa-solid fa-user"></i> Account</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fa-solid fa-shopping-bag"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
     </div>
-
-    <nav class="nav-links">
-      <a href="shop-skincare.html">Skincare</a>
-      <a href="shop-makeup.html">Makeup</a>
-      <a href="shop-tools.html">Tools & Brushes</a>
-      <a href="shop-nails.html">Nails</a>
-      <a href="advisor.html" class="advisor-link"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
-      <a href="login.html" class="login-link"><i class="fa-solid fa-user"></i></a>
-      <a href="cart.html" class="cart-link">
-        <i class="fa-solid fa-shopping-bag"></i>
-        <span class="cart-count">0</span>
+    <div class="navbar">
+      <a href="index.html" class="logo-link">
+        <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
       </a>
-    </nav>
+      <nav class="nav-links">
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </nav>
+      <div class="nav-utilities">
+        <a href="tracker-skincare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Skincare</a>
+        <a href="tracker-haircare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Hair</a>
+        <a href="advisor.html" class="nav-pill nav-pill-glow"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
+      </div>
+      <div class="search-engine">
+        <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
+        <button type="submit" class="search-submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
   </header>
 
   <!-- Breadcrumb -->
@@ -133,6 +143,7 @@
         <h4>Shop</h4>
         <a href="shop-skincare.html">Skincare</a>
         <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
         <a href="shop-tools.html">Tools & Brushes</a>
         <a href="shop-nails.html">Nails</a>
       </div>
@@ -148,14 +159,6 @@
         <a href="#">Our Story</a>
         <a href="#">Ingredients</a>
         <a href="#">Sustainability</a>
-      </div>
-      <div class="footer-section">
-        <h4>Connect</h4>
-        <div class="social-links">
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="#"><i class="fa-brands fa-pinterest"></i></a>
-        </div>
       </div>
     </div>
     <div class="footer-bottom">

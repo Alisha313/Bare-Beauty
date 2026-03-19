@@ -10,30 +10,40 @@
 
 <body>
 
-  <header class="navbar">
-    <a href="index.html" class="logo-link">
-      <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
-    </a>
-    
-    <div class="search-engine">
-      <input type="text" placeholder="Search for products" class="search-input">
-      <button type="submit" class="search-submit">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="top-bar-left"></div>
+      <div class="top-bar-right">
+        <a href="login.html"><i class="fa-solid fa-user"></i> Account</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fa-solid fa-shopping-bag"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
     </div>
-
-    <nav class="nav-links">
-      <a href="shop-skincare.html">Skincare</a>
-      <a href="shop-makeup.html">Makeup</a>
-      <a href="shop-tools.html">Tools & Brushes</a>
-      <a href="shop-nails.html">Nails</a>
-      <a href="advisor.html" class="advisor-link"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
-      <a href="login.html" class="login-link"><i class="fa-solid fa-user"></i></a>
-      <a href="cart.html" class="cart-link">
-        <i class="fa-solid fa-shopping-bag"></i>
-        <span class="cart-count">0</span>
+    <div class="navbar">
+      <a href="index.html" class="logo-link">
+        <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
       </a>
-    </nav>
+      <nav class="nav-links">
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </nav>
+      <div class="nav-utilities">
+        <a href="tracker-skincare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Skincare</a>
+        <a href="tracker-haircare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Hair</a>
+        <a href="advisor.html" class="nav-pill nav-pill-glow"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
+      </div>
+      <div class="search-engine">
+        <input type="text" placeholder="Search for products" class="search-input">
+        <button type="submit" class="search-submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
   </header> 
 
   <section class="hero home-hero">
@@ -151,6 +161,45 @@
       </div>
     </div>
 
+    <!-- Hair -->
+    <div class="category-row">
+      <h4><a href="shop-hair.html">Hair <i class="fa-solid fa-arrow-right"></i></a></h4>
+      <div class="category-showcase home-showcase">
+        <a href="shop-hair.html" class="category-card">
+          <img src="img/Hair/Deep%20Moisture%20Shampoo.png" alt="Shampoo">
+          <div class="category-card-icon"><i class="fa-solid fa-pump-soap"></i></div>
+          <div class="category-card-overlay">
+            <h5>Shampoo</h5>
+            <span>Clean & Refresh</span>
+          </div>
+        </a>
+        <a href="shop-hair.html" class="category-card">
+          <img src="img/Hair/Deep%20Moisture%20Conditioner.png" alt="Conditioner">
+          <div class="category-card-icon"><i class="fa-solid fa-droplet"></i></div>
+          <div class="category-card-overlay">
+            <h5>Conditioner</h5>
+            <span>Deep Moisture</span>
+          </div>
+        </a>
+        <a href="shop-hair.html" class="category-card">
+          <img src="img/Hair/Moroccan%20Argon%20Hair%20Oil.png" alt="Hair Oil">
+          <div class="category-card-icon"><i class="fa-solid fa-bottle-droplet"></i></div>
+          <div class="category-card-overlay">
+            <h5>Hair Oil</h5>
+            <span>Shine & Nourish</span>
+          </div>
+        </a>
+        <a href="shop-hair.html" class="category-card">
+          <img src="img/Hair/Overnight%20Repair%20Hair%20Mask.png" alt="Treatments">
+          <div class="category-card-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <div class="category-card-overlay">
+            <h5>Treatments</h5>
+            <span>Repair & Protect</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
     <!-- Tools & Brushes -->
     <div class="category-row">
       <h4><a href="shop-tools.html">Tools & Brushes <i class="fa-solid fa-arrow-right"></i></a></h4>
@@ -236,37 +285,6 @@
 
   <section class="featured">
     <h3>Featured Products</h3>
-<<<<<<< HEAD
-
-      <div class="product-grid">
-        <div class="product-card">
-        <div class="product-image">
-        <img src="img/hair-oil.jpeg" alt="Hair Oil">
-      </div>
-      <div class="product-content">
-        <p class="category">Hair Care</p>
-        <h3 class="product-name">Hair Oil</h3>
-      </div>
-    </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="img/blush.jpeg" alt="Blush">
-        </div>
-        <div class="product-content">
-          <p class="category">Makeup</p>
-          <h3 class="product-name">Blush</h3>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="img/moisturizer.jpeg" alt="Moisturizer">
-        </div>
-        <div class="product-content">
-          <p class="category">Skincare</p>
-          <h3 class="product-name">Moisturizer</h3>
-=======
     <p class="featured-subtitle">Hand-picked favorites our community can't stop raving about</p>
     <div class="product-grid home-product-grid">
 
@@ -337,7 +355,6 @@
             <span class="price-original">$28.99</span>
           </div>
           <a href="shop-skincare.html" class="home-product-btn">View Product</a>
->>>>>>> bf2d5c68992a9ceba35ace52b25a3727efd0ea87
         </div>
       </div>
 
@@ -477,6 +494,7 @@
         <h4>Shop</h4>
         <a href="shop-skincare.html">Skincare</a>
         <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
         <a href="shop-tools.html">Tools & Brushes</a>
         <a href="shop-nails.html">Nails</a>
       </div>
@@ -486,15 +504,6 @@
         <a href="#">Shipping</a>
         <a href="#">Returns</a>
         <a href="#">FAQ</a>
-      </div>
-      <div class="footer-section">
-        <h4>Follow Us</h4>
-        <div class="social-links">
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-        </div>
       </div>
     </div>
     <div class="footer-bottom">

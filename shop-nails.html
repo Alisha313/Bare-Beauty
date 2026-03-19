@@ -10,30 +10,40 @@
 <body>
 
   <!-- Navbar Component -->
-  <header class="navbar">
-    <a href="index.html" class="logo-link">
-      <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
-    </a>
-    
-    <div class="search-engine">
-      <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
-      <button type="submit" class="search-submit">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="top-bar-left"></div>
+      <div class="top-bar-right">
+        <a href="login.html"><i class="fa-solid fa-user"></i> Account</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fa-solid fa-shopping-bag"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
     </div>
-
-    <nav class="nav-links">
-      <a href="shop-skincare.html">Skincare</a>
-      <a href="shop-makeup.html">Makeup</a>
-      <a href="shop-tools.html">Tools & Brushes</a>
-      <a href="shop-nails.html" class="active">Nails</a>
-      <a href="advisor.html" class="advisor-link"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
-      <a href="login.html" class="login-link"><i class="fa-solid fa-user"></i></a>
-      <a href="cart.html" class="cart-link">
-        <i class="fa-solid fa-shopping-bag"></i>
-        <span class="cart-count">0</span>
+    <div class="navbar">
+      <a href="index.html" class="logo-link">
+        <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
       </a>
-    </nav>
+      <nav class="nav-links">
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html" class="active">Nails</a>
+      </nav>
+      <div class="nav-utilities">
+        <a href="tracker-skincare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Skincare</a>
+        <a href="tracker-haircare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Hair</a>
+        <a href="advisor.html" class="nav-pill nav-pill-glow"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
+      </div>
+      <div class="search-engine">
+        <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
+        <button type="submit" class="search-submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
   </header>
 
   <!-- Page Header -->
@@ -47,101 +57,83 @@
     
     <!-- Filters Sidebar -->
     <aside class="filters-sidebar">
+
       <div class="filter-header">
-        <h3>Filters</h3>
-        <button class="clear-filters">Clear All</button>
+        <div class="filter-header-left">
+          <div class="filter-header-icon"><i class="fa-solid fa-sliders"></i></div>
+          <div>
+            <h3>Refine</h3>
+            <span class="filter-subtitle">Find your perfect match</span>
+          </div>
+        </div>
+        <button class="clear-filters" id="clearFilters">Clear All</button>
       </div>
 
       <!-- Category Filter -->
       <div class="filter-group">
-        <h4>Category</h4>
-        <label class="filter-option">
-          <input type="checkbox" name="category" value="press-ons"> Press-on Nails
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="category" value="nail-care"> Nail Care
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="category" value="nail-art"> Nail Art
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="category" value="tools"> Nail Tools
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-tag"></i> Category</div>
+        <div class="filter-chip-grid">
+          <label class="filter-chip"><input type="checkbox" name="category" value="press-ons"><span><i class="fa-solid fa-hand"></i> Press-ons</span></label>
+          <label class="filter-chip"><input type="checkbox" name="category" value="nail-care"><span><i class="fa-solid fa-spa"></i> Nail Care</span></label>
+          <label class="filter-chip"><input type="checkbox" name="category" value="nail-art"><span><i class="fa-solid fa-paintbrush"></i> Nail Art</span></label>
+          <label class="filter-chip"><input type="checkbox" name="category" value="tools"><span><i class="fa-solid fa-screwdriver-wrench"></i> Nail Tools</span></label>
+        </div>
       </div>
+
+      <div class="filter-divider"></div>
 
       <!-- Style Filter -->
       <div class="filter-group">
-        <h4>Style</h4>
-        <label class="filter-option">
-          <input type="checkbox" name="style" value="french"> French Tips
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="style" value="solid"> Solid Colors
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="style" value="glitter"> Glitter & Shimmer
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="style" value="artistic"> Artistic Designs
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="style" value="minimalist"> Minimalist
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Style</div>
+        <div class="filter-chip-grid">
+          <label class="filter-chip"><input type="checkbox" name="style" value="french"><span>French Tips</span></label>
+          <label class="filter-chip"><input type="checkbox" name="style" value="solid"><span>Solid Colors</span></label>
+          <label class="filter-chip"><input type="checkbox" name="style" value="glitter"><span>Glitter ✨</span></label>
+          <label class="filter-chip"><input type="checkbox" name="style" value="artistic"><span>Artistic</span></label>
+          <label class="filter-chip"><input type="checkbox" name="style" value="minimalist"><span>Minimalist</span></label>
+        </div>
       </div>
+
+      <div class="filter-divider"></div>
 
       <!-- Shape Filter -->
       <div class="filter-group">
-        <h4>Nail Shape</h4>
-        <label class="filter-option">
-          <input type="checkbox" name="shape" value="almond"> Almond
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="shape" value="coffin"> Coffin/Ballerina
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="shape" value="square"> Square
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="shape" value="oval"> Oval
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="shape" value="stiletto"> Stiletto
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-shapes"></i> Nail Shape</div>
+        <div class="filter-type-cards">
+          <label class="filter-type-card"><input type="checkbox" name="shape" value="almond"><span class="type-icon">🌰</span><span class="type-name">Almond</span></label>
+          <label class="filter-type-card"><input type="checkbox" name="shape" value="coffin"><span class="type-icon">🩰</span><span class="type-name">Coffin</span></label>
+          <label class="filter-type-card"><input type="checkbox" name="shape" value="square"><span class="type-icon">⬜</span><span class="type-name">Square</span></label>
+          <label class="filter-type-card"><input type="checkbox" name="shape" value="oval"><span class="type-icon">🥚</span><span class="type-name">Oval</span></label>
+          <label class="filter-type-card filter-type-card-wide"><input type="checkbox" name="shape" value="stiletto"><span class="type-icon">💅</span><span class="type-name">Stiletto</span></label>
+        </div>
       </div>
+
+      <div class="filter-divider"></div>
 
       <!-- Length Filter -->
       <div class="filter-group">
-        <h4>Length</h4>
-        <label class="filter-option">
-          <input type="checkbox" name="length" value="short"> Short
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="length" value="medium"> Medium
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="length" value="long"> Long
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="length" value="extra-long"> Extra Long
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-ruler"></i> Length</div>
+        <div class="filter-price-pills">
+          <label class="filter-price-pill"><input type="checkbox" name="length" value="short"><span>Short</span></label>
+          <label class="filter-price-pill"><input type="checkbox" name="length" value="medium"><span>Medium</span></label>
+          <label class="filter-price-pill"><input type="checkbox" name="length" value="long"><span>Long</span></label>
+          <label class="filter-price-pill"><input type="checkbox" name="length" value="extra-long"><span>XL</span></label>
+        </div>
       </div>
+
+      <div class="filter-divider"></div>
 
       <!-- Price Range Filter -->
       <div class="filter-group">
-        <h4>Price Range</h4>
-        <label class="filter-option">
-          <input type="checkbox" name="price" value="under-15"> Under $15
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="price" value="15-25"> $15 - $25
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="price" value="25-40"> $25 - $40
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="price" value="over-40"> $40+
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-dollar-sign"></i> Price Range</div>
+        <div class="filter-price-pills">
+          <label class="filter-price-pill"><input type="checkbox" name="price" value="under-15"><span>Under $15</span></label>
+          <label class="filter-price-pill"><input type="checkbox" name="price" value="15-25"><span>$15 – $25</span></label>
+          <label class="filter-price-pill"><input type="checkbox" name="price" value="25-40"><span>$25 – $40</span></label>
+          <label class="filter-price-pill"><input type="checkbox" name="price" value="over-40"><span>$40+</span></label>
+        </div>
       </div>
+
     </aside>
 
     <!-- Products Grid -->
@@ -535,6 +527,7 @@
         <h4>Shop</h4>
         <a href="shop-skincare.html">Skincare</a>
         <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
         <a href="shop-tools.html">Tools & Brushes</a>
         <a href="shop-nails.html">Nails</a>
       </div>
@@ -550,14 +543,6 @@
         <a href="#">Our Story</a>
         <a href="#">Ingredients</a>
         <a href="#">Sustainability</a>
-      </div>
-      <div class="footer-section">
-        <h4>Connect</h4>
-        <div class="social-links">
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="#"><i class="fa-brands fa-pinterest"></i></a>
-        </div>
       </div>
     </div>
     <div class="footer-bottom">

@@ -10,30 +10,40 @@
 <body>
 
   <!-- Navbar Component -->
-  <header class="navbar">
-    <a href="index.html" class="logo-link">
-      <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
-    </a>
-    
-    <div class="search-engine">
-      <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
-      <button type="submit" class="search-submit">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="top-bar-left"></div>
+      <div class="top-bar-right">
+        <a href="login.html"><i class="fa-solid fa-user"></i> Account</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fa-solid fa-shopping-bag"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
     </div>
-
-    <nav class="nav-links">
-      <a href="shop-skincare.html">Skincare</a>
-      <a href="shop-makeup.html" class="active">Makeup</a>
-      <a href="shop-tools.html">Tools & Brushes</a>
-      <a href="shop-nails.html">Nails</a>
-      <a href="advisor.html" class="advisor-link"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
-      <a href="login.html" class="login-link"><i class="fa-solid fa-user"></i></a>
-      <a href="cart.html" class="cart-link">
-        <i class="fa-solid fa-shopping-bag"></i>
-        <span class="cart-count">0</span>
+    <div class="navbar">
+      <a href="index.html" class="logo-link">
+        <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
       </a>
-    </nav>
+      <nav class="nav-links">
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html" class="active">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </nav>
+      <div class="nav-utilities">
+        <a href="tracker-skincare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Skincare</a>
+        <a href="tracker-haircare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Hair</a>
+        <a href="advisor.html" class="nav-pill nav-pill-glow"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
+      </div>
+      <div class="search-engine">
+        <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
+        <button type="submit" class="search-submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
   </header>
 
   <!-- Page Header -->
@@ -47,128 +57,91 @@
     
     <!-- Filters Sidebar -->
     <aside class="filters-sidebar">
+
       <div class="filter-header">
-        <h3>Filters</h3>
-        <button class="clear-filters">Clear All</button>
+        <div class="filter-header-left">
+          <div class="filter-header-icon"><i class="fa-solid fa-sliders"></i></div>
+          <div>
+            <h3>Refine</h3>
+            <span class="filter-subtitle">Find your perfect match</span>
+          </div>
+        </div>
+        <button class="clear-filters" id="clearFilters">Clear All</button>
       </div>
 
-      <!-- Main Category Filter -->
+      <!-- Category Filter -->
       <div class="filter-group">
-        <h4>Category</h4>
-        <label class="filter-option filter-category-header">
-          <input type="checkbox" name="category" value="face"> <strong>Face</strong>
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="tinted-moisturizer"> Tinted Moisturizer
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="concealer"> Concealer
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="primer"> Primer
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="blush"> Blush
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="highlighter"> Highlighter
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="makeup-remover"> Makeup Remover
-        </label>
-        
-        <label class="filter-option filter-category-header">
-          <input type="checkbox" name="category" value="lips"> <strong>Lips</strong>
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="lip-gloss"> Lip Gloss
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="lip-plumper"> Lip Plumper
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="lip-balm"> Lip Balms & Treatments
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="lip-liner"> Lip Liners
-        </label>
-        
-        <label class="filter-option filter-category-header">
-          <input type="checkbox" name="category" value="eyes"> <strong>Eyes</strong>
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="mascara"> Mascara
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="eyeliner"> Eyeliner
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="eyebrows"> Eyebrows
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="eyelashes"> Eyelashes
-        </label>
-        <label class="filter-option filter-subcategory">
-          <input type="checkbox" name="subcategory" value="eyeshadow"> Eyeshadow Palettes
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-tag"></i> Category</div>
+
+        <div class="filter-group-sublabel">Face</div>
+        <div class="filter-chip-grid" style="margin-bottom:10px;">
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="tinted-moisturizer"><span>Tinted Moisturizer</span></label>
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="concealer"><span>Concealer</span></label>
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="primer"><span>Primer</span></label>
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="blush"><span>Blush</span></label>
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="highlighter"><span>Highlighter</span></label>
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="makeup-remover"><span>Makeup Remover</span></label>
+        </div>
+
+        <div class="filter-group-sublabel">Lips</div>
+        <div class="filter-chip-grid" style="margin-bottom:10px;">
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="lip-gloss"><span>Lip Gloss</span></label>
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="lip-plumper"><span>Lip Plumper</span></label>
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="lip-balm"><span>Lip Balm</span></label>
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="lip-liner"><span>Lip Liner</span></label>
+        </div>
+
+        <div class="filter-group-sublabel">Eyes</div>
+        <div class="filter-chip-grid">
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="mascara"><span>Mascara</span></label>
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="eyeliner"><span>Eyeliner</span></label>
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="eyebrows"><span>Eyebrows</span></label>
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="eyelashes"><span>Eyelashes</span></label>
+          <label class="filter-chip"><input type="checkbox" name="subcategory" value="eyeshadow"><span>Eyeshadow</span></label>
+        </div>
       </div>
+
+      <div class="filter-divider"></div>
 
       <!-- Skin Tone Filter -->
       <div class="filter-group">
-        <h4>Skin Tone</h4>
-        <label class="filter-option">
-          <input type="checkbox" name="skin-tone" value="fair"> Fair
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="skin-tone" value="light"> Light
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="skin-tone" value="medium"> Medium
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="skin-tone" value="tan"> Tan
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="skin-tone" value="deep"> Deep
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-palette"></i> Skin Tone</div>
+        <div class="filter-tone-swatches">
+          <label class="filter-tone-swatch" title="Fair"><input type="checkbox" name="skin-tone" value="fair"><span style="background:#f5d5c8;"></span><small>Fair</small></label>
+          <label class="filter-tone-swatch" title="Light"><input type="checkbox" name="skin-tone" value="light"><span style="background:#e8c4a8;"></span><small>Light</small></label>
+          <label class="filter-tone-swatch" title="Medium"><input type="checkbox" name="skin-tone" value="medium"><span style="background:#c9a077;"></span><small>Medium</small></label>
+          <label class="filter-tone-swatch" title="Tan"><input type="checkbox" name="skin-tone" value="tan"><span style="background:#a67c52;"></span><small>Tan</small></label>
+          <label class="filter-tone-swatch" title="Deep"><input type="checkbox" name="skin-tone" value="deep"><span style="background:#6b4423;"></span><small>Deep</small></label>
+        </div>
       </div>
+
+      <div class="filter-divider"></div>
 
       <!-- Finish Filter -->
       <div class="filter-group">
-        <h4>Finish</h4>
-        <label class="filter-option">
-          <input type="checkbox" name="finish" value="matte"> Matte
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="finish" value="dewy"> Dewy
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="finish" value="satin"> Satin
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="finish" value="shimmer"> Shimmer
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="finish" value="natural"> Natural
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Finish</div>
+        <div class="filter-chip-grid">
+          <label class="filter-chip"><input type="checkbox" name="finish" value="matte"><span>Matte</span></label>
+          <label class="filter-chip"><input type="checkbox" name="finish" value="dewy"><span>Dewy</span></label>
+          <label class="filter-chip"><input type="checkbox" name="finish" value="satin"><span>Satin</span></label>
+          <label class="filter-chip"><input type="checkbox" name="finish" value="shimmer"><span>Shimmer</span></label>
+          <label class="filter-chip"><input type="checkbox" name="finish" value="natural"><span>Natural</span></label>
+        </div>
       </div>
+
+      <div class="filter-divider"></div>
 
       <!-- Price Range Filter -->
       <div class="filter-group">
-        <h4>Price Range</h4>
-        <label class="filter-option">
-          <input type="checkbox" name="price" value="under-15"> Under $15
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="price" value="15-25"> $15 - $25
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="price" value="25-40"> $25 - $40
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" name="price" value="over-40"> $40+
-        </label>
+        <div class="filter-group-label"><i class="fa-solid fa-dollar-sign"></i> Price Range</div>
+        <div class="filter-price-pills">
+          <label class="filter-price-pill"><input type="checkbox" name="price" value="under-15"><span>Under $15</span></label>
+          <label class="filter-price-pill"><input type="checkbox" name="price" value="15-25"><span>$15 – $25</span></label>
+          <label class="filter-price-pill"><input type="checkbox" name="price" value="25-40"><span>$25 – $40</span></label>
+          <label class="filter-price-pill"><input type="checkbox" name="price" value="over-40"><span>$40+</span></label>
+        </div>
       </div>
+
     </aside>
 
     <!-- Products Grid -->
@@ -710,6 +683,7 @@
         <h4>Shop</h4>
         <a href="shop-skincare.html">Skincare</a>
         <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
         <a href="shop-tools.html">Tools & Brushes</a>
         <a href="shop-nails.html">Nails</a>
       </div>
@@ -725,14 +699,6 @@
         <a href="#">Our Story</a>
         <a href="#">Ingredients</a>
         <a href="#">Sustainability</a>
-      </div>
-      <div class="footer-section">
-        <h4>Connect</h4>
-        <div class="social-links">
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-          <a href="#"><i class="fa-brands fa-pinterest"></i></a>
-        </div>
       </div>
     </div>
     <div class="footer-bottom">

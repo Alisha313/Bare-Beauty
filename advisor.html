@@ -10,48 +10,70 @@
 <body>
 
   <!-- Navbar Component -->
-  <header class="navbar">
-    <a href="index.html" class="logo-link">
-      <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
-    </a>
-    
-    <div class="search-engine">
-      <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
-      <button type="submit" class="search-submit">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
+  <header class="site-header">
+    <div class="top-bar">
+      <div class="top-bar-left"></div>
+      <div class="top-bar-right">
+        <a href="login.html"><i class="fa-solid fa-user"></i> Account</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fa-solid fa-shopping-bag"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
     </div>
-
-    <nav class="nav-links">
-      <a href="shop-skincare.html">Skincare</a>
-      <a href="shop-makeup.html">Makeup</a>
-      <a href="shop-tools.html">Tools & Brushes</a>
-      <a href="shop-nails.html">Nails</a>
-      <a href="advisor.html" class="active advisor-link"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>      <a href="login.html" class="login-link"><i class="fa-solid fa-user"></i></a>      <a href="cart.html" class="cart-link">
-        <i class="fa-solid fa-shopping-bag"></i>
-        <span class="cart-count">0</span>
+    <div class="navbar">
+      <a href="index.html" class="logo-link">
+        <img src="img/logo.png" alt="Bare Beauty Logo" class="site-logo">
       </a>
-    </nav>
+      <nav class="nav-links">
+        <a href="shop-skincare.html">Skincare</a>
+        <a href="shop-makeup.html">Makeup</a>
+        <a href="shop-hair.html">Hair</a>
+        <a href="shop-tools.html">Tools & Brushes</a>
+        <a href="shop-nails.html">Nails</a>
+      </nav>
+      <div class="nav-utilities">
+        <a href="tracker-skincare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Skincare</a>
+        <a href="tracker-haircare.html" class="nav-pill"><i class="fa-solid fa-clipboard-list"></i> Track Hair</a>
+        <a href="advisor.html" class="nav-pill nav-pill-glow active"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
+      </div>
+      <div class="search-engine">
+        <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
+        <button type="submit" class="search-submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <!-- Page Header -->
+  <!-- Advisor Hero -->
   <section class="advisor-hero">
-    <div class="advisor-hero-content">
-      <h1><i class="fa-solid fa-sparkles"></i> AI Beauty Advisor</h1>
-      <p>Get personalized skincare and makeup recommendations tailored to your unique features</p>
+    <div class="advisor-hero-glow"></div>
+    <div class="advisor-hero-inner">
+      <div class="advisor-hero-badge">
+        <span class="advisor-pulse-dot"></span> AI-Powered Analysis
+      </div>
+      <h1>Your Personal<br>Beauty Advisor</h1>
+      <p>Analyze your skin and get expert recommendations <br>tailored to your unique beauty profile</p>
+      <div class="advisor-hero-features">
+        <div class="advisor-feature-chip"><i class="fa-solid fa-shield-halved"></i> Privacy First</div>
+        <div class="advisor-feature-chip"><i class="fa-solid fa-bolt"></i> Instant Results</div>
+        <div class="advisor-feature-chip"><i class="fa-solid fa-wand-magic-sparkles"></i> Expert-Curated</div>
+      </div>
     </div>
   </section>
 
   <!-- Main Advisor Container -->
   <div class="advisor-container">
-    
+
     <!-- Step 1: Camera/Analysis Section -->
     <section class="advisor-step" id="step-camera">
-      <div class="step-header">
-        <span class="step-number">1</span>
-        <h2>Analyze Your Skin</h2>
-        <p>Use your camera for instant analysis or tell us about your skin</p>
-      </div>
+      <div class="advisor-card">
+        <div class="step-header">
+          <div class="step-badge"><span>01</span> Analyze</div>
+          <h2>Discover Your Skin Profile</h2>
+          <p>Use your camera for instant AI analysis, or fill in your details manually</p>
+        </div>
 
       <div class="analysis-options">
         <!-- Camera Option -->
@@ -195,15 +217,17 @@
           </button>
         </div>
       </div>
+      </div><!-- close advisor-card -->
     </section>
 
     <!-- Step 2: Analysis Results -->
     <section class="advisor-step hidden" id="step-results">
-      <div class="step-header">
-        <span class="step-number">2</span>
-        <h2>Your Skin Analysis</h2>
-        <p>Based on our analysis, here's what we found</p>
-      </div>
+      <div class="advisor-card">
+        <div class="step-header">
+          <div class="step-badge"><span>02</span> Results</div>
+          <h2>Your Skin Analysis</h2>
+          <p>Based on our analysis, here's what we found</p>
+        </div>
 
       <div class="analysis-results">
         <div class="result-card">
@@ -233,15 +257,17 @@
       <button class="advisor-btn outline" id="reanalyzeBtn">
         <i class="fa-solid fa-arrow-left"></i> Start Over
       </button>
+      </div><!-- close advisor-card -->
     </section>
 
     <!-- Step 3: Recommendations -->
     <section class="advisor-step hidden" id="step-recommendations">
-      <div class="step-header">
-        <span class="step-number">3</span>
-        <h2>Your Personalized Recommendations</h2>
-        <p>Products hand-picked for your unique skin needs</p>
-      </div>
+      <div class="advisor-card">
+        <div class="step-header">
+          <div class="step-badge"><span>03</span> Picks</div>
+          <h2>Your Personalized Recommendations</h2>
+          <p>Products hand-picked for your unique skin needs</p>
+        </div>
 
       <!-- Skincare Routine -->
       <div class="recommendation-section">
@@ -278,11 +304,12 @@
           <!-- Populated by JS -->
         </div>
       </div>
+      </div><!-- close advisor-card -->
     </section>
 
     <!-- Feedback Section -->
     <section class="advisor-step hidden" id="step-feedback">
-      <div class="feedback-card">
+      <div class="advisor-card feedback-card">
         <h3><i class="fa-solid fa-star"></i> How Did We Do?</h3>
         <p>Help us improve your recommendations</p>
         <div class="star-rating" id="feedbackRating">
