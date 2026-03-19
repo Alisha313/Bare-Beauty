@@ -4229,11 +4229,11 @@ h1, h2, h3, h4, h5, h6 {
 
 /* hair header */
 .header-hair {
-  background: linear-gradient(rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.12)),
-              url('img/hair-oil.jpeg');
+  background: url('img/hair.png');
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
+  background-attachment: scroll;
 }
 
 .page-header::before {
