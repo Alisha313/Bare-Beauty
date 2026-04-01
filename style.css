@@ -6976,3 +6976,262 @@ body {
     flex-direction: column;
   }
 }
+
+
+/* ===== TRACKER REDESIGN (Advisor-Style) ===== */
+
+/* --- Outer wrapper --- */
+.tracker-advisor-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 48px 40px 80px;
+}
+
+/* --- Tabs flush against card top --- */
+.tracker-advisor-wrap .tracker-tabs {
+  display: flex;
+  gap: 0;
+  background: #f4ede6;
+  border-radius: 20px 20px 0 0;
+  padding: 8px 8px 0;
+  box-shadow: none;
+  border: 1px solid #e8ddd3;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.tracker-advisor-wrap .tab-btn {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 14px 14px 0 0;
+  background: transparent;
+  color: #8c7959;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+  white-space: nowrap;
+  box-shadow: none;
+}
+
+.tracker-advisor-wrap .tab-btn:hover {
+  background: rgba(255,255,255,0.5);
+  color: #5c4a38;
+}
+
+.tracker-advisor-wrap .tab-btn.active {
+  background: white;
+  color: #5c4a38;
+  box-shadow: none;
+  border-bottom: 3px solid #8c7959;
+}
+
+/* --- Card connected to tabs (no top radius/border) --- */
+.tracker-advisor-wrap .advisor-card {
+  border-radius: 0 0 24px 24px;
+  border-top: none;
+  padding: 40px 48px;
+  margin-bottom: 0;
+}
+
+/* --- Step header less heavy inside tracker --- */
+.tracker-advisor-wrap .step-header {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+}
+
+/* --- analysis-options inside tracker needs full width --- */
+.tracker-advisor-wrap .analysis-options {
+  grid-template-columns: 460px auto 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* --- manual-section inside tracker: clean, no double card --- */
+.tracker-advisor-wrap .manual-section {
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.tracker-advisor-wrap .manual-section h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: #5c4a38;
+  margin: 0 0 24px;
+  text-align: left;
+  font-weight: 600;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e8ddd3;
+}
+
+/* --- Form inputs inside tracker --- */
+.tracker-input,
+.tracker-advisor-wrap .manual-section textarea,
+.tracker-advisor-wrap .manual-section select,
+.tracker-advisor-wrap .tracker-form input[type="date"] {
+  width: 100%;
+  padding: 11px 15px;
+  border: 1.5px solid #e8ddd3;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: #3d2b1f;
+  background: #faf8f5;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.tracker-input:focus,
+.tracker-advisor-wrap .manual-section textarea:focus,
+.tracker-advisor-wrap .tracker-form input[type="date"]:focus {
+  outline: none;
+  border-color: #b39b7d;
+}
+
+.tracker-advisor-wrap .manual-section textarea {
+  resize: vertical;
+  width: 100%;
+}
+
+/* --- input-group spacing inside tracker --- */
+.tracker-advisor-wrap .input-group {
+  margin-bottom: 22px;
+}
+
+/* --- Product grid: narrower columns inside form column --- */
+.tracker-advisor-wrap .product-select-grid {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.tracker-advisor-wrap .checkbox-label {
+  padding: 8px;
+}
+
+.tracker-advisor-wrap .checkbox-label img {
+  width: 52px;
+  height: 52px;
+}
+
+.tracker-advisor-wrap .checkbox-label span {
+  font-size: 10px;
+}
+
+/* --- Concerns grid (2 col) --- */
+.tracker-concerns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.tracker-concerns-grid .checkbox-option {
+  gap: 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  padding: 10px 14px;
+}
+
+.tracker-concerns-grid .checkbox-option i {
+  color: #b39b7d;
+  width: 13px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* --- Severity slider --- */
+.tracker-severity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tracker-severity input[type="range"] {
+  width: 100%;
+  accent-color: #8c7959;
+  cursor: pointer;
+}
+
+.severity-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #8c7959;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* --- History filters --- */
+.tracker-advisor-wrap .history-filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.tracker-advisor-wrap .history-filters .tracker-input {
+  flex: 1;
+  min-width: 180px;
+}
+
+/* --- Hero glow accents --- */
+.tracker-hero-skin .advisor-hero-glow {
+  background: radial-gradient(circle, rgba(179,155,125,0.2) 0%, transparent 70%);
+}
+
+.tracker-hero-hair .advisor-hero-glow {
+  background: radial-gradient(circle, rgba(107,68,35,0.25) 0%, transparent 70%);
+}
+
+/* --- Symptoms tab (full width, no camera column) --- */
+.tracker-advisor-wrap .tracker-form .tracker-concerns-grid {
+  max-width: 600px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .tracker-advisor-wrap .analysis-options {
+    grid-template-columns: 1fr;
+  }
+  .tracker-advisor-wrap .divider-or {
+    flex-direction: row;
+    min-height: auto;
+    padding: 16px 0;
+  }
+  .tracker-advisor-wrap .divider-or::before,
+  .tracker-advisor-wrap .divider-or::after {
+    width: auto;
+    height: 1px;
+    flex: 1;
+  }
+  .tracker-advisor-wrap .divider-or span {
+    padding: 0 16px;
+  }
+  .tracker-advisor-wrap .advisor-card {
+    padding: 28px 24px;
+  }
+  .tracker-concerns-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .tracker-advisor-wrap .tab-btn span {
+    display: none;
+  }
+  .tracker-advisor-wrap {
+    padding: 32px 12px 60px;
+  }
+}

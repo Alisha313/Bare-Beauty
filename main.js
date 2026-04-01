@@ -1907,10 +1907,6 @@ function initSkincareTracker() {
   if (eveningDateInput) eveningDateInput.value = today;
   if (symptomsDateInput) symptomsDateInput.value = today;
   
-  // Initialize image uploads
-  initImageUpload('morning-photo', 'morning-preview', 'morning-upload-area');
-  initImageUpload('evening-photo', 'evening-preview', 'evening-upload-area');
-  
   // Tab switching
   initTrackerTabs();
   
@@ -1920,23 +1916,31 @@ function initSkincareTracker() {
     e.preventDefault();
     const formData = new FormData(morningForm);
     const products = formData.getAll('products');
-    const photoFile = document.getElementById('morning-photo').files[0];
     
+    // Capture photo from canvas if taken
+    const morningCanvas = document.getElementById('scMorningCanvas');
+    const photoData = (morningCanvas && morningCanvas.style.display !== 'none') ? morningCanvas.toDataURL('image/jpeg', 0.7) : null;
+
     const entry = {
       id: Date.now(),
       type: 'morning',
-      date: formData.get('date'),
+      date: formData.get('date') || today,
+      skinFeel: document.getElementById('morning-skin-feel')?.value || '',
       products: products,
       notes: formData.get('notes'),
-      photo: photoFile ? awaitFileReader(photoFile) : null,
+      photo: photoData,
       timestamp: new Date().toISOString()
     };
     
     saveSkincareEntry(entry);
     morningForm.reset();
-    document.getElementById('morning-preview').style.display = 'none';
+    // Clear option button selections
+    morningForm.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    const mhidden = document.getElementById('morning-skin-feel');
+    if (mhidden) mhidden.value = '';
     if (morningDateInput) morningDateInput.value = today;
     showToast();
+    loadSkincareHistory(document.getElementById('history-filter')?.value || 'all');
   });
   
   // Evening form submission
@@ -1945,23 +1949,30 @@ function initSkincareTracker() {
     e.preventDefault();
     const formData = new FormData(eveningForm);
     const products = formData.getAll('products');
-    const photoFile = document.getElementById('evening-photo').files[0];
+
+    // Capture photo from canvas if taken
+    const eveningCanvas = document.getElementById('scEveningCanvas');
+    const photoData = (eveningCanvas && eveningCanvas.style.display !== 'none') ? eveningCanvas.toDataURL('image/jpeg', 0.7) : null;
     
     const entry = {
       id: Date.now(),
       type: 'evening',
-      date: formData.get('date'),
+      date: formData.get('date') || today,
+      skinFeel: document.getElementById('evening-skin-feel')?.value || '',
       products: products,
       notes: formData.get('notes'),
-      photo: photoFile ? awaitFileReader(photoFile) : null,
+      photo: photoData,
       timestamp: new Date().toISOString()
     };
     
     saveSkincareEntry(entry);
     eveningForm.reset();
-    document.getElementById('evening-preview').style.display = 'none';
+    eveningForm.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    const ehidden = document.getElementById('evening-skin-feel');
+    if (ehidden) ehidden.value = '';
     if (eveningDateInput) eveningDateInput.value = today;
     showToast();
+    loadSkincareHistory(document.getElementById('history-filter')?.value || 'all');
   });
   
   // Symptoms form submission
@@ -1974,7 +1985,7 @@ function initSkincareTracker() {
     const entry = {
       id: Date.now(),
       type: 'symptoms',
-      date: formData.get('date'),
+      date: formData.get('date') || today,
       symptoms: symptoms,
       severity: formData.get('severity'),
       notes: formData.get('notes'),
@@ -1985,6 +1996,7 @@ function initSkincareTracker() {
     symptomsForm.reset();
     if (symptomsDateInput) symptomsDateInput.value = today;
     showToast();
+    loadSkincareHistory(document.getElementById('history-filter')?.value || 'all');
   });
   
   // History filter
@@ -2098,40 +2110,45 @@ function initHaircareTracker() {
   const treatmentDateInput = document.getElementById('treatment-date');
   if (treatmentDateInput) treatmentDateInput.value = today;
   
-  // Initialize image uploads
-  initImageUpload('before-photo', 'before-preview', 'before-upload-area');
-  initImageUpload('after-photo', 'after-preview', 'after-upload-area');
-  
   // Tab switching
   initTrackerTabs();
   
   // Treatment form submission
   const treatmentForm = document.getElementById('treatment-form');
-  treatmentForm?.addEventListener('submit', async (e) => {
+  treatmentForm?.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(treatmentForm);
     const products = formData.getAll('products');
-    
-    const beforeFile = document.getElementById('before-photo').files[0];
-    const afterFile = document.getElementById('after-photo').files[0];
+    const concerns = formData.getAll('hairConcerns');
+
+    // Capture photo from canvas if taken
+    const hcCanvas = document.getElementById('hcCameraCanvas');
+    const photoData = (hcCanvas && hcCanvas.style.display !== 'none') ? hcCanvas.toDataURL('image/jpeg', 0.7) : null;
     
     const entry = {
       id: Date.now(),
       type: 'treatment',
-      date: formData.get('date'),
+      date: formData.get('date') || today,
+      hairType: document.getElementById('hair-type')?.value || '',
+      treatmentFocus: document.getElementById('treatment-focus')?.value || '',
+      concerns: concerns,
       products: products,
       notes: formData.get('notes'),
-      beforePhoto: beforeFile ? awaitFileReader(beforeFile) : null,
-      afterPhoto: afterFile ? awaitFileReader(afterFile) : null,
+      photo: photoData,
       timestamp: new Date().toISOString()
     };
     
     saveHaircareEntry(entry);
     treatmentForm.reset();
-    document.getElementById('before-preview').style.display = 'none';
-    document.getElementById('after-preview').style.display = 'none';
+    // Clear option button selections
+    treatmentForm.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    const htHidden = document.getElementById('hair-type');
+    const tfHidden = document.getElementById('treatment-focus');
+    if (htHidden) htHidden.value = '';
+    if (tfHidden) tfHidden.value = '';
     if (treatmentDateInput) treatmentDateInput.value = today;
     showToast();
+    loadHaircareHistory();
   });
   
   // Clear history
@@ -2179,13 +2196,12 @@ function loadHaircareHistory() {
         <span class="history-entry-date">${formatDate(entry.date)}</span>
         <span class="history-entry-type" style="background: #e8f5e9; color: #2e7d32;">Treatment</span>
       </div>
+      ${entry.hairType ? `<p><strong>Hair Type:</strong> ${entry.hairType} ${entry.treatmentFocus ? '&bull; <strong>Focus:</strong> ' + entry.treatmentFocus : ''}</p>` : ''}
+      ${entry.concerns && entry.concerns.length ? `<div class="history-entry-products">${entry.concerns.map(c => `<span class="history-product-tag">${c}</span>`).join('')}</div>` : ''}
       <div class="history-entry-products">
         ${entry.products?.map(p => `<span class="history-product-tag">${p}</span>`).join('') || ''}
       </div>
-      <div class="treatment-comparison" style="margin-top: 12px;">
-        ${entry.beforePhoto ? `<div class="treatment-section before"><h4>Before</h4><img src="${entry.beforePhoto}" class="history-entry-image" style="width:100%;height:150px;object-fit:cover;"></div>` : ''}
-        ${entry.afterPhoto ? `<div class="treatment-section after"><h4>After</h4><img src="${entry.afterPhoto}" class="history-entry-image" style="width:100%;height:150px;object-fit:cover;"></div>` : ''}
-      </div>
+      ${entry.photo ? `<img src="${entry.photo}" class="history-entry-image" alt="Hair photo" style="margin-top:10px;max-width:100%;height:150px;object-fit:cover;border-radius:8px;">` : ''}
       ${entry.notes ? `<p class="history-entry-notes">${entry.notes}</p>` : ''}
     </div>
   `).join('');

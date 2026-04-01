@@ -21,6 +21,10 @@ const User = mongoose.model('User', userSchema);
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
 app.post('/register', upload.array('photos', 5), async (req, res) => {
   try {
     const { name, about, expertise } = req.body;
