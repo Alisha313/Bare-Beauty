@@ -246,19 +246,36 @@
     });
 
     // Login handler
-    document.getElementById('loginBtn').addEventListener('click', () => {
+    document.getElementById('loginBtn').addEventListener('click', async () => {
       const email = document.getElementById('loginEmail').value.trim();
       const password = document.getElementById('loginPassword').value;
       if (!email || !password) {
         alert('Please fill in all fields.');
         return;
       }
-      localStorage.setItem('bareBeautyUser', JSON.stringify({ email, loggedIn: true }));
-      window.location.href = 'index.html';
+      
+      try {
+        const res = await fetch('http://localhost:5001/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        
+        if (res.ok) {
+          localStorage.setItem('bareBeautyUser', JSON.stringify({ email: data.email, name: data.name, loggedIn: true, token: data.token }));
+          window.location.href = 'index.html';
+        } else {
+          alert('Login failed: ' + data.message);
+        }
+      } catch (err) {
+        console.error(err);
+        alert('An error occurred during login.');
+      }
     });
 
     // Signup handler
-    document.getElementById('signupBtn').addEventListener('click', () => {
+    document.getElementById('signupBtn').addEventListener('click', async () => {
       const first = document.getElementById('signupFirst').value.trim();
       const last = document.getElementById('signupLast').value.trim();
       const email = document.getElementById('signupEmail').value.trim();
@@ -271,8 +288,25 @@
         alert('Password must be at least 8 characters.');
         return;
       }
-      localStorage.setItem('bareBeautyUser', JSON.stringify({ first, last, email, loggedIn: true }));
-      window.location.href = 'index.html';
+      
+      try {
+        const res = await fetch('http://localhost:5001/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: `${first} ${last}`, email, password })
+        });
+        const data = await res.json();
+        
+        if (res.ok) {
+          localStorage.setItem('bareBeautyUser', JSON.stringify({ email: data.email, name: data.name, loggedIn: true, token: data.token }));
+          window.location.href = 'index.html';
+        } else {
+          alert('Signup failed: ' + data.message);
+        }
+      } catch (err) {
+        console.error(err);
+        alert('An error occurred during signup.');
+      }
     });
   </script>
 
