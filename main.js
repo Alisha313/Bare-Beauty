@@ -337,6 +337,45 @@ initCart();
 
 // ===== PRODUCT DETAIL PAGE FUNCTIONS =====
 
+function loadProductFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    
+    if (!productId) return;
+
+    if (Object.keys(products).length > 0) {
+        displayProductDetails(productId);
+    } else {
+        window.addEventListener('productsLoaded', () => displayProductDetails(productId));
+    }
+}
+
+function displayProductDetails(productId) {
+    const product = products[productId];
+    if (!product) {
+        const desc = document.getElementById('product-description');
+        if (desc) desc.textContent = "Product not found.";
+        return;
+    }
+    
+    if (document.getElementById('product-name')) document.getElementById('product-name').textContent = product.name;
+    if (document.getElementById('product-category')) document.getElementById('product-category').textContent = product.category;
+    if (document.getElementById('breadcrumb-category-link')) {
+        document.getElementById('breadcrumb-category-link').textContent = product.category;
+        document.getElementById('breadcrumb-category-link').href = product.categoryPage || '#';
+    }
+    if (document.getElementById('breadcrumb-product')) document.getElementById('breadcrumb-product').textContent = product.name;
+    if (document.getElementById('product-price')) document.getElementById('product-price').textContent = `$${product.price.toFixed(2)}`;
+    if (document.getElementById('product-original-price') && product.originalPrice) {
+        document.getElementById('product-original-price').textContent = `$${product.originalPrice.toFixed(2)}`;
+        document.getElementById('product-original-price').style.display = 'inline';
+    }
+    if (document.getElementById('product-description')) document.getElementById('product-description').textContent = product.description || 'Experience the best care with Bare Beauty.';
+    if (document.getElementById('mainProductImage') && product.image) document.getElementById('mainProductImage').src = product.image;
+    if (document.getElementById('product-rating')) document.getElementById('product-rating').textContent = product.rating || '5.0';
+    if (document.getElementById('product-reviews')) document.getElementById('product-reviews').textContent = `(${product.reviews || 0} Reviews)`;
+}
+
 // Image Gallery
 function changeImage(src, thumbnail) {
     const mainImage = document.getElementById('mainProductImage');

@@ -4,6 +4,7 @@
  */
 
 // ===== USER PROFILE STATE =====
+let advisorProducts = {}; // Cache for AI generated products
 let userProfile = {
     skinType: null,
     skinTone: null,
@@ -260,16 +261,20 @@ async function generateRecommendations() {
             const tool = backendProducts.filter(p => p.category === 'Tools').slice(0, 4);
             
             // Format to UI expected structure
-            const formatter = p => ({
-                id: p._id,
-                name: p.name,
-                category: p.subCategory || p.category,
-                price: p.price,
-                image: p.images && p.images.length > 0 ? p.images[0] : 'img/placeholder.jpg',
-                rating: p.rating ? p.rating.average : 5,
-                reviews: p.rating ? p.rating.count : 42,
-                originalPrice: p.price * 1.2
-            });
+            const formatter = p => {
+                const formatted = {
+                    id: p._id,
+                    name: p.name,
+                    category: p.subCategory || p.category,
+                    price: p.price,
+                    image: p.images && p.images.length > 0 ? p.images[0] : 'img/placeholder.jpg',
+                    rating: p.rating ? p.rating.average : 5,
+                    reviews: p.rating ? p.rating.count : 42,
+                    originalPrice: p.price * 1.2
+                };
+                advisorProducts[formatted.id] = formatted;
+                return formatted;
+            };
             
             const routine = skincare.map((p, idx) => ({
                 step: idx + 1,
@@ -515,7 +520,7 @@ function renderStars(rating) {
 
 // ===== CART INTEGRATION =====
 function addAdvisorProductToCart(productId) {
-    const product = products[productId];
+    const product = products[productId] || advisorProducts[productId];
     if (product) {
         addToCart({
             id: product.id,
@@ -525,6 +530,8 @@ function addAdvisorProductToCart(productId) {
             quantity: 1
         });
         showAdvisorNotification(`${product.name} added to cart!`, 'success');
+    } else {
+        console.error("Product not found in global cache or local advisor cache", productId);
     }
 }
 
