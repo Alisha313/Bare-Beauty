@@ -2220,4 +2220,14 @@ function showToast() {
 document.addEventListener('DOMContentLoaded', () => {
   initSkincareTracker();
   initHaircareTracker();
+
+  // ===== Eyeshadow Palette Pan Size Selector =====
+  document.querySelectorAll('.palette-pan-selector').forEach(selector => {
+    selector.querySelectorAll('.pan-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selector.querySelectorAll('.pan-btn').forEach(b => b.classList.remove('pan-btn-active'));
+        btn.classList.add('pan-btn-active');
+      });
+    });
+  });
 });
