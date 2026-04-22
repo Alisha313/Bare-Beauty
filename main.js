@@ -146,120 +146,1861 @@ function initPagination() {
 document.addEventListener('DOMContentLoaded', initPagination);
 
 // ===== PRODUCT DATABASE =====
-const API_BASE_URL = 'http://localhost:5001';
+const products = {
+    // SKINCARE
+    'cleanser-1': {
+        id: 'cleanser-1',
+        name: 'Gentle Foam Cleanser',
+        category: 'Cleanser',
+        categoryPage: 'shop-skincare.html',
+        price: 32.00,
+        image: 'img/Skincare/GentleFoanCleanser.png',
+        rating: 4.5,
+        reviews: 128,
+        description: 'A gentle, pH-balanced foam cleanser that removes impurities without stripping your skin. Perfect for daily use on all skin types.',
+        skinType: 'All Skin Types',
+        ingredients: ['Glycerin', 'Aloe Vera', 'Green Tea Extract', 'Chamomile']
+    },
+    'serum-1': {
+        id: 'serum-1',
+        name: 'Vitamin C Brightening Serum',
+        category: 'Serum',
+        categoryPage: 'shop-skincare.html',
+        price: 58.00,
+        image: 'img/Skincare/VitaminCBrighteningSerum.png',
+        rating: 5.0,
+        reviews: 89,
+        description: 'A potent 20% Vitamin C serum that brightens, firms, and protects your skin from environmental damage. Lightweight, fast-absorbing formula suitable for all skin types.',
+        skinType: 'All Skin Types',
+        ingredients: ['20% Vitamin C', 'Hyaluronic Acid', 'Vitamin E', 'Ferulic Acid']
+    },
+    'toner-1': {
+        id: 'toner-1',
+        name: 'Balancing Rose Toner',
+        category: 'Toner',
+        categoryPage: 'shop-skincare.html',
+        price: 28.00,
+        image: 'img/Skincare/BalancingRoseToner.png',
+        rating: 4.0,
+        reviews: 56,
+        description: 'A gentle, alcohol-free toner with rose water that balances skin pH and prepares your skin for the next steps in your routine.',
+        skinType: 'Oily Skin',
+        ingredients: ['Rose Water', 'Witch Hazel', 'Niacinamide', 'Aloe Vera']
+    },
+    'moisturizer-1': {
+        id: 'moisturizer-1',
+        name: 'SPF 30 Day Cream',
+        category: 'SPF Moisturizer',
+        categoryPage: 'shop-skincare.html',
+        price: 45.00,
+        originalPrice: 55.00,
+        image: 'img/Skincare/SPF30DayCream.png',
+        rating: 5.0,
+        reviews: 203,
+        description: 'A lightweight daily moisturizer with SPF 30 protection. Hydrates while protecting your skin from harmful UV rays.',
+        skinType: 'Combination Skin',
+        ingredients: ['SPF 30', 'Hyaluronic Acid', 'Ceramides', 'Vitamin E']
+    },
+    'eye-cream-1': {
+        id: 'eye-cream-1',
+        name: 'Revitalizing Eye Cream',
+        category: 'Under-Eye Cream',
+        categoryPage: 'shop-skincare.html',
+        price: 42.00,
+        image: 'img/Skincare/RevitalizingEyeCream.png',
+        rating: 4.5,
+        reviews: 74,
+        description: 'A rich eye cream that targets dark circles, puffiness, and fine lines for a refreshed, youthful look.',
+        skinType: 'All Skin Types',
+        ingredients: ['Caffeine', 'Peptides', 'Retinol', 'Vitamin K']
+    },
+    'mask-1': {
+        id: 'mask-1',
+        name: 'Hydrating Sheet Mask Set',
+        category: 'Face Mask',
+        categoryPage: 'shop-skincare.html',
+        price: 38.00,
+        image: 'img/Skincare/HyfratingSheetMaskSet.png',
+        rating: 5.0,
+        reviews: 167,
+        description: 'A set of 5 hydrating sheet masks infused with hyaluronic acid and botanical extracts for an instant moisture boost.',
+        skinType: 'Dry Skin',
+        ingredients: ['Hyaluronic Acid', 'Aloe Vera', 'Centella Asiatica', 'Green Tea']
+    },
+    'serum-2': {
+        id: 'serum-2',
+        name: 'Hyaluronic Acid Serum',
+        category: 'Serum',
+        categoryPage: 'shop-skincare.html',
+        price: 64.00,
+        image: 'img/Skincare/HyaluronicAcidSerum.png',
+        rating: 5.0,
+        reviews: 215,
+        description: 'A deeply hydrating serum with multiple weights of hyaluronic acid to plump and smooth skin at every level.',
+        skinType: 'All Skin Types',
+        ingredients: ['Hyaluronic Acid', 'Vitamin B5', 'Aloe Vera', 'Glycerin']
+    },
+    'cleanser-2': {
+        id: 'cleanser-2',
+        name: 'Oil Control Gel Cleanser',
+        category: 'Cleanser',
+        categoryPage: 'shop-skincare.html',
+        price: 26.00,
+        image: 'img/Skincare/OilControlGelCleanser.png',
+        rating: 4.0,
+        reviews: 94,
+        description: 'A lightweight gel cleanser that controls excess oil and deeply cleanses pores without over-drying.',
+        skinType: 'Oily Skin',
+        ingredients: ['Salicylic Acid', 'Tea Tree Oil', 'Niacinamide', 'Zinc']
+    },
+    'moisturizer-2': {
+        id: 'moisturizer-2',
+        name: 'Rich Night Cream',
+        category: 'Moisturizer',
+        categoryPage: 'shop-skincare.html',
+        price: 38.00,
+        originalPrice: 48.00,
+        image: 'img/Skincare/RichNightCream.png',
+        rating: 4.5,
+        reviews: 142,
+        description: 'A rich, nourishing night cream that repairs and hydrates skin while you sleep. Wake up to soft, glowing skin.',
+        skinType: 'Dry Skin',
+        ingredients: ['Shea Butter', 'Ceramides', 'Peptides', 'Squalane']
+    },
+    'serum-3': {
+        id: 'serum-3',
+        name: 'Retinol Night Serum',
+        category: 'Serum',
+        categoryPage: 'shop-skincare.html',
+        price: 72.00,
+        image: 'img/Skincare/RetinolNighSerum.png',
+        rating: 5.0,
+        reviews: 287,
+        description: 'A powerful retinol serum that reduces fine lines, evens skin tone, and boosts cell turnover overnight.',
+        skinType: 'Sensitive Skin',
+        ingredients: ['Retinol', 'Vitamin E', 'Squalane', 'Bakuchiol']
+    },
+    'toner-2': {
+        id: 'toner-2',
+        name: 'Niacinamide Pore Toner',
+        category: 'Toner',
+        categoryPage: 'shop-skincare.html',
+        price: 34.00,
+        image: 'img/Skincare/NiacinamidePoreToner.png',
+        rating: 4.5,
+        reviews: 118,
+        description: 'A pore-refining toner with niacinamide that minimizes pores, controls oil, and brightens skin.',
+        skinType: 'Combination Skin',
+        ingredients: ['Niacinamide', 'Zinc PCA', 'Hyaluronic Acid', 'Green Tea']
+    },
+    'mask-2': {
+        id: 'mask-2',
+        name: 'Clay Detox Mask',
+        category: 'Face Mask',
+        categoryPage: 'shop-skincare.html',
+        price: 22.00,
+        image: 'img/Skincare/ClayDetoxMask.png',
+        rating: 4.0,
+        reviews: 76,
+        description: 'A deep-cleansing clay mask that draws out impurities and excess oil for a clearer, smoother complexion.',
+        skinType: 'All Skin Types',
+        ingredients: ['Kaolin Clay', 'Bentonite', 'Charcoal', 'Tea Tree Oil']
+    },
+    
+    // NAILS
+    'nails-french-1': {
+        id: 'nails-french-1',
+        name: 'Classic French Tips',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 24.00,
+        image: 'img/Nails/ClassicFrenchTip.png',
+        rating: 5.0,
+        reviews: 428,
+        description: 'Timeless French tip press-on nails for an elegant, salon-quality manicure at home. Includes 24 nails in various sizes.',
+        ingredients: ['Adhesive Tabs Included', 'Nail File', '24 Pieces']
+    },
+    'nails-glitter-1': {
+        id: 'nails-glitter-1',
+        name: 'Champagne Glitter Set',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 28.00,
+        image: 'img/Nails/ChampageGlitterSet.png',
+        rating: 4.5,
+        reviews: 67,
+        description: 'Sparkling champagne glitter press-on nails perfect for special occasions. Long-lasting and easy to apply.',
+        ingredients: ['Adhesive Tabs Included', 'Nail File', '24 Pieces']
+    },
+    'nails-glossy-pink-1': {
+        id: 'nails-glossy-pink-1',
+        name: 'Glossy Pink Set',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 28.00,
+        image: 'img/Nails/GlossyPinkSet.png',
+        rating: 4.5,
+        reviews: 67,
+        description: 'Beautiful glossy pink press-on nails for a classic, feminine look. Easy to apply and long-lasting.',
+        ingredients: ['Adhesive Tabs Included', 'Nail File', '24 Pieces']
+    },
+    'nails-manicure-pedicure-1': {
+        id: 'nails-manicure-pedicure-1',
+        name: 'Manicure/Pedicure Set',
+        category: 'Nail Care',
+        categoryPage: 'shop-nails.html',
+        price: 28.00,
+        image: 'img/Nails/Medicure:PedicureSet.png',
+        rating: 4.5,
+        reviews: 67,
+        description: 'Complete professional manicure and pedicure set with all the tools you need for salon-quality nails at home.',
+        ingredients: ['Nail Clippers', 'Cuticle Pusher', 'Nail File', 'Buffer']
+    },
+    'cuticle-oil-1': {
+        id: 'cuticle-oil-1',
+        name: 'Nourishing Cuticle Oil',
+        category: 'Nail Care',
+        categoryPage: 'shop-nails.html',
+        price: 18.00,
+        image: 'img/Nails/CuticleOil.png',
+        rating: 5.0,
+        reviews: 234,
+        description: 'A nourishing cuticle oil with jojoba and vitamin E to hydrate and strengthen your nails and cuticles.',
+        ingredients: ['Jojoba Oil', 'Vitamin E', 'Sweet Almond Oil', 'Lavender']
+    },
+    'nails-artistic-1': {
+        id: 'nails-artistic-1',
+        name: 'Abstract Art Collection',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 32.00,
+        image: 'img/Nails/FloralNailArtSticker.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'Unique hand-painted abstract art press-on nails. Each set is a wearable masterpiece.',
+        ingredients: ['Adhesive Tabs Included', 'Nail File', '24 Pieces']
+    },
+    'nail-strengthener-1': {
+        id: 'nail-strengthener-1',
+        name: 'Keratin Nail Strengthener',
+        category: 'Nail Care',
+        categoryPage: 'shop-nails.html',
+        price: 22.00,
+        originalPrice: 28.00,
+        image: 'img/Nails/MiniUVNailLamp.png',
+        rating: 4.5,
+        reviews: 189,
+        description: 'A powerful keratin treatment that strengthens weak, brittle nails and promotes healthy growth.',
+        ingredients: ['Keratin', 'Biotin', 'Calcium', 'Vitamin E']
+    },
+    'nails-nude-1': {
+        id: 'nails-nude-1',
+        name: 'Everyday Nude Set',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 26.00,
+        image: 'img/Nails/NudeOmbreSet.png',
+        rating: 5.0,
+        reviews: 312,
+        description: 'Versatile nude press-on nails perfect for everyday wear. Natural-looking and comfortable.',
+        ingredients: ['Adhesive Tabs Included', 'Nail File', '24 Pieces']
+    },
+    
+    // TOOLS
+    'brush-set-1': {
+        id: 'brush-set-1',
+        name: 'Complete 12-Piece Brush Set',
+        category: 'Brush Set',
+        categoryPage: 'shop-tools.html',
+        price: 68.00,
+        image: 'img/Tools%20%26%20Brushes/16PieceBrushSet.png',
+        rating: 5.0,
+        reviews: 245,
+        description: 'A complete set of 12 professional-quality makeup brushes for face, eyes, and lips. Vegan and cruelty-free.',
+        ingredients: ['Synthetic Bristles', 'Bamboo Handles', 'Carrying Case']
+    },
+    'gua-sha-1': {
+        id: 'gua-sha-1',
+        name: 'Rose Quartz Gua Sha Stone',
+        category: 'Gua Sha',
+        categoryPage: 'shop-tools.html',
+        price: 32.00,
+        image: 'img/Tools%20%26%20Brushes/JadeFacialRoller.png',
+        rating: 4.5,
+        reviews: 89,
+        description: 'A genuine rose quartz gua sha stone for facial massage. Helps reduce puffiness and promote lymphatic drainage.',
+        ingredients: ['100% Rose Quartz', 'Velvet Pouch']
+    },
+    'red-light-1': {
+        id: 'red-light-1',
+        name: 'LED Red Light Therapy Wand',
+        category: 'Red Light Therapy',
+        categoryPage: 'shop-tools.html',
+        price: 189.00,
+        image: 'img/Tools%20%26%20Brushes/Redlightwand.png',
+        rating: 5.0,
+        reviews: 312,
+        description: 'Professional-grade LED red light therapy wand for at-home anti-aging treatments. Stimulates collagen production.',
+        ingredients: ['Red LED 630nm', 'Near-Infrared 850nm', 'USB Rechargeable']
+    },
+    'foundation-brush-1': {
+        id: 'foundation-brush-1',
+        name: 'Seamless Foundation Brush',
+        category: 'Makeup Brush',
+        categoryPage: 'shop-tools.html',
+        price: 24.00,
+        image: 'img/Tools%20%26%20Brushes/FoundationBrush.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'A densely packed foundation brush for seamless, airbrushed application. Works with liquid and cream formulas.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handle']
+    },
+    'jade-roller-1': {
+        id: 'jade-roller-1',
+        name: 'Jade Facial Roller',
+        category: 'Gua Sha',
+        categoryPage: 'shop-tools.html',
+        price: 28.00,
+        image: 'img/Tools%20%26%20Brushes/JadeFacialRoller.png',
+        rating: 4.5,
+        reviews: 203,
+        description: 'A dual-ended jade facial roller for depuffing and relaxing facial massage. Store in fridge for extra cooling effect.',
+        ingredients: ['100% Jade Stone', 'Zinc Alloy Frame']
+    },
+    'eye-brush-set-1': {
+        id: 'eye-brush-set-1',
+        name: 'Essential Eye Brush Set',
+        category: 'Brush Set',
+        categoryPage: 'shop-tools.html',
+        price: 42.00,
+        originalPrice: 55.00,
+        image: 'img/Tools%20%26%20Brushes/EssentialTravelSet.png',
+        rating: 5.0,
+        reviews: 178,
+        description: 'A 6-piece eye brush set with everything you need for stunning eye looks. Includes blending, detail, and liner brushes.',
+        ingredients: ['Synthetic Bristles', 'Rose Gold Handles', 'Travel Case']
+    },
+    
+    // MAKEUP
+    'tinted-moisturizer-1': {
+        id: 'tinted-moisturizer-1',
+        name: 'Skin Tint Glow SPF 30',
+        category: 'Tinted Moisturizer',
+        categoryPage: 'shop-makeup.html',
+        price: 34.00,
+        image: 'img/Makeup/Face Products/Tinted Moisturizer/Skin Tint Glow SPF 30 Fair.png',
+        rating: 5.0,
+        reviews: 312,
+        description: 'A lightweight tinted moisturizer with SPF 30 and a natural, dewy finish. Buildable coverage for everyday wear.',
+        ingredients: ['SPF 30', 'Hyaluronic Acid', 'Vitamin E', 'Squalane'],
+        variantLabel: 'Shades',
+        variantType: 'shade',
+        variants: [
+          { label: 'Fair', color: '#F5D5C8', image: 'img/Makeup/Face Products/Tinted Moisturizer/Skin Tint Glow SPF 30 Fair.png' },
+          { label: 'Light', color: '#E8C4A8', image: 'img/Makeup/Face Products/Tinted Moisturizer/Skin Tint Glow SPF 30 Light.png' },
+          { label: 'Medium', color: '#C9A077', image: 'img/Makeup/Face Products/Tinted Moisturizer/Skin Tint Glow SPF 30 Medium.png' },
+          { label: 'Tan', color: '#A67C52', image: 'img/Makeup/Face Products/Tinted Moisturizer/Skin Tint Glow SPF 30 Tan.png' },
+          { label: 'Deep', color: '#7A5230', image: 'img/Makeup/Face Products/Tinted Moisturizer/Skin Tint Glow SPF 30 Deep.png' }
+        ]
+    },
+    'concealer-1': {
+        id: 'concealer-1',
+        name: 'Radiant Creamy Concealer',
+        category: 'Concealer',
+        categoryPage: 'shop-makeup.html',
+        price: 26.00,
+        image: 'img/Makeup/Face Products/Concealer/concealer.jpg',
+        rating: 4.5,
+        reviews: 189,
+        description: 'A creamy, buildable concealer that brightens under-eyes and covers imperfections with a natural finish.',
+        ingredients: ['Vitamin E', 'Caffeine', 'Light-Reflecting Pigments'],
+        variantLabel: 'Shades',
+        variantType: 'shade',
+        variants: [
+          { label: 'Fair', color: '#F5D5C8' },
+          { label: 'Light', color: '#E8C4A8' },
+          { label: 'Medium', color: '#C9A077' },
+          { label: 'Tan', color: '#A67C52' },
+          { label: 'Deep', color: '#7A5230' }
+        ]
+    },
+    'primer-1': {
+        id: 'primer-1',
+        name: 'Pore Perfecting Primer',
+        category: 'Primer',
+        categoryPage: 'shop-makeup.html',
+        price: 38.00,
+        image: 'img/Makeup/Pore Perfeting Primer.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'A silky primer that blurs pores and creates a smooth canvas for makeup. Extends wear time up to 12 hours.',
+        ingredients: ['Silica', 'Niacinamide', 'Vitamin C']
+    },
+    'blush-1': {
+        id: 'blush-1',
+        name: 'Cloud Paint Liquid Blush',
+        category: 'Blush',
+        categoryPage: 'shop-makeup.html',
+        price: 28.00,
+        image: 'img/Makeup/Face Products/Blush/Cloud paint Liquid blush Rose pink.png',
+        rating: 5.0,
+        reviews: 428,
+        description: 'A gel-cream blush that blends seamlessly for a natural, flushed look. Buildable and long-lasting.',
+        ingredients: ['Plant-Derived Squalane', 'Vitamin E'],
+        variantLabel: 'Shades',
+        variantType: 'shade',
+        variants: [
+          { label: 'Rose Pink', color: '#E87090', image: 'img/Makeup/Face Products/Blush/Cloud paint Liquid blush Rose pink.png' },
+          { label: 'Purple', color: '#9070A8', image: 'img/Makeup/Face Products/Blush/Cloud paint Liquid blush Purple.png' },
+          { label: 'Wine', color: '#7B2030', image: 'img/Makeup/Face Products/Blush/Cloud paint Liquid blush Wine.png' },
+          { label: 'Peach', color: '#EDAC80', image: 'img/Makeup/Face Products/Blush/Cloud paint Liquid blush Peach.png' }
+        ]
+    },
+    'highlighter-1': {
+        id: 'highlighter-1',
+        name: 'Liquid Glow Highlighter',
+        category: 'Highlighter',
+        categoryPage: 'shop-makeup.html',
+        price: 32.00,
+        image: 'img/Makeup/Face Products/Highlighter/Liquid glow highlighter Champagne Gold.png',
+        rating: 4.5,
+        reviews: 234,
+        description: 'A liquid highlighter that gives skin a lit-from-within glow. Can be worn alone or mixed with foundation.',
+        ingredients: ['Coconut Oil', 'Vitamin E', 'Pearl Pigments'],
+        variantLabel: 'Shades',
+        variantType: 'shade',
+        variants: [
+          { label: 'Champagne Gold', color: '#E8C97A', image: 'img/Makeup/Face Products/Highlighter/Liquid glow highlighter Champagne Gold.png' },
+          { label: 'Silver', color: '#C0C0C0', image: 'img/Makeup/Face Products/Highlighter/Liquid glow highlighter silver.png' },
+          { label: 'Rose Gold', color: '#E8A090', image: 'img/Makeup/Face Products/Highlighter/Liquid glow highlighter Rose Gold.png' },
+          { label: 'Lilac', color: '#C8A2C8', image: 'img/Makeup/Face Products/Highlighter/Liquid glow highlighter Lilac.png' },
+          { label: 'Sky Blue', color: '#87CEEB', image: 'img/Makeup/Face Products/Highlighter/Liquid glow highlighter Sky Blue.png' }
+        ]
+    },
+    'lip-gloss-1': {
+        id: 'lip-gloss-1',
+        name: 'Crystal Clear Lip Gloss',
+        category: 'Lip Gloss',
+        categoryPage: 'shop-makeup.html',
+        price: 18.00,
+        image: 'img/Makeup/Lip Products/Lip Gloss Rosy Sparkle.png',
+        rating: 5.0,
+        reviews: 567,
+        description: 'A non-sticky, high-shine lip gloss that can be worn alone or over lipstick for extra dimension.',
+        ingredients: ['Vitamin E', 'Jojoba Oil', 'Hyaluronic Acid'],
+        variantLabel: 'Shades',
+        variantType: 'shade',
+        variants: [
+          { label: 'Pink Sheen', color: '#F0A0B5', image: 'img/Makeup/Lip Products/Lip Gloss Pink Sheer.png' },
+          { label: 'Champagne Glow', color: '#E8D5A0', image: 'img/Makeup/Lip Products/Lip Gloss Champagne Glow.png' },
+          { label: 'Rosy Sparkle', color: '#D88090', image: 'img/Makeup/Lip Products/Lip Gloss Rosy Sparkle.png' },
+          { label: 'Mocha Glaze', color: '#8B5A45', image: 'img/Makeup/Lip Products/Lip Gloss Mocha Glaze .png' }
+        ]
+    },
+    'mascara-1': {
+        id: 'mascara-1',
+        name: 'Lash Lift Volumizing Mascara',
+        category: 'Mascara',
+        categoryPage: 'shop-makeup.html',
+        price: 26.00,
+        image: 'img/Makeup/Eye Products/Lash Lift Volumizing Mascara Magenta.png',
+        rating: 5.0,
+        reviews: 623,
+        description: 'A volumizing and lengthening mascara with a buildable formula. Smudge-proof and flake-free all day.',
+        ingredients: ['Beeswax', 'Carnauba Wax', 'Vitamin E', 'Keratin'],
+        variantLabel: 'Shades',
+        variantType: 'shade',
+        variants: [
+          { label: 'Black', color: '#1A1A1A', image: 'img/Makeup/Eye Products/Lash Lift Volumizing Mascara Black.png' },
+          { label: 'Magenta', color: '#C2185B', image: 'img/Makeup/Eye Products/Lash Lift Volumizing Mascara Magenta.png' },
+          { label: 'Brown', color: '#6B3A2A', image: 'img/Makeup/Eye Products/Lash Lift Volumizing Mascara Brown.png' },
+          { label: 'Transparent', pattern: 'transparent', image: 'img/Makeup/Eye Products/Lash Lift Volumizing Mascara Transparent.png' }
+        ]
+    },
+    'eyeshadow-palette-1': {
+        id: 'eyeshadow-palette-1',
+        name: 'Nude Neutrals Palette',
+        category: 'Eyeshadow Palette',
+        categoryPage: 'shop-makeup.html',
+        price: 48.00,
+        image: 'img/Makeup/Eye Products/Eyeshadow Palette 12 Pans Nude.png',
+        rating: 5.0,
+        reviews: 412,
+        description: 'A versatile 12-pan eyeshadow palette with matte, shimmer, and metallic finishes in beautiful nude tones.',
+        ingredients: ['Highly Pigmented', 'Blendable Formula', 'Cruelty-Free'],
+        variantLabel: 'Pan Size',
+        variantType: 'button',
+        variants: [
+          { label: '3 Pan', image: 'img/Makeup/Eye Products/Eyeshadow Palette 3 Pans Nude.png' },
+          { label: '6 Pan', image: 'img/Makeup/Eye Products/Eyeshadow Palette 6 Pans Nude.png' },
+          { label: '9 Pan', image: 'img/Makeup/Eye Products/Eyeshadow Palette 9 Pans Nude.png' },
+          { label: '12 Pan', image: 'img/Makeup/Eye Products/Eyeshadow Palette 12 Pans Nude.png' }
+        ],
+        defaultVariant: '12 Pan'
+    },
+    'eyeshadow-palette-2': {
+        id: 'eyeshadow-palette-2',
+        name: 'Rose Gold Dreams Palette',
+        category: 'Eyeshadow Palette',
+        categoryPage: 'shop-makeup.html',
+        price: 42.00,
+        originalPrice: 52.00,
+        image: 'img/Makeup/Eye Products/Eyeshadow Palette 12 Pans Rose.png',
+        rating: 4.5,
+        reviews: 298,
+        description: 'A stunning rose gold palette with warm pinks, coppers, and burgundies. Perfect for romantic looks.',
+        ingredients: ['Highly Pigmented', 'Blendable Formula', 'Cruelty-Free'],
+        variantLabel: 'Pan Size',
+        variantType: 'button',
+        variants: [
+          { label: '3 Pan', image: 'img/Makeup/Eye Products/Eyeshadow Palette 3 Pans Rose.png' },
+          { label: '6 Pan', image: 'img/Makeup/Eye Products/Eyeshadow Palette 6 Pans Rose.png' },
+          { label: '9 Pan', image: 'img/Makeup/Eye Products/Eyeshadow Palette 9 Pans Rose.png' },
+          { label: '12 Pan', image: 'img/Makeup/Eye Products/Eyeshadow Palette 12 Pans Rose.png' }
+        ],
+        defaultVariant: '12 Pan'
+    },
+    'makeup-remover-1': {
+        id: 'makeup-remover-1',
+        name: 'Melting Cleansing Balm',
+        category: 'Makeup Remover',
+        categoryPage: 'shop-makeup.html',
+        price: 24.00,
+        image: 'img/Makeup/makeup melting cleansing balm.png',
+        rating: 5.0,
+        reviews: 287,
+        description: 'A rich cleansing balm that melts away makeup and sunscreen. Leaves skin soft and hydrated.',
+        ingredients: ['Shea Butter', 'Jojoba Oil', 'Vitamin E']
+    },
+    'lip-plumper-1': {
+        id: 'lip-plumper-1',
+        name: 'Peptide Plumping Gloss',
+        category: 'Lip Plumper',
+        categoryPage: 'shop-makeup.html',
+        price: 24.00,
+        image: 'img/Makeup/Lip Products/Peptide Plumping Gloss Mauve Rose.png',
+        rating: 4.5,
+        reviews: 198,
+        description: 'A peptide-infused lip plumper that gives instant volume and shine without irritation.',
+        ingredients: ['Peptides', 'Hyaluronic Acid', 'Vitamin E'],
+        variantLabel: 'Shades',
+        variantType: 'shade',
+        variants: [
+          { label: 'Clear Glass', pattern: 'clear', image: 'img/Makeup/Lip Products/Peptide Plumping Gloss Clear glass.png' },
+          { label: 'Pink Pearl', color: '#EBBCCA', image: 'img/Makeup/Lip Products/Peptide Plumping Gloss Pink pearl.png' },
+          { label: 'Rosy Beige', color: '#C4917E', image: 'img/Makeup/Lip Products/Peptide Plumping Gloss Rosy Beige.png' },
+          { label: 'Mauve Rose', color: '#B07080', image: 'img/Makeup/Lip Products/Peptide Plumping Gloss Mauve Rose.png' },
+          { label: 'Caramel Nude', color: '#C09070', image: 'img/Makeup/Lip Products/Peptide Plumping Gloss caramel nude.png' },
+          { label: 'Cherry Glaze', color: '#A83040', image: 'img/Makeup/Lip Products/Peptide Plumping Gloss Cherry glaze.png' },
+          { label: 'Cocoa Shimmer', color: '#7A4030', image: 'img/Makeup/Lip Products/Peptide Plumping Gloss Cocoa Shimmer.png' }
+        ]
+    },
+    'lip-oil-1': {
+        id: 'lip-oil-1',
+        name: 'Nourishing Lip Oil',
+        category: 'Lip Balms & Treatments',
+        categoryPage: 'shop-makeup.html',
+        price: 22.00,
+        image: 'img/Makeup/Lip Products/Nourishing Lip Oil Rose Nude.png',
+        rating: 5.0,
+        reviews: 342,
+        description: 'A luxurious lip oil that nourishes and adds a glossy, non-sticky shine.',
+        ingredients: ['Jojoba Oil', 'Rosehip Oil', 'Vitamin E'],
+        variantLabel: 'Shades',
+        variantType: 'shade',
+        variants: [
+          { label: 'Clear', pattern: 'clear', image: 'img/Makeup/Lip Products/Nourishing Lip oil  clear.png' },
+          { label: 'Soft Pink', color: '#F5C6D0', image: 'img/Makeup/Lip Products/Nourishing Lip oil soft pink.png' },
+          { label: 'Rose Nude', color: '#D4918A', image: 'img/Makeup/Lip Products/Nourishing Lip Oil Rose Nude.png' },
+          { label: 'Peach Honey', color: '#E8A87C', image: 'img/Makeup/Lip Products/Nourishing Lip oil peach honey.png' },
+          { label: 'Cherry Tint', color: '#C0392B', image: 'img/Makeup/Lip Products/Nourishing Lip oil cherry tint.png' },
+          { label: 'Berry Tint', color: '#8E2468', image: 'img/Makeup/Lip Products/Nourishing Lip oil berry tint.png' }
+        ]
+    },
+    'lip-liner-1': {
+        id: 'lip-liner-1',
+        name: 'Precision Lip Liner',
+        category: 'Lip Liner',
+        categoryPage: 'shop-makeup.html',
+        price: 16.00,
+        image: 'img/Makeup/Lip Products/Precision Lip Liner Rosy Mauve.png',
+        rating: 4.0,
+        reviews: 145,
+        description: 'A creamy lip liner that glides on smoothly for precise definition. Long-wearing formula.',
+        ingredients: ['Vitamin E', 'Jojoba Esters'],
+        variantLabel: 'Shades',
+        variantType: 'shade',
+        variants: [
+          { label: 'Baby Pink', color: '#F4A7B9', image: 'img/Makeup/Lip Products/Precision Lip Liner Baby Pink.png' },
+          { label: 'Peach Brown', color: '#C8836B', image: 'img/Makeup/Lip Products/Precision Lip Liner Peach Brown.png' },
+          { label: 'Rosy Mauve', color: '#B5767A', image: 'img/Makeup/Lip Products/Precision Lip Liner Rosy Mauve.png' },
+          { label: 'True Red', color: '#CC2936', image: 'img/Makeup/Lip Products/Precision Lip Liner True Red.png' },
+          { label: 'Neutral Nude', color: '#C49A7A', image: 'img/Makeup/Lip Products/Precision Lip Liner Neutral Nude.png' },
+          { label: 'Rose Brown', color: '#A0644F', image: 'img/Makeup/Lip Products/Precision Lip Liner Rose Brown.png' },
+          { label: 'Deep Brown', color: '#6B3325', image: 'img/Makeup/Lip Products/Precision Lip Liner Deep Brown.png' },
+          { label: 'Berry Plum', color: '#7B2D5E', image: 'img/Makeup/Lip Products/Precision Lip Liner Berry Plum.png' }
+        ]
+    },
+    'eyeliner-1': {
+        id: 'eyeliner-1',
+        name: 'Precision Felt Tip Liner',
+        category: 'Eyeliner',
+        categoryPage: 'shop-makeup.html',
+        price: 22.00,
+        image: 'img/Makeup/Eye Products/Precision Felt Tip Liner Blue.png',
+        rating: 4.5,
+        reviews: 278,
+        description: 'A felt-tip eyeliner with ultra-precise application. Waterproof and smudge-proof for all-day wear.',
+        ingredients: ['Water-Resistant Formula', 'Quick-Dry'],
+        variantLabel: 'Shades',
+        variantType: 'shade',
+        variants: [
+          { label: 'Black', color: '#1A1A1A', image: 'img/Makeup/Eye Products/Precision Felt Tip Liner Black.png' },
+          { label: 'Blue', color: '#1A3A6B', image: 'img/Makeup/Eye Products/Precision Felt Tip Liner Blue.png' },
+          { label: 'Brown', color: '#6B3A2A', image: 'img/Makeup/Eye Products/Precision Felt Tip Liner Brown.png' }
+        ]
+    },
+    'brow-pencil-1': {
+        id: 'brow-pencil-1',
+        name: 'Brow Sculpting Pencil',
+        category: 'Eyebrows',
+        categoryPage: 'shop-makeup.html',
+        price: 24.00,
+        image: 'img/Makeup/Eye Products/Brow Sculpting Pencil Brown.png',
+        rating: 5.0,
+        reviews: 189,
+        description: 'An ultra-fine brow pencil that creates natural, hair-like strokes. Includes spoolie brush.',
+        ingredients: ['Vitamin E', 'Castor Oil'],
+        variantLabel: 'Shades',
+        variantType: 'shade',
+        variants: [
+          { label: 'Brown', color: '#6B3A2A', image: 'img/Makeup/Eye Products/Brow Sculpting Pencil Brown.png' },
+          { label: 'Taupe', color: '#8B7355', image: 'img/Makeup/Eye Products/Brow Sculpting Pencil Taupe.png' },
+          { label: 'Ashburn', color: '#7B4D3A', image: 'img/Makeup/Eye Products/Brow Sculpting Pencil Ashburn.png' },
+          { label: 'Espresso', color: '#3B1F14', image: 'img/Makeup/Eye Products/Brow Sculpting Pencil Espresso .png' },
+          { label: 'Black', color: '#1A1A1A', image: 'img/Makeup/Eye Products/Brow Sculpting Pencil Black.png' }
+        ]
+    },
+    'lashes-1': {
+        id: 'lashes-1',
+        name: 'Natural Wispy Faux Lashes',
+        category: 'Eyelashes',
+        categoryPage: 'shop-makeup.html',
+        price: 18.00,
+        image: 'img/lashes.jpg',
+        rating: 4.0,
+        reviews: 156,
+        description: 'Lightweight, natural-looking faux lashes perfect for everyday glam. Reusable up to 15 times.',
+        ingredients: ['Synthetic Fibers', 'Flexible Band']
+    },
+    'brow-gel-1': {
+        id: 'brow-gel-1',
+        name: 'Tinted Brow Gel',
+        category: 'Eyebrows',
+        categoryPage: 'shop-makeup.html',
+        price: 20.00,
+        image: 'img/Makeup/Eye Products/Tinted Brown Gel Brown.png',
+        rating: 5.0,
+        reviews: 234,
+        description: 'A tinted brow gel that adds color and holds brows in place all day. Natural-looking finish.',
+        ingredients: ['Castor Oil', 'Vitamin E', 'Panthenol'],
+        variantLabel: 'Shades',
+        variantType: 'shade',
+        variants: [
+          { label: 'Brown', color: '#6B3A2A', image: 'img/Makeup/Eye Products/Tinted Brown Gel Brown.png' },
+          { label: 'Taupe', color: '#8B7355', image: 'img/Makeup/Eye Products/Tinted Brown Gel Taupe.png' },
+          { label: 'Ashburn', color: '#7B4D3A', image: 'img/Makeup/Eye Products/Tinted Brown Gel Ashburn.png' },
+          { label: 'Espresso', color: '#3B1F14', image: 'img/Makeup/Eye Products/Tinted Brown Gel Espresso.png' }
+        ]
+    },
+    
+    // HAIR
+    'shampoo-1': {
+        id: 'shampoo-1',
+        name: 'Hydrating Honey Shampoo',
+        category: 'Shampoo',
+        categoryPage: 'shop-hair.html',
+        price: 28.00,
+        image: 'img/Hair/Deep%20Moisture%20Shampoo.png',
+        rating: 5.0,
+        reviews: 342,
+        description: 'A sulfate-free hydrating shampoo enriched with raw honey and argan oil. Gently cleanses while restoring moisture and shine.',
+        ingredients: ['Raw Honey', 'Argan Oil', 'Aloe Vera', 'Vitamin B5']
+    },
+    'shampoo-2': {
+        id: 'shampoo-2',
+        name: 'Clarifying Tea Tree Shampoo',
+        category: 'Shampoo',
+        categoryPage: 'shop-hair.html',
+        price: 24.00,
+        image: 'img/Hair/Clarifying%20%20%26%20Hydrating%20Scalp%20Shampoo.png',
+        rating: 4.5,
+        reviews: 198,
+        description: 'A deep-cleansing shampoo with tea tree oil that removes buildup and soothes the scalp. Perfect for oily hair.',
+        ingredients: ['Tea Tree Oil', 'Peppermint', 'Salicylic Acid', 'Biotin']
+    },
+    'conditioner-1': {
+        id: 'conditioner-1',
+        name: 'Deep Moisture Conditioner',
+        category: 'Conditioner',
+        categoryPage: 'shop-hair.html',
+        price: 30.00,
+        image: 'img/Hair/Deep%20Moisture%20Conditioner.png',
+        rating: 5.0,
+        reviews: 287,
+        description: 'An ultra-hydrating conditioner that detangles and softens hair. Leaves locks silky smooth without weighing them down.',
+        ingredients: ['Shea Butter', 'Coconut Oil', 'Keratin', 'Vitamin E']
+    },
+    'conditioner-2': {
+        id: 'conditioner-2',
+        name: 'Color Protect Conditioner',
+        category: 'Conditioner',
+        categoryPage: 'shop-hair.html',
+        price: 32.00,
+        originalPrice: 38.00,
+        image: 'img/Hair/Color%20Protect%20Conditioner.png',
+        rating: 4.5,
+        reviews: 156,
+        description: 'A color-safe conditioner that locks in vibrancy while deeply nourishing color-treated hair.',
+        ingredients: ['Quinoa Protein', 'Sunflower Seed Oil', 'Vitamin C', 'UV Filters']
+    },
+    'leave-in-1': {
+        id: 'leave-in-1',
+        name: '10-in-1 Leave-In Treatment',
+        category: 'Leave-In Treatment',
+        categoryPage: 'shop-hair.html',
+        price: 26.00,
+        image: 'img/Hair/10-in-1%20Leave-In%20Treatment.png',
+        rating: 5.0,
+        reviews: 423,
+        description: 'A lightweight leave-in spray that detangles, smooths frizz, adds shine, and protects against heat up to 450°F.',
+        ingredients: ['Argan Oil', 'Silk Amino Acids', 'Heat Protectant Complex', 'Vitamin E']
+    },
+    'leave-in-2': {
+        id: 'leave-in-2',
+        name: 'Curl Defining Cream',
+        category: 'Leave-In Treatment',
+        categoryPage: 'shop-hair.html',
+        price: 24.00,
+        image: 'img/Hair/Curl%20Defining%20Cream.png',
+        rating: 4.5,
+        reviews: 267,
+        description: 'A rich curl-defining cream that enhances natural texture, reduces frizz, and provides all-day hold without crunch.',
+        ingredients: ['Shea Butter', 'Coconut Milk', 'Flaxseed Gel', 'Jojoba Oil']
+    },
+    'hair-mask-1': {
+        id: 'hair-mask-1',
+        name: 'Overnight Repair Hair Mask',
+        category: 'Hair Mask',
+        categoryPage: 'shop-hair.html',
+        price: 36.00,
+        image: 'img/Hair/Overnight%20Repair%20Hair%20Mask.png',
+        rating: 5.0,
+        reviews: 389,
+        description: 'An intensive overnight hair mask that repairs damage, restores elasticity, and transforms dry, brittle hair while you sleep.',
+        ingredients: ['Keratin Complex', 'Avocado Oil', 'Biotin', 'Silk Proteins']
+    },
+    'hair-mask-2': {
+        id: 'hair-mask-2',
+        name: 'Protein Bond Repair Mask',
+        category: 'Hair Mask',
+        categoryPage: 'shop-hair.html',
+        price: 42.00,
+        image: 'img/Hair/Protein%20Bond%20Repair%20Mask.png',
+        rating: 4.5,
+        reviews: 201,
+        description: 'A bond-building treatment mask that reconstructs damaged hair from the inside out. Salon-level results at home.',
+        ingredients: ['Bond Repair Complex', 'Hydrolyzed Protein', 'Ceramides', 'Panthenol']
+    },
+    'hair-oil-1': {
+        id: 'hair-oil-1',
+        name: 'Moroccan Argan Hair Oil',
+        category: 'Hair Oil',
+        categoryPage: 'shop-hair.html',
+        price: 34.00,
+        image: 'img/Hair/Moroccan%20Argon%20Hair%20Oil.png',
+        rating: 5.0,
+        reviews: 512,
+        description: 'A luxurious argan oil that instantly tames frizz, adds brilliant shine, and nourishes without greasy residue.',
+        ingredients: ['100% Pure Argan Oil', 'Vitamin E', 'Essential Fatty Acids']
+    },
+    'hair-serum-1': {
+        id: 'hair-serum-1',
+        name: 'Biotin Growth Serum',
+        category: 'Hair Serum',
+        categoryPage: 'shop-hair.html',
+        price: 38.00,
+        image: 'img/Hair/Biotin%20Growth%20Serum.png',
+        rating: 4.5,
+        reviews: 234,
+        description: 'A targeted scalp serum with biotin and caffeine that stimulates hair growth and reduces thinning.',
+        ingredients: ['Biotin', 'Caffeine', 'Saw Palmetto', 'Niacinamide']
+    },
+    'hair-serum-2': {
+        id: 'hair-serum-2',
+        name: 'Frizz Control Silk Serum',
+        category: 'Hair Serum',
+        categoryPage: 'shop-hair.html',
+        price: 28.00,
+        image: 'img/Hair/Frizz%20Control%20Silk%20Serum.png',
+        rating: 5.0,
+        reviews: 178,
+        description: 'A silicone-free serum that smooths flyaways and adds a glass-like shine. Lightweight enough for daily use.',
+        ingredients: ['Silk Amino Acids', 'Jojoba Oil', 'Vitamin E', 'Rice Bran Extract']
+    },
+    'dry-shampoo-1': {
+        id: 'dry-shampoo-1',
+        name: 'Invisible Dry Shampoo',
+        category: 'Dry Shampoo',
+        categoryPage: 'shop-hair.html',
+        price: 18.00,
+        image: 'img/Hair/Freshen%20Up%20Invisible%20Dry%20Shampoo.png',
+        rating: 5.0,
+        reviews: 567,
+        description: 'A translucent dry shampoo that absorbs excess oil and adds volume without leaving white residue. Works on all hair colors.',
+        ingredients: ['Rice Starch', 'Tapioca Starch', 'Charcoal', 'Essential Oils']
+    },
+    'dry-shampoo-2': {
+        id: 'dry-shampoo-2',
+        name: 'Volumizing Dry Shampoo Foam',
+        category: 'Dry Shampoo',
+        categoryPage: 'shop-hair.html',
+        price: 22.00,
+        image: 'img/Hair/Dry%20Shampoo%20Powder%20for%20Oil%20Control%20%2B%20Volume.png',
+        rating: 4.0,
+        reviews: 145,
+        description: 'A lightweight foam dry shampoo that refreshes roots and adds incredible volume between washes.',
+        ingredients: ['Rice Protein', 'Bamboo Extract', 'Vitamin B5', 'Witch Hazel']
+    },
 
-// Global products store
-let products = {};
+    // ADDITIONAL HAIR PRODUCTS (referenced in shop-hair.html)
+    'shampoo-3': {
+        id: 'shampoo-3',
+        name: 'Color Protect Shampoo',
+        category: 'Shampoo',
+        categoryPage: 'shop-hair.html',
+        price: 30.00,
+        image: 'img/Hair/Color%20Protect%20Shampoo.png',
+        rating: 5.0,
+        reviews: 256,
+        description: 'A color-safe shampoo that gently cleanses while protecting vibrancy. Sulfate-free formula for color-treated hair.',
+        ingredients: ['Quinoa Protein', 'Sunflower Seed Oil', 'Vitamin C', 'UV Filters']
+    },
+    'conditioner-3': {
+        id: 'conditioner-3',
+        name: 'Color Protect Conditioner',
+        category: 'Conditioner',
+        categoryPage: 'shop-hair.html',
+        price: 32.00,
+        image: 'img/Hair/Color%20Protect%20Conditioner.png',
+        rating: 4.5,
+        reviews: 189,
+        description: 'A color-safe conditioner that locks in vibrancy while deeply nourishing color-treated hair.',
+        ingredients: ['Quinoa Protein', 'Sunflower Seed Oil', 'Vitamin C', 'UV Filters']
+    },
+    'leave-in-3': {
+        id: 'leave-in-3',
+        name: 'Leave-In Conditioner',
+        category: 'Leave-In Treatment',
+        categoryPage: 'shop-hair.html',
+        price: 22.00,
+        image: 'img/Hair/Leave-In%20Conditioner.png',
+        rating: 5.0,
+        reviews: 198,
+        description: 'A lightweight leave-in conditioner that detangles and hydrates all hair types. No buildup formula.',
+        ingredients: ['Coconut Oil', 'Silk Amino Acids', 'Vitamin E', 'Aloe Vera']
+    },
+    'hair-mask-3': {
+        id: 'hair-mask-3',
+        name: 'Soulfood Nourishing Mask',
+        category: 'Hair Mask',
+        categoryPage: 'shop-hair.html',
+        price: 34.00,
+        image: 'img/Hair/Soul%20food%20Nourishing%20Mask.png',
+        rating: 5.0,
+        reviews: 312,
+        description: 'A deeply nourishing hair mask that transforms dry, damaged hair. Leaves locks soft, shiny, and revitalized.',
+        ingredients: ['Shea Butter', 'Coconut Oil', 'Honey', 'Avocado Oil']
+    },
+    'hair-mask-4': {
+        id: 'hair-mask-4',
+        name: 'Therapy Session Deep Conditioning Hair Mask',
+        category: 'Hair Mask',
+        categoryPage: 'shop-hair.html',
+        price: 38.00,
+        image: 'img/Hair/Therapy%20Session%20Deep%20Conditioning%20Hair%20Mask.png',
+        rating: 4.5,
+        reviews: 178,
+        description: 'An intensive deep conditioning treatment that repairs and strengthens damaged hair from root to tip.',
+        ingredients: ['Keratin', 'Hydrolyzed Protein', 'Ceramides', 'Argan Oil']
+    },
+    'hair-oil-2': {
+        id: 'hair-oil-2',
+        name: 'Hair Oil for Lightweight Shine + Hydration',
+        category: 'Hair Oil',
+        categoryPage: 'shop-hair.html',
+        price: 28.00,
+        image: 'img/Hair/Hair%20Oil%20for%20Lightweight%20Shine%20%2B%20Hydration.png',
+        rating: 4.5,
+        reviews: 234,
+        description: 'A lightweight hair oil that adds brilliant shine and hydration without weighing hair down.',
+        ingredients: ['Argan Oil', 'Jojoba Oil', 'Vitamin E', 'Sweet Almond Oil']
+    },
+    'hair-oil-3': {
+        id: 'hair-oil-3',
+        name: 'Nourishing Hair Oil',
+        category: 'Hair Oil',
+        categoryPage: 'shop-hair.html',
+        price: 32.00,
+        image: 'img/Hair/Nourishing%20Hair%20Oil%20.png',
+        rating: 5.0,
+        reviews: 367,
+        description: 'A rich nourishing hair oil that deeply conditions and restores dry, damaged hair to silky softness.',
+        ingredients: ['Argan Oil', 'Coconut Oil', 'Vitamin E', 'Rosemary Extract']
+    },
+    'hair-oil-4': {
+        id: 'hair-oil-4',
+        name: 'REPAIR Hair Oil',
+        category: 'Hair Oil',
+        categoryPage: 'shop-hair.html',
+        price: 36.00,
+        image: 'img/Hair/REPAIR%20Hair%20oil%20.png',
+        rating: 4.5,
+        reviews: 145,
+        description: 'An intensive repair hair oil that mends split ends and restores damaged hair fiber.',
+        ingredients: ['Keratin', 'Argan Oil', 'Biotin', 'Vitamin E']
+    },
+    'hair-serum-3': {
+        id: 'hair-serum-3',
+        name: 'Restoring Hair & Edge Drops',
+        category: 'Hair Serum',
+        categoryPage: 'shop-hair.html',
+        price: 32.00,
+        image: 'img/Hair/Restoring%20Hair%20%26%20Edge%20Drops.png',
+        rating: 4.5,
+        reviews: 156,
+        description: 'A concentrated serum that restores thinning edges and promotes healthy hair growth.',
+        ingredients: ['Castor Oil', 'Biotin', 'Peppermint Oil', 'Vitamin E']
+    },
+    'hair-serum-4': {
+        id: 'hair-serum-4',
+        name: 'Lightweight Scalp Serum for Thinning Hair',
+        category: 'Hair Serum',
+        categoryPage: 'shop-hair.html',
+        price: 34.00,
+        image: 'img/Hair/Lightweight%20Scalp%20Serum%20for%20Thinning%20Hair%20.jpg',
+        rating: 5.0,
+        reviews: 98,
+        description: 'A targeted scalp serum that promotes thicker, fuller-looking hair. Lightweight and non-greasy formula.',
+        ingredients: ['Biotin', 'Caffeine', 'Saw Palmetto', 'Niacinamide']
+    },
+    'dry-shampoo-3': {
+        id: 'dry-shampoo-3',
+        name: 'Dry Shampoo Powder for Oil Control + Volume',
+        category: 'Dry Shampoo',
+        categoryPage: 'shop-hair.html',
+        price: 16.00,
+        image: 'img/Hair/Dry%20Shampoo%20Powder%20for%20Oil%20Control%20%2B%20Volume.png',
+        rating: 4.0,
+        reviews: 145,
+        description: 'An innovative dry shampoo puff that absorbs oil and adds volume with a simple pat application.',
+        ingredients: ['Rice Starch', 'Kaolin Clay', 'Tea Tree Oil', 'Charcoal']
+    },
+    'dry-shampoo-4': {
+        id: 'dry-shampoo-4',
+        name: 'Detox Thickening Dry Shampoo for Thinning Hair',
+        category: 'Dry Shampoo',
+        categoryPage: 'shop-hair.html',
+        price: 22.00,
+        image: 'img/Hair/Style%20%2B%20Treat%20Dry%20Shampoo%20Puff.png',
+        rating: 4.5,
+        reviews: 189,
+        description: 'A detoxifying dry shampoo that refreshes and adds volume for thinning hair.',
+        ingredients: ['Rice Protein', 'Bamboo Extract', 'Biotin', 'Charcoal']
+    },
+    'hair-travel-kit-1': {
+        id: 'hair-travel-kit-1',
+        name: 'Good Hair Day Travel Kit',
+        category: 'Travel Kit',
+        categoryPage: 'shop-hair.html',
+        price: 28.00,
+        image: 'img/Hair/Good%20Hair%20Day%20Travel%20Kit%20for%20all%20Hair%20Types.png',
+        rating: 5.0,
+        reviews: 234,
+        description: 'A complete travel kit with TSA-approved sizes for all hair types. Includes shampoo, conditioner, and treatment.',
+        ingredients: ['Shampoo 100ml', 'Conditioner 100ml', 'Treatment 50ml', 'Travel Pouch']
+    },
+    'hair-travel-kit-2': {
+        id: 'hair-travel-kit-2',
+        name: 'Hair Full Rescue Spa Travel Kit',
+        category: 'Travel Kit',
+        categoryPage: 'shop-hair.html',
+        price: 34.00,
+        image: 'img/Hair/Hair%20Full%20Rescue%20Spa%20Travel%20Kit.png',
+        rating: 4.5,
+        reviews: 167,
+        description: 'A luxury spa travel kit for intensive hair repair on the go. Perfect for damaged or color-treated hair.',
+        ingredients: ['Repair Shampoo 100ml', 'Deep Conditioner 100ml', 'Hair Mask 50ml', 'Hair Oil 30ml']
+    },
+    'hair-travel-kit-3': {
+        id: 'hair-travel-kit-3',
+        name: 'Hair Hydration Travel Kit',
+        category: 'Travel Kit',
+        categoryPage: 'shop-hair.html',
+        price: 26.00,
+        image: 'img/Hair/Hair%20Hydration%20Travel%20Kit%20.png',
+        rating: 5.0,
+        reviews: 198,
+        description: 'A hydration-focused travel kit to keep your hair moisturized wherever you go.',
+        ingredients: ['Hydrating Shampoo 100ml', 'Moisture Conditioner 100ml', 'Leave-In Spray 50ml']
+    },
+    'hair-travel-kit-4': {
+        id: 'hair-travel-kit-4',
+        name: 'Hair Revival Travel Kit',
+        category: 'Travel Kit',
+        categoryPage: 'shop-hair.html',
+        price: 32.00,
+        image: 'img/Hair/Hair%20Revival%20Travel%20Kit.png',
+        rating: 4.5,
+        reviews: 145,
+        description: 'A revitalizing travel kit for tired, stressed hair. Restores shine and bounce.',
+        ingredients: ['Revival Shampoo 100ml', 'Strength Conditioner 100ml', 'Hair Serum 30ml', 'Pouch']
+    },
 
-// Fetch products from backend
-async function fetchProducts() {
-    try {
-        const res = await fetch(`${API_BASE_URL}/products`);
-        const jsonResponse = await res.json();
+    // ADDITIONAL NAIL PRODUCTS (referenced in shop-nails.html)
+    'nails-holographic-1': {
+        id: 'nails-holographic-1',
+        name: 'Holographic Almond Set',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 30.00,
+        image: 'img/Nails/HolographicAlmondSet.png',
+        rating: 5.0,
+        reviews: 134,
+        description: 'Stunning holographic almond-shaped press-on nails that catch the light from every angle.',
+        ingredients: ['Adhesive Tabs Included', 'Nail File', '24 Pieces']
+    },
+    'nails-ombre-1': {
+        id: 'nails-ombre-1',
+        name: 'Nude Ombre Set',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 32.00,
+        image: 'img/Nails/NudeOmbreSet.png',
+        rating: 5.0,
+        reviews: 312,
+        description: 'Elegant nude ombre press-on nails for a sophisticated, natural gradient look.',
+        ingredients: ['Adhesive Tabs Included', 'Nail File', '24 Pieces']
+    },
+    'nails-cherry-1': {
+        id: 'nails-cherry-1',
+        name: 'Cherry Red Stiletto Set',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 22.00,
+        originalPrice: 28.00,
+        image: 'img/Nails/CherryRedStilettoSet.png',
+        rating: 4.5,
+        reviews: 156,
+        description: 'Bold cherry red stiletto press-on nails for a dramatic, head-turning look.',
+        ingredients: ['Adhesive Tabs Included', 'Nail File', '24 Pieces']
+    },
+    'nails-marble-1': {
+        id: 'nails-marble-1',
+        name: 'White Marble Coffin Set',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 36.00,
+        image: 'img/Nails/WhiteMarbleCoffinSet.png',
+        rating: 5.0,
+        reviews: 198,
+        description: 'Elegant white marble coffin-shaped press-on nails with a luxurious stone-inspired design.',
+        ingredients: ['Adhesive Tabs Included', 'Nail File', '24 Pieces']
+    },
+    'nail-stickers-1': {
+        id: 'nail-stickers-1',
+        name: 'Floral Nail Art Stickers',
+        category: 'Nail Art',
+        categoryPage: 'shop-nails.html',
+        price: 14.00,
+        image: 'img/Nails/FloralNailArtSticker.png',
+        rating: 4.0,
+        reviews: 89,
+        description: 'Beautiful floral nail art stickers for easy, salon-quality nail designs at home.',
+        ingredients: ['Self-Adhesive', 'Water-Resistant', '50+ Designs', 'Easy to Apply']
+    },
+    'nail-lamp-1': {
+        id: 'nail-lamp-1',
+        name: 'Mini UV Nail Lamp',
+        category: 'Nail Tool',
+        categoryPage: 'shop-nails.html',
+        price: 26.00,
+        image: 'img/Nails/MiniUVNailLamp.png',
+        rating: 4.5,
+        reviews: 267,
+        description: 'A compact UV nail lamp for curing gel nails at home. Portable and easy to use.',
+        ingredients: ['UV/LED Light', 'Timer Settings', 'USB Powered', 'Compact Design']
+    },
+    'pedicure-set-1': {
+        id: 'pedicure-set-1',
+        name: 'Pedicure Set',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 28.00,
+        image: 'img/Nails/PedicureSet.png',
+        rating: 4.5,
+        reviews: 67,
+        description: 'A beautiful pedicure press-on set with white floral and solid color designs.',
+        ingredients: ['Adhesive Tabs Included', 'Toe File', '24 Pieces']
+    },
+
+    // ADDITIONAL TOOLS PRODUCTS (referenced in shop-tools.html)
+    'concealer-brush-1': {
+        id: 'concealer-brush-1',
+        name: 'Concealer Brush',
+        category: 'Makeup Brush',
+        categoryPage: 'shop-tools.html',
+        price: 24.00,
+        image: 'img/Tools%20%26%20Brushes/ConcealerBrush.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'A precision concealer brush for seamless under-eye and spot coverage application.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handle']
+    },
+    'powder-brush-1': {
+        id: 'powder-brush-1',
+        name: 'Lip Brush',
+        category: 'Lip Tools',
+        categoryPage: 'shop-tools.html',
+        price: 18.00,
+        image: 'img/Tools%20%26%20Brushes/LipBrush.png',
+        rating: 5.0,
+        reviews: 189,
+        description: 'A precise lip brush for defined, professional lip application. Works with lipstick, gloss, and liner.',
+        ingredients: ['Synthetic Bristles', 'Retractable Handle']
+    },
+    'brush-cleaner-1': {
+        id: 'brush-cleaner-1',
+        name: 'Lip Applicators',
+        category: 'Lip Tools',
+        categoryPage: 'shop-tools.html',
+        price: 22.00,
+        image: 'img/Tools%20%26%20Brushes/LipApplicators.png',
+        rating: 4.0,
+        reviews: 97,
+        description: 'Disposable lip applicators for hygienic lip product application. Perfect for makeup artists.',
+        ingredients: ['50 Applicators', 'Doe-Foot Tips', 'Disposable']
+    },
+    'red-light-2': {
+        id: 'red-light-2',
+        name: 'LED Face Mask',
+        category: 'Red Light Therapy',
+        categoryPage: 'shop-tools.html',
+        price: 149.00,
+        originalPrice: 199.00,
+        image: 'img/Tools%20%26%20Brushes/Redlightwand.png',
+        rating: 5.0,
+        reviews: 267,
+        description: 'A professional LED face mask with red and near-infrared light therapy for skin rejuvenation.',
+        ingredients: ['Red LED 630nm', 'Near-Infrared 850nm', 'USB Rechargeable', 'Auto Timer']
+    },
+    'contour-brush-1': {
+        id: 'contour-brush-1',
+        name: 'Angled Contour Brush',
+        category: 'Makeup Brush',
+        categoryPage: 'shop-tools.html',
+        price: 14.00,
+        image: 'img/Tools%20%26%20Brushes/FoundationBrush.png',
+        rating: 4.5,
+        reviews: 142,
+        description: 'An angled contour brush for precise sculpting and contouring. Creates seamless, natural definition.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handle']
+    },
+    'gua-sha-2': {
+        id: 'gua-sha-2',
+        name: 'Jade Gua Sha & Roller Set',
+        category: 'Gua Sha',
+        categoryPage: 'shop-tools.html',
+        price: 38.00,
+        image: 'img/Tools%20%26%20Brushes/JadeFacialRoller.png',
+        rating: 5.0,
+        reviews: 198,
+        description: 'A complete jade gua sha and roller set for facial massage. Helps reduce puffiness and promote circulation.',
+        ingredients: ['100% Jade Stone', 'Gua Sha Tool', 'Dual-Ended Roller', 'Velvet Pouch']
+    },
+    'sponge-1': {
+        id: 'sponge-1',
+        name: 'Velvet Beauty Blender Set',
+        category: 'Beauty Sponge',
+        categoryPage: 'shop-tools.html',
+        price: 16.00,
+        image: 'img/Tools%20%26%20Brushes/VelvetBeautyBlenderSet.png',
+        rating: 4.5,
+        reviews: 234,
+        description: 'A set of premium beauty sponges for flawless foundation, concealer, and powder application.',
+        ingredients: ['Latex-Free', 'Antimicrobial', '3 Sponges', 'Travel Case']
+    },
+    'blush-brush-1': {
+        id: 'blush-brush-1',
+        name: 'Blush Brush',
+        category: 'Makeup Brush',
+        categoryPage: 'shop-tools.html',
+        price: 24.00,
+        image: 'img/Tools%20%26%20Brushes/BlushBrush.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'A soft, rounded blush brush for seamless color application to the cheeks.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handle']
+    },
+    'bronzer-brush-1': {
+        id: 'bronzer-brush-1',
+        name: 'Bronzer Brush',
+        category: 'Makeup Brush',
+        categoryPage: 'shop-tools.html',
+        price: 24.00,
+        image: 'img/Tools%20%26%20Brushes/BronzerBrush.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'A large, fluffy bronzer brush for effortless sun-kissed application.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handle']
+    },
+    'highlighter-brush-1': {
+        id: 'highlighter-brush-1',
+        name: 'Highlighter Brush',
+        category: 'Makeup Brush',
+        categoryPage: 'shop-tools.html',
+        price: 24.00,
+        image: 'img/Tools%20%26%20Brushes/HighligterBrush.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'A fan-shaped highlighter brush for precise, luminous highlighter application.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handle']
+    },
+    'beauty-blender-1': {
+        id: 'beauty-blender-1',
+        name: 'Beauty Blender',
+        category: 'Makeup Brush',
+        categoryPage: 'shop-tools.html',
+        price: 24.00,
+        image: 'img/Tools%20%26%20Brushes/BeautyBlender.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'A classic beauty blender sponge for seamless foundation blending. Expands when wet for airbrushed finish.',
+        ingredients: ['Latex-Free', 'Antimicrobial', 'Reusable']
+    },
+    'eyeshadow-brush-1': {
+        id: 'eyeshadow-brush-1',
+        name: 'Eye Shadow Brush',
+        category: 'Eye Tools',
+        categoryPage: 'shop-tools.html',
+        price: 24.00,
+        image: 'img/Tools%20%26%20Brushes/EyeshadowBrush.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'A flat eyeshadow brush for packing and pressing color onto the lids with precision.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handle']
+    },
+    'blending-brush-1': {
+        id: 'blending-brush-1',
+        name: 'Blending Brush',
+        category: 'Eye Tools',
+        categoryPage: 'shop-tools.html',
+        price: 24.00,
+        image: 'img/Tools%20%26%20Brushes/BlendingBrush.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'A fluffy blending brush for seamlessly blending eyeshadow for a soft, diffused look.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handle']
+    },
+    'eyeliner-brush-1': {
+        id: 'eyeliner-brush-1',
+        name: 'Eyeliner Brush',
+        category: 'Eye Tools',
+        categoryPage: 'shop-tools.html',
+        price: 24.00,
+        image: 'img/Tools%20%26%20Brushes/EyelinerBrush.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'An ultra-fine eyeliner brush for precise gel and cream liner application.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handle']
+    },
+    'brow-brush-1': {
+        id: 'brow-brush-1',
+        name: 'Brow Brush',
+        category: 'Eye Tools',
+        categoryPage: 'shop-tools.html',
+        price: 24.00,
+        image: 'img/Tools%20%26%20Brushes/BrowBrush.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'A dual-ended brow brush with an angled tip and spoolie for shaping and grooming brows.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handle']
+    },
+    'lash-comb-brush-1': {
+        id: 'lash-comb-brush-1',
+        name: 'Lash Comb Brush',
+        category: 'Eye Tools',
+        categoryPage: 'shop-tools.html',
+        price: 24.00,
+        image: 'img/Tools%20%26%20Brushes/LashCombBrush.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'A metal lash comb for separating and defining lashes after mascara application.',
+        ingredients: ['Metal Teeth', 'Ergonomic Handle']
+    },
+    'powder-face-brush-1': {
+        id: 'powder-face-brush-1',
+        name: 'Powder Brush',
+        category: 'Makeup Brush',
+        categoryPage: 'shop-tools.html',
+        price: 24.00,
+        image: 'img/Tools%20%26%20Brushes/PowderBrush.png',
+        rating: 4.0,
+        reviews: 156,
+        description: 'A large, soft powder brush for setting makeup with loose or pressed powder.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handle']
+    },
+
+    // ADDITIONAL NAIL PRODUCTS (remaining)
+    'nails-french-1': {
+        id: 'nails-french-1',
+        name: 'Classic French Tips',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 24.00,
+        image: 'img/Nails/ClassicFrenchTip.png',
+        rating: 5.0,
+        reviews: 428,
+        description: 'Timeless French tip press-on nails for a clean, elegant manicure. Easy to apply.',
+        ingredients: ['Adhesive Tabs Included', 'Nail File', '24 Pieces']
+    },
+    'nails-glitter-1': {
+        id: 'nails-glitter-1',
+        name: 'Champagne Glitter Set',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 28.00,
+        image: 'img/Nails/ChampageGlitterSet.png',
+        rating: 4.5,
+        reviews: 67,
+        description: 'Sparkling champagne glitter press-on nails for a glamorous look.',
+        ingredients: ['Adhesive Tabs Included', 'Nail File', '24 Pieces']
+    },
+    'nails-glossy-pink-1': {
+        id: 'nails-glossy-pink-1',
+        name: 'Glossy Pink Set',
+        category: 'Press-on Nails',
+        categoryPage: 'shop-nails.html',
+        price: 28.00,
+        image: 'img/Nails/GlossyPinkSet.png',
+        rating: 4.5,
+        reviews: 67,
+        description: 'Beautiful glossy pink press-on nails for a polished, feminine look.',
+        ingredients: ['Adhesive Tabs Included', 'Nail File', '24 Pieces']
+    },
+    'nails-manicure-pedicure-1': {
+        id: 'nails-manicure-pedicure-1',
+        name: 'Manicure/Pedicure Set',
+        category: 'Nail Care',
+        categoryPage: 'shop-nails.html',
+        price: 28.00,
+        image: 'img/Nails/Medicure:PedicureSet.png',
+        rating: 4.5,
+        reviews: 67,
+        description: 'A complete manicure and pedicure set for professional-quality nail care at home.',
+        ingredients: ['Nail File', 'Buffer', 'Cuticle Pusher', 'Clippers', 'Scissors']
+    },
+    'cuticle-oil-1': {
+        id: 'cuticle-oil-1',
+        name: 'Nourishing Cuticle Oil',
+        category: 'Nail Care',
+        categoryPage: 'shop-nails.html',
+        price: 18.00,
+        image: 'img/Nails/CuticleOil.png',
+        rating: 5.0,
+        reviews: 234,
+        description: 'A nourishing cuticle oil that hydrates and strengthens nails and cuticles.',
+        ingredients: ['Jojoba Oil', 'Vitamin E', 'Sweet Almond Oil', 'Lavender']
+    },
+
+    // ADDITIONAL TOOLS PRODUCTS (remaining)
+    'brow-spoolies-1': {
+        id: 'brow-spoolies-1',
+        name: 'Disposable Brow Spoolies (50 Pack)',
+        category: 'Brows & Lashes',
+        categoryPage: 'shop-tools.html',
+        price: 8.00,
+        image: 'img/Tools%20%26%20Brushes/BrowBrush.png',
+        rating: 5.0,
+        reviews: 342,
+        description: 'Disposable brow spoolies for grooming and shaping eyebrows. Hygienic and easy to use.',
+        ingredients: ['50 Spoolies', 'Nylon Bristles']
+    },
+    'brow-scissors-1': {
+        id: 'brow-scissors-1',
+        name: 'Precision Brow Scissors',
+        category: 'Brows & Lashes',
+        categoryPage: 'shop-tools.html',
+        price: 14.00,
+        image: 'img/Tools%20%26%20Brushes/BrowBrush.png',
+        rating: 4.5,
+        reviews: 189,
+        description: 'Precision brow scissors for trimming and shaping brows with ultimate control.',
+        ingredients: ['Stainless Steel', 'Curved Tip']
+    },
+    'eyelash-curler-1': {
+        id: 'eyelash-curler-1',
+        name: 'Professional Eyelash Curler',
+        category: 'Brows & Lashes',
+        categoryPage: 'shop-tools.html',
+        price: 18.00,
+        image: 'img/Tools%20%26%20Brushes/LashCombBrush.png',
+        rating: 5.0,
+        reviews: 276,
+        description: 'A professional eyelash curler that creates a long-lasting, natural curl.',
+        ingredients: ['Stainless Steel', 'Silicone Pad', 'Ergonomic Handle']
+    },
+    'lash-applicator-1': {
+        id: 'lash-applicator-1',
+        name: 'Dual-End Lash Applicator',
+        category: 'Brows & Lashes',
+        categoryPage: 'shop-tools.html',
+        price: 12.00,
+        image: 'img/Tools%20%26%20Brushes/LashCombBrush.png',
+        rating: 4.0,
+        reviews: 124,
+        description: 'A dual-ended lash applicator for precise false lash placement.',
+        ingredients: ['Stainless Steel', 'Dual Tips']
+    },
+    'face-brush-set-1': {
+        id: 'face-brush-set-1',
+        name: '8-Piece Face Brush Set',
+        category: 'Brush Set',
+        categoryPage: 'shop-tools.html',
+        price: 58.00,
+        image: 'img/Tools%20%26%20Brushes/16PieceBrushSet.png',
+        rating: 5.0,
+        reviews: 389,
+        description: 'A complete 8-piece face brush set for foundation, blush, contour, and highlight.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handles', 'Travel Case']
+    },
+    'eye-brush-set-2': {
+        id: 'eye-brush-set-2',
+        name: '12-Piece Eye Brush Set',
+        category: 'Brush Set',
+        categoryPage: 'shop-tools.html',
+        price: 45.00,
+        image: 'img/Tools%20%26%20Brushes/EssentialTravelSet.png',
+        rating: 4.5,
+        reviews: 267,
+        description: 'A comprehensive 12-piece eye brush set for every eye look from natural to dramatic.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handles', 'Roll-Up Case']
+    },
+    'complete-brush-kit-1': {
+        id: 'complete-brush-kit-1',
+        name: '24-Piece Complete Brush Kit',
+        category: 'Brush Set',
+        categoryPage: 'shop-tools.html',
+        price: 98.00,
+        image: 'img/Tools%20%26%20Brushes/16PieceBrushSet.png',
+        rating: 5.0,
+        reviews: 412,
+        description: 'The ultimate 24-piece complete brush kit with every brush you need for face, eyes, and lips.',
+        ingredients: ['Synthetic Bristles', 'Wooden Handles', 'Professional Case']
+    },
+    'travel-brush-set-1': {
+        id: 'travel-brush-set-1',
+        name: 'Mini Travel Brush Set',
+        category: 'Brush Set',
+        categoryPage: 'shop-tools.html',
+        price: 36.00,
+        originalPrice: 45.00,
+        image: 'img/Tools%20%26%20Brushes/EssentialTravelSet.png',
+        rating: 5.0,
+        reviews: 298,
+        description: 'A compact mini travel brush set with essential brushes for on-the-go application.',
+        ingredients: ['Synthetic Bristles', 'Retractable Handles', 'Zippered Pouch']
+    },
+    'makeup-pouch-1': {
+        id: 'makeup-pouch-1',
+        name: 'Velvet Makeup Pouch',
+        category: 'Accessories',
+        categoryPage: 'shop-tools.html',
+        price: 28.00,
+        image: 'img/Tools%20%26%20Brushes/VelvetBeautyBlenderSet.png',
+        rating: 4.5,
+        reviews: 187,
+        description: 'A luxurious velvet makeup pouch for organizing and carrying your beauty essentials.',
+        ingredients: ['Velvet Exterior', 'Satin Lining', 'Magnetic Closure']
+    },
+    'brush-holder-1': {
+        id: 'brush-holder-1',
+        name: 'Acrylic Brush Holder',
+        category: 'Accessories',
+        categoryPage: 'shop-tools.html',
+        price: 22.00,
+        image: 'img/Tools%20%26%20Brushes/BeautyBlender.png',
+        rating: 4.0,
+        reviews: 134,
+        description: 'A clear acrylic brush holder with multiple compartments for organized storage.',
+        ingredients: ['Clear Acrylic', '6 Compartments']
+    },
+    'drying-rack-1': {
+        id: 'drying-rack-1',
+        name: 'Collapsible Brush Drying Rack',
+        category: 'Accessories',
+        categoryPage: 'shop-tools.html',
+        price: 18.00,
+        image: 'img/Tools%20%26%20Brushes/PowderBrush.png',
+        rating: 5.0,
+        reviews: 156,
+        description: 'A collapsible brush drying rack that keeps bristles protected while drying.',
+        ingredients: ['Stainless Steel', 'Silicone Grips', 'Foldable Design']
+    },
+    'travel-case-1': {
+        id: 'travel-case-1',
+        name: 'Professional Travel Case',
+        category: 'Accessories',
+        categoryPage: 'shop-tools.html',
+        price: 42.00,
+        image: 'img/Tools%20%26%20Brushes/EssentialTravelSet.png',
+        rating: 5.0,
+        reviews: 234,
+        description: 'A professional travel case with adjustable compartments for brushes and tools.',
+        ingredients: ['Faux Leather', 'Adjustable Dividers', 'Shoulder Strap']
+    },
+    'brush-cleaner-spray-1': {
+        id: 'brush-cleaner-spray-1',
+        name: 'Quick-Dry Brush Cleaner Spray',
+        category: 'Cleaning & Care',
+        categoryPage: 'shop-tools.html',
+        price: 16.00,
+        image: 'img/Tools%20%26%20Brushes/BlushBrush.png',
+        rating: 5.0,
+        reviews: 378,
+        description: 'A quick-dry brush cleaner spray that sanitizes and conditions brushes between uses.',
+        ingredients: ['Isopropyl Alcohol', 'Conditioners', 'Quick Dry Formula']
+    },
+    'solid-brush-cleaner-1': {
+        id: 'solid-brush-cleaner-1',
+        name: 'Solid Brush Cleaner Bar',
+        category: 'Cleaning & Care',
+        categoryPage: 'shop-tools.html',
+        price: 14.00,
+        image: 'img/Tools%20%26%20Brushes/ConcealerBrush.png',
+        rating: 4.5,
+        reviews: 213,
+        description: 'A solid brush cleaner bar that deep cleans and conditions brush bristles.',
+        ingredients: ['Coconut Oil', 'Tea Tree Oil', 'Gentle Cleanser']
+    },
+    'cleaning-mat-1': {
+        id: 'cleaning-mat-1',
+        name: 'Silicone Brush Cleaning Mat',
+        category: 'Cleaning & Care',
+        categoryPage: 'shop-tools.html',
+        price: 12.00,
+        image: 'img/Tools%20%26%20Brushes/BronzerBrush.png',
+        rating: 5.0,
+        reviews: 289,
+        description: 'A silicone brush cleaning mat with multiple textures for thorough cleaning.',
+        ingredients: ['Food-Grade Silicone', 'Suction Cup Base']
+    },
+    'sponge-cleaner-1': {
+        id: 'sponge-cleaner-1',
+        name: 'Gentle Sponge Cleaner',
+        category: 'Cleaning & Care',
+        categoryPage: 'shop-tools.html',
+        price: 10.00,
+        originalPrice: 14.00,
+        image: 'img/Tools%20%26%20Brushes/VelvetBeautyBlenderSet.png',
+        rating: 4.0,
+        reviews: 167,
+        description: 'A gentle cleanser specifically designed for beauty sponges and blenders.',
+        ingredients: ['Gentle Surfactants', 'Charcoal', 'Antimicrobial']
+    }
+};
+
+function renderProductVariants(product) {
+  const variantsContainer = document.getElementById('product-variants');
+
+  if (!variantsContainer) {
+    return;
+  }
+
+  if (!product.variants || !product.variants.length) {
+    variantsContainer.hidden = true;
+    variantsContainer.innerHTML = '';
+    return;
+  }
+
+  const variantLabel = product.variantLabel || 'Options';
+  const variantType = product.variantType || 'shade';
+
+  if (variantType === 'button') {
+    variantsContainer.innerHTML = `
+      <span class="product-shades-label">${variantLabel}</span>
+      <div class="palette-pan-selector" data-variant-group>
+        ${product.variants.map(variant => `
+          <button class="pan-btn${variant.label === product.defaultVariant ? ' pan-btn-active' : ''}" type="button" data-variant-value="${variant.label}">${variant.label}</button>
+        `).join('')}
+      </div>
+    `;
+
+    variantsContainer.querySelectorAll('.pan-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        variantsContainer.querySelectorAll('.pan-btn').forEach(item => item.classList.remove('pan-btn-active'));
+        button.classList.add('pan-btn-active');
+      });
+    });
+  } else {
+    variantsContainer.innerHTML = `
+      <span class="product-shades-label">${variantLabel}</span>
+      <div class="product-shades">
+        ${product.variants.map((variant, index) => {
+          const classes = ['shade-dot'];
+          if (variant.pattern === 'clear') classes.push('shade-clear');
+          if (variant.pattern === 'transparent') classes.push('shade-transparent');
+          if (index === 0) classes.push('shade-active');
+          const style = variant.color ? ` style="background:${variant.color};"` : '';
+          const dataImg = variant.image ? ` data-image="${variant.image}"` : '';
+          return `<span class="${classes.join(' ')}"${style}${dataImg} title="${variant.label}" aria-label="${variant.label}"></span>`;
+        }).join('')}
+      </div>
+    `;
+
+    // Add click handlers for shade image swapping
+    variantsContainer.querySelectorAll('.shade-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        variantsContainer.querySelectorAll('.shade-dot').forEach(d => d.classList.remove('shade-active'));
+        dot.classList.add('shade-active');
+        const newImage = dot.dataset.image;
+        if (newImage) {
+          const mainImg = document.getElementById('mainProductImage');
+          if (mainImg) mainImg.src = newImage;
+        }
+      });
+    });
+  }
+
+  variantsContainer.hidden = false;
+}
+
+// Function to load product details from URL
+function loadProductFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    
+    if (productId && products[productId]) {
+        const product = products[productId];
         
-        // Backend returns either an array of products or an object like { products: [...] }
-        const data = Array.isArray(jsonResponse) ? jsonResponse : (jsonResponse.products || jsonResponse.data || []);
+        // Update page title
+        document.title = `${product.name} | Bare Beauty`;
         
-        data.forEach(p => {
-            // Re-map back to frontend format
-            products[p._id || p.id] = {
-                id: p._id || p.id,
-                name: p.name,
-                category: p.subCategory || p.category,
-                categoryPage: p.category === 'Skincare' ? 'shop-skincare.html' :
-                              p.category === 'Makeup' ? 'shop-makeup.html' :
-                              p.category === 'Hair' ? 'shop-hair.html' :
-                              p.category === 'Nails' ? 'shop-nails.html' : 'shop-tools.html',
-                price: p.price,
-                image: (p.images && p.images.length > 0) ? p.images[0] : 'img/placeholder.jpg',
-                rating: p.rating ? p.rating.average : 0,
-                reviews: p.rating ? p.rating.count : 0,
-                description: p.description,
-                skinType: p.skinType ? p.skinType.join(', ') : '',
-                ingredients: p.ingredients || [],
-                originalPrice: p.variants && p.variants.find(v => v.priceAdjustment < 0) ? p.price + 10 : null
-            };
-        });
+        // Update breadcrumb
+        const breadcrumbCategoryLink = document.getElementById('breadcrumb-category-link');
+        const breadcrumbProduct = document.getElementById('breadcrumb-product');
+        if (breadcrumbCategoryLink) {
+            breadcrumbCategoryLink.href = product.categoryPage;
+            breadcrumbCategoryLink.textContent = getCategoryName(product.categoryPage);
+        }
+        if (breadcrumbProduct) {
+            breadcrumbProduct.textContent = product.name;
+        }
         
-        // Trigger a custom event to signify that products are loaded
-        window.dispatchEvent(new Event('productsLoaded'));
-    } catch (err) {
-        console.error('Error fetching products - Backend offline. Using dummy mock data array:', err);
-        const mockData = [
-            { id: "cleanser-1", name: "Gentle Foam Cleanser", category: "Cleanser", price: 32, subCategory: "Cleanser", images: ["img/Skincare/GentleFoanCleanser.png"], skinType: ["all"], rating: { average: 4.8, count: 128 } },
-            { id: "serum-1", name: "Vitamin C Brightening Serum", category: "Serum", price: 58, subCategory: "Serum", images: ["img/Skincare/VitaminCBrighteningSerum.png"], skinType: ["dry"], rating: { average: 5.0, count: 89 } },
-            { id: "toner-1", name: "Balancing Rose Toner", category: "Toner", price: 28, subCategory: "Toner", images: ["img/Skincare/BalancingRoseToner.png"], skinType: ["oily"], rating: { average: 4.2, count: 56 } },
-            { id: "moisturizer-1", name: "SPF 30 Day Cream", category: "SPF Moisturizer", price: 45, subCategory: "Moisturizer", variants: [{priceAdjustment:-10}], images: ["img/Skincare/SPF30DayCream.png"], skinType: ["combination"], rating: { average: 5.0, count: 203 } },
-            { id: "eye-cream-1", name: "Revitalizing Eye Cream", category: "Under-Eye Cream", price: 42, subCategory: "Eye Cream", images: ["img/Skincare/RevitalizingEyeCream.png"], skinType: ["all"], rating: { average: 4.5, count: 74 } }
-        ];
+        // Update main image
+        const mainImage = document.getElementById('mainProductImage');
+        if (mainImage) {
+            mainImage.src = product.image;
+            mainImage.alt = product.name;
+        }
         
-        mockData.forEach(p => {
-            products[p.id] = {
-                id: p.id,
-                name: p.name,
-                category: p.category,
-                price: p.price,
-                image: (p.images && p.images.length > 0) ? p.images[0] : 'img/placeholder.jpg',
-                rating: p.rating ? p.rating.average : 0,
-                reviews: p.rating ? p.rating.count : 0,
-                skinType: p.skinType ? p.skinType.join(', ') : '',
-                originalPrice: p.variants && p.variants.find(v => v.priceAdjustment < 0) ? p.price + 10 : null
-            };
-        });
-        window.dispatchEvent(new Event('productsLoaded'));
+        // Update product info
+        const categoryTag = document.querySelector('.product-category-tag');
+        if (categoryTag) categoryTag.textContent = product.category;
+        
+        const title = document.querySelector('.product-title');
+        if (title) title.textContent = product.name;
+        
+        // Update rating
+        const ratingText = document.querySelector('.rating-text');
+        if (ratingText) ratingText.textContent = product.rating.toFixed(1);
+        
+        const reviewCount = document.querySelector('.review-count');
+        if (reviewCount) reviewCount.textContent = `(${product.reviews} Reviews)`;
+        
+        // Update stars
+        const starsContainer = document.querySelector('.product-rating-detail .stars');
+        if (starsContainer) {
+            let starsHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= Math.floor(product.rating)) {
+                    starsHTML += '<i class="fa-solid fa-star"></i>';
+                } else if (i - 0.5 <= product.rating) {
+                    starsHTML += '<i class="fa-solid fa-star-half-stroke"></i>';
+                } else {
+                    starsHTML += '<i class="fa-regular fa-star"></i>';
+                }
+            }
+            starsContainer.innerHTML = starsHTML;
+        }
+        
+        // Update price
+        const currentPrice = document.querySelector('.product-price-detail .current-price');
+        if (currentPrice) currentPrice.textContent = `$${product.price.toFixed(2)}`;
+        
+        // Update original price if on sale
+        const originalPrice = document.getElementById('product-original-price');
+        if (originalPrice && product.originalPrice) {
+            originalPrice.textContent = `$${product.originalPrice.toFixed(2)}`;
+            originalPrice.style.display = 'inline';
+            originalPrice.style.textDecoration = 'line-through';
+            originalPrice.style.color = '#999';
+            originalPrice.style.marginLeft = '10px';
+        }
+        
+        // Update description
+        const description = document.querySelector('.product-short-desc');
+        if (description) description.textContent = product.description;
+
+        renderProductVariants(product);
+        
+        // Update features/ingredients list
+        const featuresList = document.getElementById('features-list');
+        if (featuresList && product.ingredients) {
+            featuresList.innerHTML = product.ingredients.map(item => `<li>${item}</li>`).join('');
+        }
+        
+        // Update badge (new, sale, etc.)
+        const badge = document.getElementById('product-badge');
+        if (badge) {
+            if (product.originalPrice) {
+                badge.className = 'badge badge-sale';
+                badge.textContent = 'Sale';
+            } else {
+                badge.className = 'badge badge-new';
+                badge.textContent = 'New';
+            }
+        }
+    } else {
+        // Product not found - show error
+        const title = document.querySelector('.product-title');
+        if (title) title.textContent = 'Product Not Found';
+        const description = document.querySelector('.product-short-desc');
+        if (description) description.textContent = 'Sorry, this product could not be found.';
+      renderProductVariants({ variants: [] });
     }
 }
 
-// Call fetchProducts on load
-fetchProducts();
+// Helper function to get category name from page
+function getCategoryName(categoryPage) {
+    const categoryMap = {
+        'shop-skincare.html': 'Skincare',
+        'shop-makeup.html': 'Makeup',
+        'shop-hair.html': 'Hair',
+        'shop-tools.html': 'Tools & Brushes',
+        'shop-nails.html': 'Nails'
+    };
+    return categoryMap[categoryPage] || 'Shop';
+}
 
 // ===== CART FUNCTIONALITY =====
-let cartToken = localStorage.getItem('bareBeautyCartToken');
-let cart = []; // We will sync this from backend
+let cart = JSON.parse(localStorage.getItem('bareBeautyCart')) || [];
+let appliedCoupon = JSON.parse(localStorage.getItem('bareBeautyCoupon')) || null;
 
-async function initCart() {
-    if (!cartToken) {
-        try {
-            const res = await fetch(`${API_BASE_URL}/cart`, { method: 'POST' });
-            if (res.ok) {
-                const newCart = await res.json();
-                cartToken = newCart.cartToken;
-                localStorage.setItem('bareBeautyCartToken', cartToken);
-            }
-        } catch (e) {
-            console.error('Offline - Cart backend unreachable');
-        }
+const COUPON_RULES = {
+  GLOW10: { type: 'percent', value: 10, label: '10% OFF' },
+  BARE15: { type: 'percent', value: 15, label: '15% OFF' },
+  BEAUTY20: { type: 'percent', value: 20, label: '20% OFF' },
+  VIP25: { type: 'percent', value: 25, label: '25% OFF' },
+  SAVE5: { type: 'fixed', value: 5, label: '$5 OFF' },
+  FREESHIP: { type: 'shipping', value: 0, label: 'Free Shipping' },
+  GIFTSET: { type: 'gift', value: 0, label: 'Gift Set Reward' }
+};
+
+function saveCartState() {
+  localStorage.setItem('bareBeautyCart', JSON.stringify(cart));
+  if (appliedCoupon) {
+    localStorage.setItem('bareBeautyCoupon', JSON.stringify(appliedCoupon));
+  } else {
+    localStorage.removeItem('bareBeautyCoupon');
+  }
+}
+
+function normalizeCartItem(productInput) {
+  let source = null;
+
+  if (typeof productInput === 'string') {
+    source = products[productInput] ? { ...products[productInput], id: productInput } : null;
+  } else if (productInput && typeof productInput === 'object') {
+    if (typeof productInput.id === 'string' && products[productInput.id]) {
+      source = { ...products[productInput.id], ...productInput };
     } else {
-        try {
-            const res = await fetch(`${API_BASE_URL}/cart/${cartToken}`);
-            if (res.ok) {
-                const cartData = await res.json();
-                // Map backend .items to frontend cart structure
-                const backendCart = cartData.items.map(item => ({
-                    id: item.product._id,
-                    name: item.product.name,
-                    price: item.priceAtAdd,
-                    quantity: item.quantity,
-                    image: item.product.images && item.product.images.length > 0 ? item.product.images[0] : 'img/placeholder.jpg'
-                }));
-                
-                const localMock = JSON.parse(localStorage.getItem('bareBeautyCart')) || [];
-                cart = [...backendCart];
-                for (const localItem of localMock) {
-                    if (!backendCart.find(b => b.id === localItem.id || String(b.id) === String(localItem.id))) {
-                        cart.push(localItem);
-                    }
-                }
-            }
-        } catch (e) {
-            console.error('Offline - Cart backend unreachable');
-        }
+      source = { ...productInput };
     }
-    // Backup fallback if perfectly completely offline
-    if (cart.length === 0 && localStorage.getItem('bareBeautyCart')) {
-        cart = JSON.parse(localStorage.getItem('bareBeautyCart')) || [];
+  }
+
+  if (!source) {
+    return null;
+  }
+
+  const quantity = Math.max(1, parseInt(source.quantity, 10) || 1);
+  const price = Number(source.price) || 0;
+  const stableId = source.id || `${(source.name || 'item').toLowerCase().replace(/\s+/g, '-')}-${price}`;
+
+  return {
+    id: stableId,
+    name: source.name || 'Product',
+    category: source.category || 'Beauty',
+    image: source.image || 'img/logo.png',
+    price,
+    quantity
+  };
+}
+
+function calculateCartTotals() {
+  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  let discount = 0;
+
+  if (appliedCoupon && COUPON_RULES[appliedCoupon.code]) {
+    const rule = COUPON_RULES[appliedCoupon.code];
+    if (rule.type === 'percent') {
+      discount = subtotal * (rule.value / 100);
+    } else if (rule.type === 'fixed') {
+      discount = Math.min(rule.value, subtotal);
     }
-    updateCartCount();
+  }
+
+  const shipping = 0;
+  const total = Math.max(0, subtotal - discount + shipping);
+
+  return {
+    subtotal,
+    discount,
+    shipping,
+    total
+  };
+}
+
+function applyCouponCode(rawCode) {
+  const code = (rawCode || '').trim().toUpperCase();
+
+  if (!code) {
+    return { ok: false, message: 'Please enter a code.' };
+  }
+
+  if (!COUPON_RULES[code]) {
+    return { ok: false, message: 'Invalid discount code.' };
+  }
+
+  appliedCoupon = { code };
+  saveCartState();
+
+  return { ok: true, message: `${code} applied successfully.` };
+}
+
+function removeCoupon() {
+  appliedCoupon = null;
+  saveCartState();
 }
 
 function updateCartCount() {
@@ -268,36 +2009,24 @@ function updateCartCount() {
     cartCountElements.forEach(el => {
         el.textContent = totalItems;
     });
-    // For backwards compatibility on UI, still save local mock
-    localStorage.setItem('bareBeautyCart', JSON.stringify(cart));
 }
 
-async function addToCart(product) {
-    // Optimistic UI Update
-    const existingItem = cart.find(item => item.id === product.id);
+function addToCart(product) {
+  const normalizedItem = normalizeCartItem(product);
+  if (!normalizedItem) {
+    return;
+  }
+
+  const existingItem = cart.find(item => item.id === normalizedItem.id);
     if (existingItem) {
-        existingItem.quantity += product.quantity || 1;
+    existingItem.quantity += normalizedItem.quantity || 1;
     } else {
-        cart.push({ ...product, quantity: product.quantity || 1 });
+    cart.push(normalizedItem);
     }
+  saveCartState();
     updateCartCount();
     showNotification('Added to cart!');
-    
-    // Sync to Backend
-    if (cartToken && typeof product.id === 'string' && product.id.length > 10) {
-        try {
-            await fetch(`${API_BASE_URL}/cart/${cartToken}/items`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    productId: product.id,
-                    quantity: product.quantity || 1
-                })
-            });
-        } catch(e) {
-            console.error('Failed to sync cart add to backend', e);
-        }
-    }
+  renderCartPage();
 }
 
 function showNotification(message) {
@@ -323,66 +2052,165 @@ function showNotification(message) {
 document.querySelectorAll('.add-to-cart-btn, .add-to-cart-btn-large').forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
-        const card = btn.closest('.product-card-shop') || btn.closest('.product-info-detail')?.parentElement;
-        const name = card?.querySelector('.product-name, .product-title')?.textContent?.trim() || 'Product';
-        // Find product ID from global products dictionary to map to Mongo ObjectId
-        const matchedProduct = Object.values(products).find(p => p.name === name);
-        const productId = matchedProduct ? matchedProduct.id : Date.now();
-        
-        const product = {
-            id: productId,
-            name: name,
-            price: parseFloat(card?.querySelector('.current-price')?.textContent?.replace('$', '')) || 0,
-            quantity: parseInt(document.getElementById('quantity')?.value) || 1,
-            image: matchedProduct ? matchedProduct.image : ''
-        };
-        addToCart(product);
+    const card = btn.closest('.product-card-shop') || btn.closest('.product-info-detail')?.parentElement;
+    const productLink = card?.querySelector('a[href*="product-detail.html?id="]');
+    const href = productLink?.getAttribute('href') || '';
+    const productId = href.includes('?') ? new URLSearchParams(href.split('?')[1]).get('id') : null;
+
+    if (productId && products[productId]) {
+      addToCart({ id: productId, quantity: parseInt(document.getElementById('quantity')?.value, 10) || 1 });
+      return;
+    }
+
+    const product = {
+      name: card?.querySelector('.product-name, .product-title')?.textContent || 'Product',
+      category: card?.querySelector('.product-category, .product-category-tag')?.textContent || 'Beauty',
+      image: card?.querySelector('img')?.getAttribute('src') || 'img/logo.png',
+      price: parseFloat(card?.querySelector('.current-price')?.textContent?.replace('$', '')) || 0,
+      quantity: parseInt(document.getElementById('quantity')?.value, 10) || 1
+    };
+    addToCart(product);
     });
 });
 
-// Initialize cart on page load
-initCart();
+// Initialize cart count on page load
+updateCartCount();
+
+function renderCartPage() {
+  const cartItemsContainer = document.getElementById('cartItemsContainer');
+  if (!cartItemsContainer) {
+    return;
+  }
+
+  const spinReward = localStorage.getItem('spinReward');
+  if (!appliedCoupon && spinReward && COUPON_RULES[spinReward]) {
+    appliedCoupon = { code: spinReward };
+    saveCartState();
+  }
+
+  if (!cart.length) {
+    cartItemsContainer.innerHTML = `
+      <div class="cart-empty-state">
+        <h3>Your cart is empty</h3>
+        <p>Looks like you have not added anything yet.</p>
+        <a href="shop-makeup.html" class="add-to-cart-btn">Start Shopping</a>
+      </div>
+    `;
+  } else {
+    cartItemsContainer.innerHTML = cart.map(item => `
+      <article class="cart-item" data-cart-id="${item.id}">
+        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+        <div class="cart-item-info">
+          <p class="cart-item-category">${item.category}</p>
+          <h4 class="cart-item-name">${item.name}</h4>
+          <p class="cart-item-price">$${item.price.toFixed(2)}</p>
+        </div>
+        <div class="cart-item-controls">
+          <button type="button" class="cart-qty-btn" data-action="decrease">-</button>
+          <span class="cart-qty-value">${item.quantity}</span>
+          <button type="button" class="cart-qty-btn" data-action="increase">+</button>
+          <button type="button" class="cart-remove-btn" data-action="remove">Remove</button>
+        </div>
+        <p class="cart-item-line-total">$${(item.price * item.quantity).toFixed(2)}</p>
+      </article>
+    `).join('');
+  }
+
+  const totals = calculateCartTotals();
+  const subtotalEl = document.getElementById('subtotalAmount');
+  const discountEl = document.getElementById('discountAmount');
+  const shippingEl = document.getElementById('shippingAmount');
+  const totalEl = document.getElementById('totalAmount');
+  const couponCodeEl = document.getElementById('appliedCouponCode');
+
+  if (subtotalEl) subtotalEl.textContent = `$${totals.subtotal.toFixed(2)}`;
+  if (discountEl) discountEl.textContent = `-$${totals.discount.toFixed(2)}`;
+  if (shippingEl) shippingEl.textContent = totals.shipping === 0 ? 'Free' : `$${totals.shipping.toFixed(2)}`;
+  if (totalEl) totalEl.textContent = `$${totals.total.toFixed(2)}`;
+  if (couponCodeEl) couponCodeEl.textContent = appliedCoupon ? appliedCoupon.code : 'None';
+
+  updateCartCount();
+}
+
+function initCartPage() {
+  const cartItemsContainer = document.getElementById('cartItemsContainer');
+  if (!cartItemsContainer) {
+    return;
+  }
+
+  renderCartPage();
+
+  cartItemsContainer.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-action]');
+    if (!button) return;
+
+    const action = button.dataset.action;
+    const cartItemEl = button.closest('.cart-item');
+    if (!cartItemEl) return;
+
+    const cartId = cartItemEl.dataset.cartId;
+    const item = cart.find(entry => entry.id === cartId);
+    if (!item) return;
+
+    if (action === 'increase') {
+      item.quantity += 1;
+    } else if (action === 'decrease') {
+      item.quantity = Math.max(1, item.quantity - 1);
+    } else if (action === 'remove') {
+      cart = cart.filter(entry => entry.id !== cartId);
+    }
+
+    saveCartState();
+    renderCartPage();
+  });
+
+  const couponInput = document.getElementById('couponInput');
+  const applyCouponBtn = document.getElementById('applyCouponBtn');
+  const couponFeedback = document.getElementById('couponFeedback');
+  const clearCouponBtn = document.getElementById('clearCouponBtn');
+  const applySpinRewardBtn = document.getElementById('applySpinRewardBtn');
+
+  applyCouponBtn?.addEventListener('click', () => {
+    const result = applyCouponCode(couponInput?.value || '');
+    if (couponFeedback) {
+      couponFeedback.textContent = result.message;
+      couponFeedback.className = `coupon-feedback ${result.ok ? 'coupon-success' : 'coupon-error'}`;
+    }
+    renderCartPage();
+  });
+
+  clearCouponBtn?.addEventListener('click', () => {
+    removeCoupon();
+    if (couponFeedback) {
+      couponFeedback.textContent = 'Discount removed.';
+      couponFeedback.className = 'coupon-feedback';
+    }
+    renderCartPage();
+  });
+
+  applySpinRewardBtn?.addEventListener('click', () => {
+    const spinReward = localStorage.getItem('spinReward');
+    if (!spinReward) {
+      if (couponFeedback) {
+        couponFeedback.textContent = 'No spin reward code found yet.';
+        couponFeedback.className = 'coupon-feedback coupon-error';
+      }
+      return;
+    }
+
+    const result = applyCouponCode(spinReward);
+    if (couponFeedback) {
+      couponFeedback.textContent = result.ok ? `Spin code ${spinReward} applied.` : result.message;
+      couponFeedback.className = `coupon-feedback ${result.ok ? 'coupon-success' : 'coupon-error'}`;
+    }
+    if (couponInput) couponInput.value = spinReward;
+    renderCartPage();
+  });
+}
+
+initCartPage();
 
 // ===== PRODUCT DETAIL PAGE FUNCTIONS =====
-
-function loadProductFromURL() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-    
-    if (!productId) return;
-
-    if (Object.keys(products).length > 0) {
-        displayProductDetails(productId);
-    } else {
-        window.addEventListener('productsLoaded', () => displayProductDetails(productId));
-    }
-}
-
-function displayProductDetails(productId) {
-    const product = products[productId];
-    if (!product) {
-        const desc = document.getElementById('product-description');
-        if (desc) desc.textContent = "Product not found.";
-        return;
-    }
-    
-    if (document.getElementById('product-name')) document.getElementById('product-name').textContent = product.name;
-    if (document.getElementById('product-category')) document.getElementById('product-category').textContent = product.category;
-    if (document.getElementById('breadcrumb-category-link')) {
-        document.getElementById('breadcrumb-category-link').textContent = product.category;
-        document.getElementById('breadcrumb-category-link').href = product.categoryPage || '#';
-    }
-    if (document.getElementById('breadcrumb-product')) document.getElementById('breadcrumb-product').textContent = product.name;
-    if (document.getElementById('product-price')) document.getElementById('product-price').textContent = `$${product.price.toFixed(2)}`;
-    if (document.getElementById('product-original-price') && product.originalPrice) {
-        document.getElementById('product-original-price').textContent = `$${product.originalPrice.toFixed(2)}`;
-        document.getElementById('product-original-price').style.display = 'inline';
-    }
-    if (document.getElementById('product-description')) document.getElementById('product-description').textContent = product.description || 'Experience the best care with Bare Beauty.';
-    if (document.getElementById('mainProductImage') && product.image) document.getElementById('mainProductImage').src = product.image;
-    if (document.getElementById('product-rating')) document.getElementById('product-rating').textContent = product.rating || '5.0';
-    if (document.getElementById('product-reviews')) document.getElementById('product-reviews').textContent = `(${product.reviews || 0} Reviews)`;
-}
 
 // Image Gallery
 function changeImage(src, thumbnail) {
@@ -429,25 +2257,20 @@ document.querySelectorAll('.size-btn').forEach(btn => {
     });
 });
 
-// ===== FILTER AND SEARCH FUNCTIONALITY =====
-const filterCheckboxes = document.querySelectorAll('.filters-sidebar input[type="checkbox"]');
+// ===== FILTER FUNCTIONALITY =====
+const filterCheckboxes = document.querySelectorAll('.filter-option input, .filter-chip input, .filter-tone-swatch input, .filter-price-pill input');
 const productCards = document.querySelectorAll('.product-card-shop');
-const searchInput = document.querySelector('.search-input');
-let currentSearchTerm = '';
 
 filterCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', (e) => {
-        // Enforce single-select for ALL categories universally
-        if (e.target.checked) {
-            document.querySelectorAll(`.filters-sidebar input[name="${e.target.name}"]`).forEach(cb => {
-                if (cb !== e.target) cb.checked = false;
-            });
-        }
-        filterProducts();
-    });
+    checkbox.addEventListener('change', filterProducts);
 });
 
 function filterProducts() {
+  if (!productCards.length) {
+    return;
+  }
+
+  const searchTerm = (document.querySelector('.search-input')?.value || '').toLowerCase().trim();
     const activeFilters = {};
     
     filterCheckboxes.forEach(checkbox => {
@@ -464,34 +2287,18 @@ function filterProducts() {
         let show = true;
         
         for (const [filterType, values] of Object.entries(activeFilters)) {
-            if (filterType === 'price') {
-                const pPrice = parseFloat(card.getAttribute('data-price')) || 0;
-                let matchesPrice = false;
-                for (const pr of values) {
-                    if (pr === 'under-25' && pPrice < 25) matchesPrice = true;
-                    if (pr === '25-50' && pPrice >= 25 && pPrice <= 50) matchesPrice = true;
-                    if (pr === '50-100' && pPrice >= 50 && pPrice <= 100) matchesPrice = true;
-                    if (pr === 'over-100' && pPrice > 100) matchesPrice = true;
-                }
-                if (!matchesPrice) {
-                    show = false;
-                    break;
-                }
-            } else {
-                const cardValue = card.getAttribute('data-' + filterType);
-                if (cardValue && cardValue !== 'all' && !values.includes(cardValue)) {
-                    show = false;
-                    break;
-                }
+            const cardValue = card.dataset[filterType];
+            if (cardValue && !values.includes(cardValue)) {
+                show = false;
+                break;
             }
         }
-        
-        if (show && currentSearchTerm) {
-            const productName = card.querySelector('.product-name')?.textContent.toLowerCase() || '';
-            const category = card.querySelector('.product-category')?.textContent.toLowerCase() || '';
-            if (!productName.includes(currentSearchTerm) && !category.includes(currentSearchTerm)) {
-                show = false;
-            }
+
+        if (show && searchTerm) {
+          const productName = (card.querySelector('.product-name')?.textContent || '').toLowerCase();
+          const category = (card.querySelector('.product-category')?.textContent || '').toLowerCase();
+          const subcategory = (card.dataset.subcategory || '').toLowerCase();
+          show = productName.includes(searchTerm) || category.includes(searchTerm) || subcategory.includes(searchTerm);
         }
         
         card.style.display = show ? 'block' : 'none';
@@ -501,7 +2308,7 @@ function filterProducts() {
 }
 
 function updateResultsCount() {
-    const visibleProducts = document.querySelectorAll('.product-card-shop[style*="display: block"], .product-card-shop:not([style*="display"])');
+  const visibleProducts = Array.from(document.querySelectorAll('.product-card-shop')).filter(card => card.style.display !== 'none');
     const resultsCount = document.querySelector('.results-count');
     if (resultsCount) {
         resultsCount.textContent = `${visibleProducts.length} Products`;
@@ -541,31 +2348,64 @@ document.getElementById('sort')?.addEventListener('change', (e) => {
     cards.forEach(card => grid?.appendChild(card));
 });
 
-// ===== SEARCH EVENTS =====
-const searchInputs = document.querySelectorAll('.search-input');
-const searchSubmits = document.querySelectorAll('.search-submit');
+// ===== SEARCH FUNCTIONALITY =====
+const searchInput = document.querySelector('.search-input');
+const searchSubmitBtn = document.querySelector('.search-submit');
 
-function executeGlobalSearch(query) {
-    if (!query) return;
-    window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+function getSearchTargetPage(term) {
+  if (/hair|shampoo|conditioner|treatment|curl|scalp/.test(term)) return 'shop-hair.html';
+  if (/nail|manicure|pedicure|press-on|cuticle/.test(term)) return 'shop-nails.html';
+  if (/tool|brush|roller|gua sha|wand/.test(term)) return 'shop-tools.html';
+  if (/skin|cleanser|serum|toner|moisturizer|spf|mask/.test(term)) return 'shop-skincare.html';
+  return 'shop-makeup.html';
 }
 
-searchInputs.forEach(input => {
-    input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            executeGlobalSearch(e.target.value.trim());
-        }
-    });
+function runSearch() {
+  const raw = searchInput?.value || '';
+  const term = raw.trim().toLowerCase();
+
+  if (!term) {
+    if (productCards.length) {
+      filterProducts();
+    }
+    return;
+  }
+
+  if (productCards.length) {
+    filterProducts();
+    return;
+  }
+
+  const targetPage = getSearchTargetPage(term);
+  window.location.href = `${targetPage}?q=${encodeURIComponent(term)}`;
+}
+
+searchInput?.addEventListener('input', () => {
+  if (productCards.length) {
+    filterProducts();
+  }
 });
 
-searchSubmits.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const input = btn.parentElement.querySelector('.search-input');
-        if (input) executeGlobalSearch(input.value.trim());
-    });
+searchInput?.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    runSearch();
+  }
 });
+
+searchSubmitBtn?.addEventListener('click', (e) => {
+  e.preventDefault();
+  runSearch();
+});
+
+const searchParams = new URLSearchParams(window.location.search);
+const queryFromUrl = searchParams.get('q');
+if (queryFromUrl && searchInput) {
+  searchInput.value = queryFromUrl;
+  if (productCards.length) {
+    filterProducts();
+  }
+}
 
 // ===== REVIEW FUNCTIONALITY =====
 document.querySelectorAll('.helpful-btn').forEach(btn => {
@@ -695,6 +2535,68 @@ function initQuickView() {
             // Show modal
             overlay.classList.add('active');
         });
+    });
+}
+
+// ===== SHADE DOT FUNCTIONALITY FOR PRODUCT CARDS =====
+function initShadeDots() {
+    document.querySelectorAll('.product-card-shop').forEach(card => {
+        const link = card.querySelector('a[href*="product-detail"]');
+        if (!link) return;
+        
+        const productId = new URLSearchParams(link.href.split('?')[1]).get('id');
+        if (!productId || !products[productId]) return;
+        
+        const product = products[productId];
+        const shadeDots = card.querySelectorAll('.shade-dot');
+        const cardImage = card.querySelector('.product-image img');
+        
+        if (!cardImage || !shadeDots.length) return;
+        
+        // Assign data-image to shade dots
+        shadeDots.forEach((dot, index) => {
+            let imageSrc = product.image; // default
+            
+            if (product.variants && product.variants.length > 0) {
+                if (index < product.variants.length && product.variants[index].image) {
+                    imageSrc = product.variants[index].image;
+                } else {
+                    // Try to match by color or label
+                    const title = dot.getAttribute('title');
+                    const backgroundColor = dot.style.background || dot.style.backgroundColor;
+                    const variant = product.variants.find(v => 
+                        v.label === title || 
+                        (backgroundColor && v.color && v.color.toLowerCase() === backgroundColor.toLowerCase())
+                    );
+                    if (variant && variant.image) {
+                        imageSrc = variant.image;
+                    }
+                }
+            }
+            
+            dot.dataset.image = imageSrc;
+            
+            // Add click handler
+            dot.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Update active state
+                shadeDots.forEach(d => d.classList.remove('shade-active'));
+                dot.classList.add('shade-active');
+                
+                // Update image
+                const newImage = dot.dataset.image;
+                if (newImage && cardImage) {
+                    cardImage.src = newImage;
+                }
+            });
+        });
+        
+        // Set first shade as active by default
+        if (shadeDots.length > 0) {
+            shadeDots[0].classList.add('shade-active');
+        }
     });
 }
 
@@ -1620,38 +3522,40 @@ function showToast() {
 document.addEventListener('DOMContentLoaded', () => {
   initSkincareTracker();
   initHaircareTracker();
+  initShadeDots(); // Initialize shade dot functionality
 
-  // ===== AUTHENTICATION STATE =====
-  const authUserStr = localStorage.getItem('bareBeautyUser');
-  if (authUserStr) {
-      try {
-          const user = JSON.parse(authUserStr);
-          if (user.loggedIn && user.name) {
-              const accountLinks = document.querySelectorAll('a[href="login.html"]');
-              accountLinks.forEach(link => {
-                  if (link.innerHTML.includes('fa-user') || link.textContent.includes('Account')) {
-                      // Update UI to show name
-                      link.innerHTML = `<i class="fa-solid fa-user-check"></i> Hi, ${user.name.split(' ')[0]}`;
-                      link.href = "#";
-                      link.style.cursor = "default";
-                      
-                      // Add a logout button right after this link
-                      const logoutBtn = document.createElement('a');
-                      logoutBtn.href = "#";
-                      logoutBtn.innerHTML = `<i class="fa-solid fa-sign-out-alt"></i> Logout`;
-                      logoutBtn.style.marginLeft = "10px";
-                      logoutBtn.addEventListener('click', (e) => {
-                          e.preventDefault();
-                          localStorage.removeItem('bareBeautyUser');
-                          window.location.reload();
-                      });
-                      
-                      link.parentNode.insertBefore(logoutBtn, link.nextSibling);
-                  }
-              });
-          }
-      } catch (e) {
-          console.error('Error parsing auth state', e);
+  // ===== Eyeshadow Palette Pan Size Selector =====
+  document.querySelectorAll('.palette-pan-selector').forEach(selector => {
+    const card = selector.closest('.product-card-shop');
+    const link = card.querySelector('a[href*="product-detail"]');
+    if (!link) return;
+    
+    const productId = new URLSearchParams(link.href.split('?')[1]).get('id');
+    if (!productId || !products[productId]) return;
+    
+    const product = products[productId];
+    const cardImage = card.querySelector('.product-image img');
+    
+    selector.querySelectorAll('.pan-btn').forEach((btn, index) => {
+      // Set data-image attribute for each pan button
+      let imageSrc = product.image; // default
+      
+      if (product.variants && product.variants.length > 0 && index < product.variants.length && product.variants[index].image) {
+        imageSrc = product.variants[index].image;
       }
-  }
+      
+      btn.dataset.image = imageSrc;
+      
+      btn.addEventListener('click', () => {
+        selector.querySelectorAll('.pan-btn').forEach(b => b.classList.remove('pan-btn-active'));
+        btn.classList.add('pan-btn-active');
+        
+        // Update image
+        const newImage = btn.dataset.image;
+        if (newImage && cardImage) {
+          cardImage.src = newImage;
+        }
+      });
+    });
+  });
 });
