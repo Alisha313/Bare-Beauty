@@ -1600,13 +1600,15 @@ h1, h2, h3, h4, h5, h6 {
   width: 280px;
   flex-shrink: 0;
   background: #b39b7d; /* AI Advisor Gold */
-  padding: 0;
+  padding: 0 0 25px 0;
   border-radius: 16px;
   box-shadow: 0 4px 25px rgba(93, 64, 55, 0.1);
-  height: fit-content;
+  height: calc(100vh - 40px);
   position: sticky;
   top: 20px;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 40px);
 }
 
 .filter-header {
@@ -1984,6 +1986,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Products Section */
 .products-section {
   flex-grow: 1;
+  min-height: 100vh;
 }
 
 .results-bar {
@@ -2513,6 +2516,9 @@ h1, h2, h3, h4, h5, h6 {
   .filters-sidebar {
     width: 100%;
     position: static;
+    height: auto;
+    max-height: none;
+    overflow: visible;
   }
   
   .product-grid-shop {
@@ -4514,11 +4520,13 @@ h1, h2, h3, h4, h5, h6 {
   background: white;
   border-radius: 20px;
   box-shadow: 0 8px 40px rgba(93, 64, 55, 0.12);
-  height: fit-content;
+  height: calc(100vh - 120px);
   position: sticky;
+  align-self: flex-start;
   top: 100px;
   border: 1px solid rgba(228, 213, 195, 0.6);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* --- Header --- */
@@ -6986,6 +6994,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .input-with-icon i:first-child {
@@ -6998,13 +7007,25 @@ body {
 
 .input-with-icon input {
   width: 100%;
-  padding: 13px 14px 13px 42px;
+  padding: 13px 48px 13px 42px;
   border: 2px solid #e8e0d9;
   border-radius: 10px;
   font-size: 14px;
   font-family: inherit;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-sizing: border-box;
+}
+
+/* Hide native browser password revealers to prevent overlap */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="password"]::-webkit-reveal,
+input::-webkit-credentials-auto-fill-button,
+input::-webkit-contacts-auto-fill-button {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
 }
 
 .input-with-icon input:focus {
@@ -7015,18 +7036,25 @@ body {
 
 .toggle-password {
   position: absolute;
-  right: 12px;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  color: #aaa;
-  font-size: 14px;
-  padding: 4px;
+  color: #8b7355;
+  font-size: 16px;
+  padding: 8px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
   transition: color 0.2s;
 }
 
 .toggle-password:hover {
-  color: #555;
+  color: #6d5a45;
 }
 
 .form-options {
