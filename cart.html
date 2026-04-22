@@ -106,16 +106,23 @@
                     if (res.ok) {
                         const backendCart = await res.json();
                         // Only overwrite localCart from backend if the backend physically holds items.
-                        if (backendCart.items && backendCart.items.length > 0) {
-                            localCart = backendCart.items.map(item => ({
-                                id: item.product._id,
-                                itemId: item._id, 
-                                name: item.product.name,
-                                price: item.priceAtAdd,
-                                quantity: item.quantity,
-                                image: item.product.images && item.product.images.length > 0 ? item.product.images[0] : ''
-                            }));
+                        const backendMapped = backendCart.items.map(item => ({
+                            id: item.product._id,
+                            itemId: item._id, 
+                            name: item.product.name,
+                            price: item.priceAtAdd,
+                            quantity: item.quantity,
+                            image: item.product.images && item.product.images.length > 0 ? item.product.images[0] : ''
+                        }));
+                        
+                        let mergedCart = [...backendMapped];
+                        for (const localItem of localCart) {
+                            if (!backendMapped.find(b => b.id === localItem.id || String(b.id) === String(localItem.id))) {
+                                mergedCart.push(localItem);
+                            }
                         }
+                        localCart = mergedCart;
+                    
                         localStorage.setItem('bareBeautyCart', JSON.stringify(localCart));
                         cart = localCart;
                         updateCartCount();

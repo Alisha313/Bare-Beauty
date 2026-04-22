@@ -235,19 +235,27 @@ async function initCart() {
             if (res.ok) {
                 const cartData = await res.json();
                 // Map backend .items to frontend cart structure
-                cart = cartData.items.map(item => ({
+                const backendCart = cartData.items.map(item => ({
                     id: item.product._id,
                     name: item.product.name,
                     price: item.priceAtAdd,
                     quantity: item.quantity,
                     image: item.product.images && item.product.images.length > 0 ? item.product.images[0] : 'img/placeholder.jpg'
                 }));
+                
+                const localMock = JSON.parse(localStorage.getItem('bareBeautyCart')) || [];
+                cart = [...backendCart];
+                for (const localItem of localMock) {
+                    if (!backendCart.find(b => b.id === localItem.id || String(b.id) === String(localItem.id))) {
+                        cart.push(localItem);
+                    }
+                }
             }
         } catch (e) {
             console.error('Offline - Cart backend unreachable');
         }
     }
-    // Also try to restore any offline local cart if we couldn't get it from backend
+    // Backup fallback if perfectly completely offline
     if (cart.length === 0 && localStorage.getItem('bareBeautyCart')) {
         cart = JSON.parse(localStorage.getItem('bareBeautyCart')) || [];
     }
