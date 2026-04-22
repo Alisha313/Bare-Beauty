@@ -105,14 +105,17 @@
                     const res = await fetch(`http://localhost:5001/cart/${token}`);
                     if (res.ok) {
                         const backendCart = await res.json();
-                        localCart = backendCart.items.map(item => ({
-                            id: item.product._id,
-                            itemId: item._id, 
-                            name: item.product.name,
-                            price: item.priceAtAdd,
-                            quantity: item.quantity,
-                            image: item.product.images && item.product.images.length > 0 ? item.product.images[0] : ''
-                        }));
+                        // Only overwrite localCart from backend if the backend physically holds items.
+                        if (backendCart.items && backendCart.items.length > 0) {
+                            localCart = backendCart.items.map(item => ({
+                                id: item.product._id,
+                                itemId: item._id, 
+                                name: item.product.name,
+                                price: item.priceAtAdd,
+                                quantity: item.quantity,
+                                image: item.product.images && item.product.images.length > 0 ? item.product.images[0] : ''
+                            }));
+                        }
                         localStorage.setItem('bareBeautyCart', JSON.stringify(localCart));
                         cart = localCart;
                         updateCartCount();
