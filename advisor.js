@@ -218,11 +218,15 @@ function generateRecommendations() {
     const skincareProducts = getSkincareRecommendations();
     const makeupProducts = getMakeupRecommendations();
     const toolProducts = getToolRecommendations();
+    const hairProducts = getHairRecommendations();
+    const nailProducts = getNailRecommendations();
     const dealsProducts = getDealsRecommendations();
     
     renderSkincareRoutine(skincareProducts);
     renderProductGrid('makeupRecommendations', makeupProducts);
     renderProductGrid('toolRecommendations', toolProducts);
+    renderProductGrid('hairRecommendations', hairProducts);
+    renderProductGrid('nailRecommendations', nailProducts);
     renderProductGrid('dealsRecommendations', dealsProducts);
 }
 
@@ -354,6 +358,50 @@ function getToolRecommendations() {
     
     // Eye brush set
     recommendations.push(products['eye-brush-set-1']);
+    
+    return recommendations.filter(p => p).slice(0, 4);
+}
+
+function getHairRecommendations() {
+    const recommendations = [];
+    
+    // Shampoo
+    recommendations.push(products['shampoo-1']);
+    
+    // Conditioner
+    recommendations.push(products['conditioner-1']);
+    
+    // Hair Oil
+    recommendations.push(products['hair-oil-1']);
+    
+    // Hair Mask for dry concerns
+    if (userProfile.concerns.includes('dryness')) {
+        recommendations.push(products['hair-mask-1']);
+    }
+    
+    // Leave-In Treatment
+    recommendations.push(products['leave-in-1']);
+    
+    // Hair Serum
+    recommendations.push(products['hair-serum-1']);
+    
+    return recommendations.filter(p => p).slice(0, 4);
+}
+
+function getNailRecommendations() {
+    const recommendations = [];
+    
+    // Classic French Tips
+    recommendations.push(products['nails-french-1']);
+    
+    // Cuticle Oil
+    recommendations.push(products['cuticle-oil-1']);
+    
+    // Glossy Pink Set
+    recommendations.push(products['nails-glossy-pink-1']);
+    
+    // Holographic Set
+    recommendations.push(products['nails-holographic-1']);
     
     return recommendations.filter(p => p).slice(0, 4);
 }

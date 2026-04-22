@@ -18,11 +18,11 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-app.use(express.static('public'));
+app.use(express.static(__dirname));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.post('/register', upload.array('photos', 5), async (req, res) => {
