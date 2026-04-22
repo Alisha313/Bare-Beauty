@@ -10,13 +10,11 @@ const analyzeSkin = async (imageUrl) => {
     const shades = ['Fair', 'Light', 'Medium', 'Tan', 'Deep'];
     const undertones = ['Warm', 'Cool', 'Neutral'];
 
-    // Deterministic mock based on image URL length to be consistent for same file
-    const seed = imageUrl.length;
-
+    // Use true math randomization so every selfie gets a unique AI "analysis"
     return {
-        skinType: skinTypes[seed % skinTypes.length],
-        shade: shades[seed % shades.length],
-        undertone: undertones[seed % undertones.length],
+        skinType: skinTypes[Math.floor(Math.random() * skinTypes.length)],
+        shade: shades[Math.floor(Math.random() * shades.length)],
+        undertone: undertones[Math.floor(Math.random() * undertones.length)],
         concerns: ['Dark Circles', 'Uneven Tone'], // Mock concerns
         confidence: 0.95
     };
