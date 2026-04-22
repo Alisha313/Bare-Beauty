@@ -329,5 +329,55 @@
         }
     }
   </script>
+
+  <script>
+    // Local Javascript explicitly to make the UI filters work instantly for the Show and Tell
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => { // wait for fetch to finish injecting
+            const filterCheckboxes = document.querySelectorAll('.filters-sidebar input[type="checkbox"]');
+            
+            filterCheckboxes.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const activeCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
+                    const activeSkinTypes = Array.from(document.querySelectorAll('input[name="skin-type"]:checked')).map(cb => cb.value);
+                    const activePrices = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(cb => cb.value);
+                    
+                    const cards = document.querySelectorAll('.product-card-shop');
+                    let visibleCount = 0;
+                    
+                    cards.forEach(card => {
+                        const pCat = card.getAttribute('data-category') || '';
+                        const pSkin = card.getAttribute('data-skin-type') || '';
+                        const pPrice = parseFloat(card.getAttribute('data-price')) || 0;
+                        
+                        let showCat = activeCategories.length === 0 || activeCategories.some(cat => pCat.includes(cat));
+                        let showSkin = activeSkinTypes.length === 0 || activeSkinTypes.some(type => pSkin.includes(type) || type === 'all');
+                        
+                        let showPrice = true;
+                        if (activePrices.length > 0) {
+                            showPrice = false;
+                            for (const pr of activePrices) {
+                                if (pr === 'under-25' && pPrice < 25) showPrice = true;
+                                if (pr === '25-50' && pPrice >= 25 && pPrice <= 50) showPrice = true;
+                                if (pr === '50-100' && pPrice >= 50 && pPrice <= 100) showPrice = true;
+                                if (pr === 'over-100' && pPrice > 100) showPrice = true;
+                            }
+                        }
+                        
+                        if (showCat && showSkin && showPrice) {
+                            card.style.display = 'flex';
+                            visibleCount++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    const resultsCountEl = document.querySelector('.results-count');
+                    if (resultsCountEl) resultsCountEl.innerHTML = `${visibleCount} Products`;
+                });
+            });
+        }, 800); // 800ms gives the fetch API time to append elements
+    });
+  </script>
 </body>
 </html>
