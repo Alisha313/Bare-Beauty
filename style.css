@@ -4285,6 +4285,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 8px 40px rgba(93, 64, 55, 0.12);
   height: calc(100vh - 120px);
   position: sticky;
+  align-self: flex-start;
   top: 100px;
   border: 1px solid rgba(228, 213, 195, 0.6);
   overflow-y: auto;

@@ -428,7 +428,15 @@ const searchInput = document.querySelector('.search-input');
 let currentSearchTerm = '';
 
 filterCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', filterProducts);
+    checkbox.addEventListener('change', (e) => {
+        // Enforce single-select for ALL categories universally
+        if (e.target.checked) {
+            document.querySelectorAll(`.filters-sidebar input[name="${e.target.name}"]`).forEach(cb => {
+                if (cb !== e.target) cb.checked = false;
+            });
+        }
+        filterProducts();
+    });
 });
 
 function filterProducts() {
@@ -448,10 +456,25 @@ function filterProducts() {
         let show = true;
         
         for (const [filterType, values] of Object.entries(activeFilters)) {
-            const cardValue = card.getAttribute('data-' + filterType);
-            if (cardValue && cardValue !== 'all' && !values.includes(cardValue)) {
-                show = false;
-                break;
+            if (filterType === 'price') {
+                const pPrice = parseFloat(card.getAttribute('data-price')) || 0;
+                let matchesPrice = false;
+                for (const pr of values) {
+                    if (pr === 'under-25' && pPrice < 25) matchesPrice = true;
+                    if (pr === '25-50' && pPrice >= 25 && pPrice <= 50) matchesPrice = true;
+                    if (pr === '50-100' && pPrice >= 50 && pPrice <= 100) matchesPrice = true;
+                    if (pr === 'over-100' && pPrice > 100) matchesPrice = true;
+                }
+                if (!matchesPrice) {
+                    show = false;
+                    break;
+                }
+            } else {
+                const cardValue = card.getAttribute('data-' + filterType);
+                if (cardValue && cardValue !== 'all' && !values.includes(cardValue)) {
+                    show = false;
+                    break;
+                }
             }
         }
         

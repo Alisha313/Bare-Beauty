@@ -337,7 +337,14 @@
             const filterCheckboxes = document.querySelectorAll('.filters-sidebar input[type="checkbox"]');
             
             filterCheckboxes.forEach(cb => {
-                cb.addEventListener('change', () => {
+                cb.addEventListener('change', (e) => {
+                    // Enforce single-select for ALL categories universally
+                    if (e.target.checked) {
+                        document.querySelectorAll(`.filters-sidebar input[name="${e.target.name}"]`).forEach(box => {
+                            if (box !== e.target) box.checked = false;
+                        });
+                    }
+                    
                     const activeCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
                     const activeSkinTypes = Array.from(document.querySelectorAll('input[name="skin-type"]:checked')).map(cb => cb.value);
                     const activePrices = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(cb => cb.value);
