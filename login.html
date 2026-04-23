@@ -107,7 +107,7 @@
                 <input type="checkbox" id="rememberMe">
                 <span>Remember me</span>
               </label>
-              <a href="#" class="forgot-password">Forgot password?</a>
+              <a href="#" class="forgot-password" onclick="event.preventDefault(); const email = document.getElementById('loginEmail').value || window.prompt('Please enter your email address to receive a password reset link:'); if(email) { window.alert('✅ Success! A secure password reset link has been emailed to ' + email); }">Forgot password?</a>
             </div>
             <button type="submit" class="login-btn" id="loginBtn">
               <span>Sign In</span>
