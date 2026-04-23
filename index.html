@@ -38,7 +38,7 @@
         <a href="advisor.html" class="nav-pill nav-pill-glow"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a>
       </div>
       <div class="search-engine">
-        <input type="text" placeholder="Search for products" class="search-input">
+        <input type="text" placeholder="Search for products" class="search-input" id="searchInput">
         <button type="submit" class="search-submit">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -410,6 +410,38 @@
     </div>
   </section>
 
+  <!-- Our Story Section -->
+  <section class="story-section" id="story-section">
+    <div class="story-container">
+      <div class="story-content">
+        <h3>Our Story</h3>
+        <p>Founded in 2020, Bare Beauty was born from a simple belief: beauty should be clean, honest, and accessible to everyone. Our founder, Sarah Chen, started with a mission to create skincare and beauty products that work as well as they claim, using only the purest, most effective ingredients.</p>
+        
+        <p>What began as a small collection of essential skincare items has grown into a comprehensive beauty brand that spans skincare, makeup, hair care, tools, and nail products. Every product is carefully formulated with transparency in mind – we believe you deserve to know exactly what's in your beauty products.</p>
+        
+        <p>We're committed to sustainability, ethical sourcing, and giving back to communities that need it most. When you choose Bare Beauty, you're not just choosing great products – you're supporting a brand that cares about people and the planet.</p>
+        
+        <div class="story-stats">
+          <div class="stat-item">
+            <strong>50K+</strong>
+            <span>Happy Customers</span>
+          </div>
+          <div class="stat-item">
+            <strong>200+</strong>
+            <span>Products</span>
+          </div>
+          <div class="stat-item">
+            <strong>4.9★</strong>
+            <span>Average Rating</span>
+          </div>
+        </div>
+      </div>
+      <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&h=600&fit=crop" alt="Bare Beauty founder and team">
+      </div>
+    </div>
+  </section>
+
   <!-- Testimonials Section -->
   <section class="testimonials-section">
     <h3>What Our Community Says</h3>
@@ -468,6 +500,66 @@
     </div>
   </section>
 
+  <!-- Contact Us Section -->
+  <section class="contact-section" id="contact-section">
+    <div class="contact-container">
+      <div class="contact-content">
+        <h3>Get in Touch</h3>
+        <p>Have questions about our products, need help with your order, or want to share feedback? We'd love to hear from you!</p>
+        
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <strong>Email Us</strong>
+              <span>hello@barebeauty.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <strong>Call Us</strong>
+              <span>1-800-BARE-BEAUTY</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-clock"></i>
+            <div>
+              <strong>Hours</strong>
+              <span>Mon-Fri: 9AM-6PM EST</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-map-marker-alt"></i>
+            <div>
+              <strong>Address</strong>
+              <span>123 Beauty Lane<br>New York, NY 10001</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <form class="contact-form-element">
+          <div class="form-row">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+          </div>
+          <select required>
+            <option value="">Select Topic</option>
+            <option value="order">Order Inquiry</option>
+            <option value="product">Product Question</option>
+            <option value="returns">Returns & Exchanges</option>
+            <option value="feedback">Feedback</option>
+            <option value="other">Other</option>
+          </select>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- Newsletter Banner -->
   <section class="newsletter-banner">
     <div class="newsletter-content">
@@ -486,7 +578,7 @@
     <div class="footer-content">
       <div class="footer-section">
         <h4>About</h4>
-        <a href="#">Our Story</a>
+        <a href="#story-section">Our Story</a>
         <a href="#">Ingredients</a>
         <a href="#">Sustainability</a>
       </div>
@@ -500,7 +592,7 @@
       </div>
       <div class="footer-section">
         <h4>Help</h4>
-        <a href="#">Contact Us</a>
+        <a href="#contact-section">Contact Us</a>
         <a href="#">Shipping</a>
         <a href="#">Returns</a>
         <a href="#">FAQ</a>

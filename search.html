@@ -226,15 +226,20 @@
   <script src="main.js"></script>
   <script>
     // Search specific logic to hydrate product cards dynamically
-    window.addEventListener('productsLoaded', renderSearchResults);
-    // If products were already loaded by main.js before this event bound
-    if (typeof products !== 'undefined' && Object.keys(products).length > 0) {
-        renderSearchResults();
-    }
-
     function renderSearchResults() {
+        // Check if products are available
+        if (typeof products === 'undefined' || Object.keys(products).length === 0) {
+            console.log('Products not loaded yet, waiting...');
+            setTimeout(renderSearchResults, 100);
+            return;
+        }
+
+        console.log('Rendering search results for products:', Object.keys(products).length);
+
         const urlParams = new URLSearchParams(window.location.search);
         let query = urlParams.get('q');
+        
+        console.log('Search query:', query);
         
         if (!query) {
             document.getElementById('searchPageTitle').innerHTML = `All Products`;
@@ -257,12 +262,29 @@
             const pName = product.name ? product.name.toLowerCase() : '';
             const pCat = product.category ? product.category.toLowerCase() : '';
             const pSkin = product.skinType ? product.skinType.toLowerCase() : '';
+            const pDesc = product.description ? product.description.toLowerCase() : '';
+            const pIng = product.ingredients ? product.ingredients.join(' ').toLowerCase() : '';
 
+            // Check for matches in multiple fields
             const nameMatch = pName.includes(qLower);
             const catMatch = pCat.includes(qLower);
             const skinMatch = pSkin.includes(qLower);
+            const descMatch = pDesc.includes(qLower);
+            const ingMatch = pIng.includes(qLower);
 
-            if (nameMatch || catMatch || skinMatch || query === '') {
+            // Also check for partial word matches (split search terms)
+            const searchWords = qLower.split(' ');
+            const partialMatch = searchWords.some(word => 
+                word.length > 2 && (
+                    pName.includes(word) || 
+                    pCat.includes(word) || 
+                    pSkin.includes(word) ||
+                    pDesc.includes(word) ||
+                    pIng.includes(word)
+                )
+            );
+
+            if (nameMatch || catMatch || skinMatch || descMatch || ingMatch || partialMatch || query === '') {
                 matchCount++;
                 const isFeatured = pName.includes('serum') || pName.includes('cream'); 
                 const isSale = product.originalPrice ? true : false;
@@ -309,6 +331,8 @@
         const resultsCountEl = document.querySelector('.results-count');
         if (resultsCountEl) resultsCountEl.innerHTML = `${matchCount} Results`;
 
+        console.log(`Found ${matchCount} matches for query "${query}"`);
+
         if (matchCount === 0) {
             grid.innerHTML = `
             <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
@@ -327,6 +351,19 @@
                 refreshedCards.forEach(c => c.style.display = 'block');
             }
         }
+    }
+
+    // Try to render immediately, or wait for products to load
+    if (typeof products !== 'undefined' && Object.keys(products).length > 0) {
+        renderSearchResults();
+    } else {
+        // Wait for products to be available
+        const checkProducts = setInterval(() => {
+            if (typeof products !== 'undefined' && Object.keys(products).length > 0) {
+                clearInterval(checkProducts);
+                renderSearchResults();
+            }
+        }, 100);
     }
   </script>
 

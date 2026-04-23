@@ -2258,14 +2258,10 @@ document.querySelectorAll('.size-btn').forEach(btn => {
 });
 
 // ===== FILTER FUNCTIONALITY =====
-const filterCheckboxes = document.querySelectorAll('.filter-option input, .filter-chip input, .filter-tone-swatch input, .filter-price-pill input');
-const productCards = document.querySelectorAll('.product-card-shop');
-
-filterCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', filterProducts);
-});
+// Filter functionality is now initialized dynamically in the search section
 
 function filterProducts() {
+  const productCards = document.querySelectorAll('.product-card-shop');
   if (!productCards.length) {
     return;
   }
@@ -2273,6 +2269,7 @@ function filterProducts() {
   const searchTerm = (document.querySelector('.search-input')?.value || '').toLowerCase().trim();
     const activeFilters = {};
     
+    const filterCheckboxes = document.querySelectorAll('.filter-option input, .filter-chip input, .filter-tone-swatch input, .filter-price-pill input');
     filterCheckboxes.forEach(checkbox => {
         if (checkbox.checked) {
             const filterType = checkbox.name;
@@ -2349,53 +2346,54 @@ document.getElementById('sort')?.addEventListener('change', (e) => {
 });
 
 // ===== SEARCH FUNCTIONALITY =====
-const searchInput = document.querySelector('.search-input');
-const searchSubmitBtn = document.querySelector('.search-submit');
+// Initialize search functionality on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.querySelector('.search-input');
+  const searchSubmitBtn = document.querySelector('.search-submit');
 
-function getSearchTargetPage(term) {
-  if (/hair|shampoo|conditioner|treatment|curl|scalp/.test(term)) return 'shop-hair.html';
-  if (/nail|manicure|pedicure|press-on|cuticle/.test(term)) return 'shop-nails.html';
-  if (/tool|brush|roller|gua sha|wand/.test(term)) return 'shop-tools.html';
-  if (/skin|cleanser|serum|toner|moisturizer|spf|mask/.test(term)) return 'shop-skincare.html';
-  return 'shop-makeup.html';
-}
+  // Initialize filter functionality
+  const filterCheckboxes = document.querySelectorAll('.filter-option input, .filter-chip input, .filter-tone-swatch input, .filter-price-pill input');
+  filterCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', filterProducts);
+  });
 
-function runSearch() {
-  const raw = searchInput?.value || '';
-  const term = raw.trim().toLowerCase();
+  function runSearch() {
+    const raw = searchInput?.value || '';
+    const term = raw.trim().toLowerCase();
 
-  if (!term) {
+    if (!term) {
+      // If on a shop page with products, clear filters
+      const productCards = document.querySelectorAll('.product-card-shop');
+      if (productCards.length) {
+        filterProducts();
+      }
+      return;
+    }
+
+    // Always redirect to search.html for comprehensive search
+    window.location.href = `search.html?q=${encodeURIComponent(term)}`;
+  }
+
+  searchInput?.addEventListener('input', () => {
+    const productCards = document.querySelectorAll('.product-card-shop');
     if (productCards.length) {
+      // On shop pages, filter existing products
       filterProducts();
     }
-    return;
-  }
+    // On other pages, don't do anything on input - wait for submit
+  });
 
-  if (productCards.length) {
-    filterProducts();
-    return;
-  }
+  searchInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      runSearch();
+    }
+  });
 
-  const targetPage = getSearchTargetPage(term);
-  window.location.href = `${targetPage}?q=${encodeURIComponent(term)}`;
-}
-
-searchInput?.addEventListener('input', () => {
-  if (productCards.length) {
-    filterProducts();
-  }
-});
-
-searchInput?.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
+  searchSubmitBtn?.addEventListener('click', (e) => {
     e.preventDefault();
     runSearch();
-  }
-});
-
-searchSubmitBtn?.addEventListener('click', (e) => {
-  e.preventDefault();
-  runSearch();
+  });
 });
 
 const searchParams = new URLSearchParams(window.location.search);
