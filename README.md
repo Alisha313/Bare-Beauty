@@ -34,9 +34,18 @@ Once Docker has locked port `27017`, you need to turn the Node.js API on! This i
 *(Once your terminal flashes `Connected to MongoDB`, the backend is officially alive!)*
 
 ### Step 3: Start the Frontend UI
-1. Open this main folder in an IDE like **VS Code**.
-2. Install the **"Live Server"** extension in VS Code if you don't already have it.
-3. Right-click on `index.html` and select **"Open with Live Server"**.
-4. The site will securely open in your browser (typically on `http://localhost:5500`) and the UI will automatically connect to your running backend!
+Run this from `Bare-Beauty/bare-beauty-frontend`:
+```bash
+npm run dev
+```
+Then open the exact `127.0.0.1` URL it prints. In my check it correctly skipped the bad `5500` process and started on `http://127.0.0.1:5501`. If you still have that old Python server open on `5500`, stop that terminal with `Ctrl+C` so it doesn’t keep hijacking `localhost`. I didn’t change the backend; if login/cart/checkout still fail after this, make sure `Desktop/Bare-Beauty/bare-beauty-frontend/backend` is running on port `5001`.
+
+1. Open a new terminal inside `bare-beauty-frontend`.
+2. Start the frontend server:
+   ```bash
+   npm run dev
+   ```
+3. Open the URL printed in the terminal. The server will try `http://127.0.0.1:5500` first and will automatically use the next free port if `5500` is already busy.
+4. The UI will automatically connect to your running backend on `http://localhost:5001`.
 
 From there, all features including the **AI Advisor**, secure Login portals, Live Search bar, and Cart Checkout will function natively!
