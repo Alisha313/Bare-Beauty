@@ -46,6 +46,33 @@
     .checkout-btn:hover {
         transform: translateY(-2px);
     }
+    .discount-container {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    .discount-input {
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        flex: 1;
+        outline: none;
+        font-family: inherit;
+    }
+    .discount-btn {
+        background: transparent;
+        border: 2px solid var(--brown-dark);
+        color: var(--brown-dark);
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: 0.3s ease;
+    }
+    .discount-btn:hover {
+        background: var(--brown-dark);
+        color: white;
+    }
   </style>
 </head>
 <body>
@@ -165,20 +192,44 @@
             });
             html += '</div>';
             
+            window.appliedDiscount = window.appliedDiscount || 0;
+            const discountAmount = total * window.appliedDiscount;
+            const finalTotal = total - discountAmount;
+            
             html += `
-                <div class="cart-summary">
-                    <div>
-                        <h3>Subtotal: $${total.toFixed(2)}</h3>
-                        <p style="color: #666; font-size: 0.9em;">Taxes and shipping calculated at checkout.</p>
+                <div class="cart-summary" style="display:flex; flex-direction:column; gap: 1.5rem;">
+                    <div style="display:flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div>
+                            <h3 style="${window.appliedDiscount > 0 ? 'text-decoration: line-through; color: #888;' : ''}">Subtotal: $${total.toFixed(2)}</h3>
+                            ${window.appliedDiscount > 0 ? `<h3 style="color: #2e7d32;">Discount Applied: -$${discountAmount.toFixed(2)}</h3><h3>New Total: $${finalTotal.toFixed(2)}</h3>` : ''}
+                            <p style="color: #666; font-size: 0.9em; margin-top: 0.5rem;">Taxes and shipping calculated at checkout.</p>
+                        </div>
+                        <button class="checkout-btn" onclick="window.location.href='checkout.html';">
+                            Proceed to Checkout
+                        </button>
                     </div>
-                    <button class="checkout-btn" onclick="window.location.href='checkout.html';">
-                        Checkout
-                    </button>
+                    <div style="border-top: 1px solid #eee; padding-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">Have a Promo Code?</h4>
+                        <div class="discount-container" style="max-width: 450px;">
+                            <input type="text" id="promoCodeInput" class="discount-input" placeholder="Enter code (Try: BARE20)">
+                            <button class="discount-btn" onclick="applyDiscountCode()">Apply</button>
+                        </div>
+                    </div>
                 </div>
             `;
             
             cartView.innerHTML = html;
         }
+
+        window.applyDiscountCode = function() {
+            const code = document.getElementById('promoCodeInput').value.trim().toUpperCase();
+            if (code === 'BARE20') {
+                window.appliedDiscount = 0.20;
+                renderCartPage();
+            } else if (code.length > 0) {
+                alert('Invalid or expired discount code.');
+            }
+        };
 
         window.removeCartItem = async function(idx) {
             const item = localCart[idx];
