@@ -231,6 +231,67 @@
   </footer>
 
   <script>
+    const API_BASE_URL = `${window.location.protocol}//${window.location.hostname}:5001`;
+    const LOCAL_USERS_KEY = 'bareBeautyLocalUsers';
+
+    function getLocalUsers() {
+      try {
+        return JSON.parse(localStorage.getItem(LOCAL_USERS_KEY)) || [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveLocalUsers(users) {
+      localStorage.setItem(LOCAL_USERS_KEY, JSON.stringify(users));
+    }
+
+    function setLoggedInUser(user, token = 'local-demo-token') {
+      localStorage.setItem('bareBeautyUser', JSON.stringify({
+        email: user.email,
+        name: user.name,
+        loggedIn: true,
+        token,
+        authSource: user.authSource || 'backend'
+      }));
+    }
+
+    function createLocalAccount(name, email, password) {
+      const users = getLocalUsers();
+      const existingUser = users.find(user => user.email.toLowerCase() === email.toLowerCase());
+
+      if (existingUser) {
+        return { ok: false, message: 'An account with this email already exists in local demo mode.' };
+      }
+
+      const newUser = {
+        name,
+        email,
+        password,
+        authSource: 'local'
+      };
+
+      users.push(newUser);
+      saveLocalUsers(users);
+      return { ok: true, user: newUser };
+    }
+
+    function tryLocalLogin(email, password) {
+      const users = getLocalUsers();
+      return users.find(user =>
+        user.email.toLowerCase() === email.toLowerCase() &&
+        user.password === password
+      ) || null;
+    }
+
+    async function parseJsonSafely(res) {
+      try {
+        return await res.json();
+      } catch {
+        return {};
+      }
+    }
+
     // Toggle between login and signup forms
     document.getElementById('showSignup').addEventListener('click', (e) => {
       e.preventDefault();
@@ -274,22 +335,38 @@
       }
       
       try {
-        const res = await fetch('http://localhost:5001/auth/login', {
+        const res = await fetch(`${API_BASE_URL}/auth/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password })
         });
-        const data = await res.json();
+        const data = await parseJsonSafely(res);
         
         if (res.ok) {
-          localStorage.setItem('bareBeautyUser', JSON.stringify({ email: data.email, name: data.name, loggedIn: true, token: data.token }));
+          setLoggedInUser({ email: data.email, name: data.name }, data.token);
+          window.location.href = 'index.html';
+          return;
+        }
+
+        const localUser = tryLocalLogin(email, password);
+        if (localUser) {
+          setLoggedInUser(localUser);
+          alert('Signed in with your locally saved demo account because the backend login was unavailable.');
           window.location.href = 'index.html';
         } else {
-          alert('Login failed: ' + data.message);
+          alert('Login failed: ' + (data.message || 'Unable to sign in.'));
         }
       } catch (err) {
         console.error(err);
-        alert('An error occurred during login.');
+        const localUser = tryLocalLogin(email, password);
+        if (localUser) {
+          setLoggedInUser(localUser);
+          alert('Signed in with your locally saved demo account because the backend could not be reached.');
+          window.location.href = 'index.html';
+          return;
+        }
+
+        alert('The backend could not be reached. If you are running the local backend on port 5001, try again in a moment.');
       }
     });
 
@@ -311,22 +388,43 @@
       }
       
       try {
-        const res = await fetch('http://localhost:5001/auth/signup', {
+        const res = await fetch(`${API_BASE_URL}/auth/signup`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: `${first} ${last}`, email, password })
         });
-        const data = await res.json();
+        const data = await parseJsonSafely(res);
         
         if (res.ok) {
-          localStorage.setItem('bareBeautyUser', JSON.stringify({ email: data.email, name: data.name, loggedIn: true, token: data.token }));
+          setLoggedInUser({ email: data.email, name: data.name }, data.token);
           window.location.href = 'index.html';
+          return;
+        }
+
+        if (res.status >= 500) {
+          const fallbackResult = createLocalAccount(`${first} ${last}`, email, password);
+          if (fallbackResult.ok) {
+            setLoggedInUser(fallbackResult.user);
+            alert('The backend signup is unavailable right now, so your account was created locally in this browser for demo use.');
+            window.location.href = 'index.html';
+            return;
+          }
+
+          alert('Signup failed: ' + fallbackResult.message);
         } else {
-          alert('Signup failed: ' + data.message);
+          alert('Signup failed: ' + (data.message || 'Unable to create account.'));
         }
       } catch (err) {
         console.error(err);
-        alert('An error occurred during signup.');
+        const fallbackResult = createLocalAccount(`${first} ${last}`, email, password);
+        if (fallbackResult.ok) {
+          setLoggedInUser(fallbackResult.user);
+          alert('The backend could not be reached, so your account was created locally in this browser for demo use.');
+          window.location.href = 'index.html';
+          return;
+        }
+
+        alert('Signup failed: ' + fallbackResult.message);
       }
     });
   </script>

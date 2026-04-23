@@ -2003,6 +2003,69 @@ function removeCoupon() {
   saveCartState();
 }
 
+function getStoredAuthUser() {
+  try {
+    const rawUser = localStorage.getItem('bareBeautyUser');
+    if (!rawUser) return null;
+
+    const parsedUser = JSON.parse(rawUser);
+    if (!parsedUser || typeof parsedUser !== 'object') return null;
+
+    if (!parsedUser.loggedIn && !parsedUser.name && !parsedUser.email) {
+      return null;
+    }
+
+    return parsedUser;
+  } catch {
+    return null;
+  }
+}
+
+function getAccountGreetingName(user) {
+  const fullName = typeof user?.name === 'string' ? user.name.trim() : '';
+  if (fullName) {
+    return fullName.split(/\s+/)[0];
+  }
+
+  const email = typeof user?.email === 'string' ? user.email.trim() : '';
+  if (email.includes('@')) {
+    return email.split('@')[0];
+  }
+
+  return 'Beauty';
+}
+
+function setAccountLinkLabel(link, label) {
+  link.replaceChildren();
+
+  const icon = document.createElement('i');
+  icon.className = 'fa-solid fa-user';
+  link.appendChild(icon);
+  link.appendChild(document.createTextNode(` ${label}`));
+}
+
+function updateAccountGreeting() {
+  const accountLinks = document.querySelectorAll('.top-bar-right a:not(.cart-link)');
+  if (!accountLinks.length) return;
+
+  const user = getStoredAuthUser();
+
+  accountLinks.forEach(link => {
+    if (user) {
+      const greetingName = getAccountGreetingName(user);
+      setAccountLinkLabel(link, `Hi, ${greetingName}`);
+      link.classList.add('account-greeting');
+      link.title = user.name || user.email || `Hi, ${greetingName}`;
+      link.setAttribute('aria-label', `Logged in as ${user.name || greetingName}`);
+    } else {
+      setAccountLinkLabel(link, 'Account');
+      link.classList.remove('account-greeting');
+      link.removeAttribute('title');
+      link.setAttribute('aria-label', 'Account');
+    }
+  });
+}
+
 function updateCartCount() {
     const cartCountElements = document.querySelectorAll('.cart-count');
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -2075,6 +2138,9 @@ document.querySelectorAll('.add-to-cart-btn, .add-to-cart-btn-large').forEach(bt
 
 // Initialize cart count on page load
 updateCartCount();
+updateAccountGreeting();
+window.addEventListener('storage', updateAccountGreeting);
+window.addEventListener('pageshow', updateAccountGreeting);
 
 function renderCartPage() {
   const cartItemsContainer = document.getElementById('cartItemsContainer');
