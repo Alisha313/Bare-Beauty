@@ -226,6 +226,9 @@
             if (code === 'BARE20') {
                 window.appliedDiscount = 0.20;
                 renderCartPage();
+            } else if (code === 'BARE15') {
+                window.appliedDiscount = 0.15;
+                renderCartPage();
             } else if (code.length > 0) {
                 alert('Invalid or expired discount code.');
             }
