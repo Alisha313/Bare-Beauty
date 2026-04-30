@@ -3,7 +3,7 @@
 
 /* ===== TRACKER STYLES ===== */
 
-/* --- Tracker Hero --- */
+/* Tracker Hero */
 .tracker-hero {
   text-align: center;
   padding: 70px 40px 0;
@@ -12,11 +12,13 @@
 }
 
 .skincare-tracker-hero {
-  background: linear-gradient(150deg, var(--pastel-cream) 0%, var(--pastel-latte) 40%, var(--pastel-beige) 100%);
+  background: linear-gradient(150deg, var(--pastel-cream) 0%,
+   var(--pastel-latte) 40%, var(--pastel-beige) 100%);
 }
 
 .hair-tracker-hero {
-  background: linear-gradient(150deg, var(--pastel-latte) 0%, var(--pastel-tan) 40%, var(--pastel-mocha) 100%);
+  background: linear-gradient(150deg, var(--pastel-latte) 0%,
+   var(--pastel-tan) 40%, var(--pastel-mocha) 100%);
 }
 
 .tracker-hero::before {
