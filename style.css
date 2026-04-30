@@ -2042,18 +2042,21 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 25px;
+  align-items: stretch;
 }
 
 /* Product Card */
 .product-card-shop {
   background-color: white;
-  border-radius: 4px 40px 4px 40px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 3px 15px rgba(93, 64, 55, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  min-height: 480px;
+  min-height: auto;
+  height: 100%;
+  position: relative;
 }
 
 .product-card-shop:hover {
@@ -2063,16 +2066,20 @@ h1, h2, h3, h4, h5, h6 {
 
 .product-card-shop a {
   text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .product-image {
   position: relative;
   overflow: hidden;
   background-color: var(--pastel-latte);
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 3;
+  min-height: 240px;
 }
 
 .product-image img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -4922,14 +4929,16 @@ h1, h2, h3, h4, h5, h6 {
 /* ===== ENHANCED PRODUCT CARD SHOP ===== */
 .product-card-shop {
   background: white;
-  border-radius: 4px 40px 4px 40px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(93, 64, 55, 0.08);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid rgba(228, 213, 195, 0.3);
   display: flex;
   flex-direction: column;
-  min-height: 480px;
+  min-height: auto;
+  height: 100%;
+  position: relative;
 }
 
 .product-card-shop:hover {
@@ -4942,10 +4951,12 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, var(--pastel-latte) 0%, var(--pastel-beige) 100%);
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 3;
+  min-height: 240px;
 }
 
 .product-image img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -4957,11 +4968,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-info {
-  padding: 22px;
+  padding: 20px 22px;
   background: linear-gradient(180deg, white 0%, var(--pastel-latte) 100%);
   display: flex;
   flex-direction: column;
   flex: 1;
+  min-height: 0;
 }
 
 .product-category {

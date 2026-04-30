@@ -2442,17 +2442,30 @@ document.addEventListener('DOMContentLoaded', () => {
   function runSearch() {
     const raw = searchInput?.value || '';
     const term = raw.trim().toLowerCase();
+    const isSearchPage = window.location.pathname.endsWith('search.html');
 
     if (!term) {
-      // If on a shop page with products, clear filters
       const productCards = document.querySelectorAll('.product-card-shop');
       if (productCards.length) {
         filterProducts();
       }
+      if (isSearchPage && typeof renderSearchResults === 'function') {
+        const url = new URL(window.location);
+        url.searchParams.delete('q');
+        window.history.replaceState(null, '', url);
+        renderSearchResults();
+      }
       return;
     }
 
-    // Always redirect to search.html for comprehensive search
+    if (isSearchPage && typeof renderSearchResults === 'function') {
+      const url = new URL(window.location);
+      url.searchParams.set('q', term);
+      window.history.replaceState(null, '', url);
+      renderSearchResults();
+      return;
+    }
+
     window.location.href = `search.html?q=${encodeURIComponent(term)}`;
   }
 
